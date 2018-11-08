@@ -1,7 +1,10 @@
+package model;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 import java.util.Vector;
+
+import view.Style;
 
 /** <p>Een slide. Deze klasse heeft tekenfunctionaliteit.</p>
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman

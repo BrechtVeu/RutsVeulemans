@@ -1,3 +1,4 @@
+package model;
 import java.awt.Rectangle;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -5,6 +6,8 @@ import java.awt.image.ImageObserver;
 import java.io.File;
 
 import javax.imageio.ImageIO;
+
+import view.Style;
 
 import java.io.IOException;
 
@@ -51,16 +54,16 @@ public class BitmapItem extends SlideItem {
 
 // geef de bounding box van de afbeelding
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
-		return new Rectangle((int) (myStyle.indent * scale), 0,
+		return new Rectangle((int) (myStyle.getIndent() * scale), 0,
 				(int) (bufferedImage.getWidth(observer) * scale),
-				((int) (myStyle.leading * scale)) + 
+				((int) (myStyle.getLeading() * scale)) + 
 				(int) (bufferedImage.getHeight(observer) * scale));
 	}
 
 // teken de afbeelding
 	public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
-		int width = x + (int) (myStyle.indent * scale);
-		int height = y + (int) (myStyle.leading * scale);
+		int width = x + (int) (myStyle.getIndent() * scale);
+		int height = y + (int) (myStyle.getLeading() * scale);
 		g.drawImage(bufferedImage, width, height,(int) (bufferedImage.getWidth(observer)*scale),
                 (int) (bufferedImage.getHeight(observer)*scale), observer);
 	}
