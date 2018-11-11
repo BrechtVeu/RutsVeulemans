@@ -42,6 +42,7 @@ public class MenuController extends MenuBar {
 	protected static final String PAGENR = "Page number?";
 	protected static final String PREV = "Prev";
 	protected static final String SAVE = "Save";
+	protected static final String THEME = "Theme";
 	protected static final String VIEW = "View";
 	
 	protected static final String TESTFILE = "test.xml";
@@ -120,6 +121,8 @@ public class MenuController extends MenuBar {
 			}
 		});
 		add(viewMenu);
+		Menu themeMenu = new Menu(THEME);
+		add(themeMenu);
 		Menu helpMenu = new Menu(HELP);
 		helpMenu.add(menuItem = mkMenuItem(ABOUT));
 		menuItem.addActionListener(new ActionListener() {
