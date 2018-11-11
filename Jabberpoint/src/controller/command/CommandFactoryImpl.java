@@ -21,6 +21,11 @@ public class CommandFactoryImpl implements CommandFactory {
 		this.presentation = presentation;
 	}
 	
+	@Override
+	public Command makeEmptyCommand() {
+		return new EmptyCommand();
+	}
+	
 	/* (non-Javadoc)
 	 * @see controller.command.CommandFactory#makeExitCommand()
 	 */

@@ -8,6 +8,7 @@ package controller.command;
  *
  */
 public interface CommandFactory {
+	Command makeEmptyCommand();
 	Command makeOpenPresentationCommand();
 	Command makeNewPresentationCommand();
 	Command makeSavePresentationCommand();
