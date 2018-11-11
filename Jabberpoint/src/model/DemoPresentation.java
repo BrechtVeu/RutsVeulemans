@@ -1,4 +1,8 @@
 package model;
+
+import view.BitmapItemDrawerDefault;
+import view.SlideDrawerDefault;
+
 /** Een ingebouwde demo-presentatie
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
@@ -14,7 +18,7 @@ class DemoPresentation extends Accessor {
 	public void loadFile(Presentation presentation, String unusedFilename) {
 		presentation.setTitle("Demo Presentation");
 		Slide slide;
-		slide = new Slide();
+		slide = new Slide(new SlideDrawerDefault());
 		slide.setTitle("JabberPoint");
 		slide.append(1, "Het Java Presentatie Tool");
 		slide.append(2, "Copyright (c) 1996-2000: Ian Darwin");
@@ -28,7 +32,7 @@ class DemoPresentation extends Accessor {
 		slide.append(3, "Stoppen: q or Q");
 		presentation.append(slide);
 
-		slide = new Slide();
+		slide = new Slide(new SlideDrawerDefault());
 		slide.setTitle("Demonstratie van levels en stijlen");
 		slide.append(1, "Level 1");
 		slide.append(2, "Level 2");
@@ -39,13 +43,13 @@ class DemoPresentation extends Accessor {
 		slide.append(4, "En dit is level 4");
 		presentation.append(slide);
 
-		slide = new Slide();
+		slide = new Slide(new SlideDrawerDefault());
 		slide.setTitle("De derde slide");
 		slide.append(1, "Om een nieuwe presentatie te openen,");
 		slide.append(2, "gebruik File->Open uit het menu.");
 		slide.append(1, " ");
 		slide.append(1, "Dit is het einde van de presentatie.");
-		slide.append(new BitmapItem(1, "JabberPoint.jpg"));
+		slide.append(new BitmapItem(1, "JabberPoint.jpg", new BitmapItemDrawerDefault()));
 		presentation.append(slide);
 	}
 

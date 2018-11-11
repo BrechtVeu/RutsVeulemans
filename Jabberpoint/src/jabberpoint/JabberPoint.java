@@ -1,4 +1,6 @@
 package jabberpoint;
+import java.io.IOException;
+
 import javax.swing.JOptionPane;
 
 import model.Accessor;
@@ -6,8 +8,6 @@ import model.Presentation;
 import model.XMLAccessor;
 import view.SlideViewerFrame;
 import view.Style;
-
-import java.io.IOException;
 
 /** JabberPoint Main Programma
  * <p>This program is distributed under the terms of the accompanying

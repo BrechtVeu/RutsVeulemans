@@ -1,19 +1,23 @@
 package model;
-import java.util.Vector;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.FileWriter;
+import java.util.Vector;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.xml.sax.SAXException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import view.BitmapItemDrawerDefault;
+import view.SlideDrawerDefault;
+import view.TextItemDrawerDefault;
 
 
 /** XMLAccessor, reads and writes XML files
@@ -65,7 +69,7 @@ public class XMLAccessor extends Accessor {
 			max = slides.getLength();
 			for (slideNumber = 0; slideNumber < max; slideNumber++) {
 				Element xmlSlide = (Element) slides.item(slideNumber);
-				Slide slide = new Slide();
+				Slide slide = new Slide(new SlideDrawerDefault());
 				slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
 				presentation.append(slide);
 				
@@ -103,11 +107,11 @@ public class XMLAccessor extends Accessor {
 		}
 		String type = attributes.getNamedItem(KIND).getTextContent();
 		if (TEXT.equals(type)) {
-			slide.append(new TextItem(level, item.getTextContent()));
+			slide.append(new TextItem(level, item.getTextContent(), new TextItemDrawerDefault()));
 		}
 		else {
 			if (IMAGE.equals(type)) {
-				slide.append(new BitmapItem(level, item.getTextContent()));
+				slide.append(new BitmapItem(level, item.getTextContent(), new BitmapItemDrawerDefault()));
 			}
 			else {
 				System.err.println(UNKNOWNTYPE);
@@ -126,7 +130,7 @@ public class XMLAccessor extends Accessor {
 		for (int slideNumber=0; slideNumber<presentation.getSize(); slideNumber++) {
 			Slide slide = presentation.getSlide(slideNumber);
 			out.println("<slide>");
-			out.println("<title>" + slide.getTitle() + "</title>");
+			out.println("<title>" + ((TextItem) slide.getTitle()).getText() + "</title>");
 			Vector<SlideItem> slideItems = slide.getSlideItems();
 			for (int itemNumber = 0; itemNumber<slideItems.size(); itemNumber++) {
 				SlideItem slideItem = (SlideItem) slideItems.elementAt(itemNumber);

@@ -1,9 +1,10 @@
 package view;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
@@ -72,6 +73,13 @@ public class SlideViewerComponent extends JComponent {
 		g.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " +
                  presentation.getSize(), XPOS, YPOS);
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
-		slide.draw(g, area, this);
+
+		float scale = getScale(area);		
+		slide.getSlideDrawer().draw(g, area, this, slide.getTitle(), slide.getSize(), slide.getSlideItems(), scale);
+	}
+	
+	// geef de schaal om de slide te kunnen tekenen
+	private float getScale(Rectangle area) {
+		return Math.min(((float)area.width) / ((float)Slide.WIDTH), ((float)area.height) / ((float)Slide.HEIGHT));
 	}
 }
