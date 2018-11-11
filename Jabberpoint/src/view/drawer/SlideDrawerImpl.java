@@ -1,4 +1,4 @@
-package view;
+package view.drawer;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -6,8 +6,9 @@ import java.awt.image.ImageObserver;
 import java.util.Vector;
 
 import model.SlideItem;
+import view.Style;
 
-public class SlideDrawerDefault implements SlideDrawer{
+public class SlideDrawerImpl implements SlideDrawer{
 	public void draw(Graphics g, Rectangle area, ImageObserver view,
 			SlideItem title, int size, Vector<SlideItem> slideItems,
 			float scale) {

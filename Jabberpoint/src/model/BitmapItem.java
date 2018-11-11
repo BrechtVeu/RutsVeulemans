@@ -8,8 +8,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import view.BitmapItemDrawer;
 import view.Style;
+import view.drawer.BitmapItemDrawer;
 
 
 /** <p>De klasse voor een Bitmap item</p>

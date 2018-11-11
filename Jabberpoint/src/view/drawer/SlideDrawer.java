@@ -1,4 +1,4 @@
-package view;
+package view.drawer;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;

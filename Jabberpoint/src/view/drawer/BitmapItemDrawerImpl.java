@@ -1,11 +1,13 @@
-package view;
+package view.drawer;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
-public class BitmapItemDrawerDefault implements BitmapItemDrawer{
+import view.Style;
+
+public class BitmapItemDrawerImpl implements BitmapItemDrawer{
 	// geef de bounding box van de afbeelding
 		public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle, BufferedImage bufferedImage) {
 			return new Rectangle((int) (myStyle.getIndent() * scale), 0,

@@ -15,9 +15,9 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import view.BitmapItemDrawerDefault;
-import view.SlideDrawerDefault;
-import view.TextItemDrawerDefault;
+import view.drawer.BitmapItemDrawerImpl;
+import view.drawer.SlideDrawerImpl;
+import view.drawer.TextItemDrawerImpl;
 
 
 /** XMLAccessor, reads and writes XML files
@@ -69,7 +69,7 @@ public class XMLAccessor extends Accessor {
 			max = slides.getLength();
 			for (slideNumber = 0; slideNumber < max; slideNumber++) {
 				Element xmlSlide = (Element) slides.item(slideNumber);
-				Slide slide = new Slide(new SlideDrawerDefault());
+				Slide slide = new Slide(new SlideDrawerImpl());
 				slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
 				presentation.append(slide);
 				
@@ -107,11 +107,11 @@ public class XMLAccessor extends Accessor {
 		}
 		String type = attributes.getNamedItem(KIND).getTextContent();
 		if (TEXT.equals(type)) {
-			slide.append(new TextItem(level, item.getTextContent(), new TextItemDrawerDefault()));
+			slide.append(new TextItem(level, item.getTextContent(), new TextItemDrawerImpl()));
 		}
 		else {
 			if (IMAGE.equals(type)) {
-				slide.append(new BitmapItem(level, item.getTextContent(), new BitmapItemDrawerDefault()));
+				slide.append(new BitmapItem(level, item.getTextContent(), new BitmapItemDrawerImpl()));
 			}
 			else {
 				System.err.println(UNKNOWNTYPE);

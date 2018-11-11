@@ -1,4 +1,4 @@
-package view;
+package view.drawer;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -16,8 +16,9 @@ import java.util.Iterator;
 import java.util.List;
 
 import model.Slide;
+import view.Style;
 
-public class TextItemDrawerDefault implements TextItemDrawer {
+public class TextItemDrawerImpl implements TextItemDrawer {
 	
 	// geef de AttributedString voor het item
 		public AttributedString getAttributedString(Style style, float scale, String text) {

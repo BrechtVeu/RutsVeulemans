@@ -1,8 +1,8 @@
 package model;
 import java.util.Vector;
 
-import view.SlideDrawer;
-import view.TextItemDrawerDefault;
+import view.drawer.SlideDrawer;
+import view.drawer.TextItemDrawerImpl;
 
 /** <p>Een slide. Deze klasse heeft tekenfunctionaliteit.</p>
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
@@ -41,12 +41,12 @@ public class Slide {
 	// verander de titel van de slide
 	public void setTitle(String newTitle) {
 		/* Creëer nu een TextItem op basis van de nieuwe titel */
-		title = new TextItem(0, newTitle, new TextItemDrawerDefault());
+		title = new TextItem(0, newTitle, new TextItemDrawerImpl());
 	}
 
 	// Maak een TextItem van String, en voeg het TextItem toe
 	public void append(int level, String message) {
-		append(new TextItem(level, message, new TextItemDrawerDefault()));
+		append(new TextItem(level, message, new TextItemDrawerImpl()));
 	}
 
 	// geef het betreffende SlideItem
