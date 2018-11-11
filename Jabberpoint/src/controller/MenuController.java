@@ -6,16 +6,11 @@ import java.awt.MenuItem;
 import java.awt.MenuShortcut;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
-
-import javax.swing.JOptionPane;
 
 import controller.command.Command;
 import controller.command.CommandFactory;
-import model.Accessor;
+import controller.command.CommandFactoryImpl;
 import model.Presentation;
-import model.XMLAccessor;
-import view.AboutBox;
 
 /** <p>De controller voor het menu</p>
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
@@ -27,10 +22,7 @@ import view.AboutBox;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 public class MenuController extends MenuBar {
-	
-	private Frame parent; // het frame, alleen gebruikt als ouder voor de Dialogs
-	private Presentation presentation; // Er worden commando's gegeven aan de presentatie
-	
+
 	private static final long serialVersionUID = 227L;
 	
 	protected static final String ABOUT = "About";
@@ -54,96 +46,30 @@ public class MenuController extends MenuBar {
 	protected static final String LOADERR = "Load Error";
 	protected static final String SAVEERR = "Save Error";
 
-	/*public MenuController(Frame frame, Presentation pres) {
-		parent = frame;
-		presentation = pres;
-		MenuItem menuItem;
+	public MenuController(Frame slideViewerFrame, Presentation presentation) {
+		CommandFactory commandFactory = new CommandFactoryImpl(slideViewerFrame,presentation);
+		
 		Menu fileMenu = new Menu(FILE);
-		fileMenu.add(menuItem = mkMenuItem(OPEN));
-		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.clear();
-				Accessor xmlAccessor = new XMLAccessor();
-				try {
-					xmlAccessor.loadFile(presentation, TESTFILE);
-					presentation.setSlideNumber(0);
-				} catch (IOException exc) {
-					JOptionPane.showMessageDialog(parent, IOEX + exc, 
-         			LOADERR, JOptionPane.ERROR_MESSAGE);
-				}
-				parent.repaint();
-			}
-		} );
-		fileMenu.add(menuItem = mkMenuItem(NEW));
-		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.clear();
-				parent.repaint();
-			}
-		});
-		fileMenu.add(menuItem = mkMenuItem(SAVE));
-		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Accessor xmlAccessor = new XMLAccessor();
-				try {
-					xmlAccessor.saveFile(presentation, SAVEFILE);
-				} catch (IOException exc) {
-					JOptionPane.showMessageDialog(parent, IOEX + exc, 
-							SAVEERR, JOptionPane.ERROR_MESSAGE);
-				}
-			}
-		});
-		fileMenu.addSeparator();
-		fileMenu.add(menuItem = mkMenuItem(EXIT));
-		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.exit(0);
-			}
-		});
-		add(fileMenu);
-		Menu viewMenu = new Menu(VIEW);
-		viewMenu.add(menuItem = mkMenuItem(NEXT));
-		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.nextSlide();
-			}
-		});
-		viewMenu.add(menuItem = mkMenuItem(PREV));
-		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.prevSlide();
-			}
-		});
-		viewMenu.add(menuItem = mkMenuItem(GOTO));
-		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent actionEvent) {
-				String pageNumberStr = JOptionPane.showInputDialog((Object)PAGENR);
-				int pageNumber = Integer.parseInt(pageNumberStr);
-				presentation.setSlideNumber(pageNumber - 1);
-			}
-		});
-		add(viewMenu);
-		Menu themeMenu = new Menu(THEME);
-		add(themeMenu);
-		Menu helpMenu = new Menu(HELP);
-		helpMenu.add(menuItem = mkMenuItem(ABOUT));
-		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent actionEvent) {
-				AboutBox.show(parent);
-			}
-		});
-		setHelpMenu(helpMenu);		// nodig for portability (Motif, etc.).
-	}*/
-	
-	public MenuController(final CommandFactory commandFactory) {
-		Menu fileMenu = new Menu(FILE);
-
 		fileMenu.add(mkMenuItem(OPEN, commandFactory.makeOpenPresentationCommand()));
 		fileMenu.add(mkMenuItem(NEW, commandFactory.makeNewPresentationCommand()));
 		fileMenu.add(mkMenuItem(SAVE, commandFactory.makeSavePresentationCommand()));
 		fileMenu.addSeparator();
 		fileMenu.add(mkMenuItem(EXIT, commandFactory.makeExitCommand()));
 		add(fileMenu);
+		
+		Menu viewMenu = new Menu(VIEW);
+		viewMenu.add(mkMenuItem(NEXT, commandFactory.makeNextSlideCommand()));
+		viewMenu.add(mkMenuItem(PREV, commandFactory.makePreviousSlideCommand()));
+		viewMenu.add(mkMenuItem(GOTO, commandFactory.makeGotoSlideCommand()));
+		add(viewMenu);
+		
+		Menu themeMenu = new Menu(THEME);
+		
+		add(themeMenu);
+		
+		Menu helpMenu = new Menu(HELP);
+		helpMenu.add(mkMenuItem(ABOUT, commandFactory.makeAboutCommand()));
+		setHelpMenu(helpMenu);		// nodig for portability (Motif, etc.).
 	}
 
 	// een menu-item aanmaken

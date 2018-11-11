@@ -3,12 +3,24 @@
  */
 package controller.command;
 
+import java.awt.Frame;
+
+import model.Presentation;
+
 /**
  * @author Dominique
  *
  */
 public class CommandFactoryImpl implements CommandFactory {
 
+	private Frame slideViewerFrame;
+	private Presentation presentation;
+	
+	public CommandFactoryImpl(Frame slideViewerFrame, Presentation presentation) {
+		this.slideViewerFrame = slideViewerFrame;
+		this.presentation = presentation;
+	}
+	
 	/* (non-Javadoc)
 	 * @see controller.command.CommandFactory#makeExitCommand()
 	 */
@@ -19,20 +31,37 @@ public class CommandFactoryImpl implements CommandFactory {
 
 	@Override
 	public Command makeOpenPresentationCommand() {
-		// TODO Auto-generated method stub
-		return null;
+		return new OpenPresentationCommand(this.slideViewerFrame, this.presentation);
 	}
 
 	@Override
 	public Command makeNewPresentationCommand() {
-		// TODO Auto-generated method stub
-		return null;
+		return new NewPresentationCommand(this.slideViewerFrame, this.presentation);
 	}
 
 	@Override
 	public Command makeSavePresentationCommand() {
-		// TODO Auto-generated method stub
-		return null;
+		return new SavePresentationCommand(this.slideViewerFrame, this.presentation);
+	}
+
+	@Override
+	public Command makeNextSlideCommand() {
+		return new NextSlideCommand(this.presentation);
+	}
+
+	@Override
+	public Command makePreviousSlideCommand() {
+		return new PreviousSlideCommand(this.presentation);
+	}
+
+	@Override
+	public Command makeGotoSlideCommand() {
+		return new GotoSlideCommand(this.presentation);
+	}
+
+	@Override
+	public Command makeAboutCommand() {
+		return new AboutCommand(this.slideViewerFrame);
 	}
 
 }

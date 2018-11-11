@@ -12,4 +12,8 @@ public interface CommandFactory {
 	Command makeNewPresentationCommand();
 	Command makeSavePresentationCommand();
 	Command makeExitCommand();
+	Command makeNextSlideCommand();
+	Command makePreviousSlideCommand();
+	Command makeGotoSlideCommand();
+	Command makeAboutCommand();
 }

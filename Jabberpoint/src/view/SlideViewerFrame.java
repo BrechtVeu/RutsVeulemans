@@ -6,8 +6,6 @@ import javax.swing.JFrame;
 
 import controller.KeyController;
 import controller.MenuController;
-import controller.command.CommandFactory;
-import controller.command.CommandFactoryImpl;
 import model.Presentation;
 
 /**
@@ -45,11 +43,10 @@ public class SlideViewerFrame extends JFrame {
 				}
 			});
 		
-		CommandFactory commandFactory = new CommandFactoryImpl();
+		
 		getContentPane().add(slideViewerComponent);
 		addKeyListener(new KeyController(presentation)); // een controller toevoegen
-		//setMenuBar(new MenuController(this, presentation));	// nog een controller toevoegen
-		setMenuBar(new MenuController(commandFactory)); // nieuwe methode voor het aanmaken van het menu
+		setMenuBar(new MenuController(this, presentation));	// nog een controller toevoegen
 		setSize(new Dimension(WIDTH, HEIGHT)); // Dezelfde maten als Slide hanteert.
 		setVisible(true);
 	}
