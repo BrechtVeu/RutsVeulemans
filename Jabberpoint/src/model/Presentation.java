@@ -1,4 +1,7 @@
 package model;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 
 import view.SlideViewerComponent;
@@ -18,7 +21,7 @@ import view.SlideViewerComponent;
 
 public class Presentation extends Displayable{
 	private String showTitle; // de titel van de presentatie
-	private ArrayList<Displayable> showList = null; // een ArrayList met de Slides
+	
 	private int currentSlideNumber = 0; // het slidenummer van de huidige Slide
 	private SlideViewerComponent slideViewComponent = null; // de viewcomponent voor de Slides
 
@@ -33,7 +36,8 @@ public class Presentation extends Displayable{
 	}
 
 	public int getSize() {
-		return showList.size();
+		return super.displayableList.size();
+		
 	}
 
 	public String getTitle() {
@@ -70,20 +74,15 @@ public class Presentation extends Displayable{
 
 	// Ga naar de volgende slide tenzij je aan het einde van de presentatie bent.
 	public void nextSlide() {
-		if (currentSlideNumber < (showList.size()-1)) {
+		if (currentSlideNumber < (super.displayableList.size()-1)) {
 			setSlideNumber(currentSlideNumber + 1);
 		}
 	}
 
 	// Verwijder de presentatie, om klaar te zijn voor de volgende
 	public void clear() {
-		showList = new ArrayList<Displayable>();
+		super.displayableList = new ArrayList<Displayable>();
 		setSlideNumber(-1);
-	}
-
-	// Voeg een slide toe aan de presentatie
-	public void append(Slide slide) {
-		showList.add(slide);
 	}
 
 	// Geef een slide met een bepaald slidenummer
@@ -91,7 +90,7 @@ public class Presentation extends Displayable{
 		if (number < 0 || number >= getSize()){
 			return null;
 	    }
-			return (Slide)showList.get(number);
+			return (Slide)super.displayableList.get(number);
 	}
 
 	// Geef de huidige Slide

@@ -27,10 +27,9 @@ public abstract class SlideItem extends Displayable{
 		return level;
 	}
 	
-	public abstract void draw(int x, int y, float scale, 
-			Graphics g, Style style, ImageObserver observer);
-	
-	public abstract Rectangle getBoundingBox(Graphics g, 
-			ImageObserver observer, float scale, Style style);
+	protected Style getStyle(int level){
+		Style style = Style.getStyle(level);
+		return style;
+	}
 
 }

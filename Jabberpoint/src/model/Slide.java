@@ -2,6 +2,7 @@ package model;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import view.drawer.SlideDrawer;
@@ -22,23 +23,17 @@ public class Slide extends Displayable{
 	public final static int HEIGHT = 800;
 	/* Geen String meer maar een TextItem */
 	protected Displayable title; // de titel wordt apart bewaard
-	protected Vector<Displayable> items; // de slide-items worden in een Vector bewaard
 	private SlideDrawer slideDrawer;
 
 	public Slide(SlideDrawer slideDrawer) {
-		items = new Vector<Displayable>();
+		super.displayableList = new ArrayList<Displayable>();
 		this.slideDrawer = slideDrawer;
 	}
 
-	// Voeg een SlideItem toe
-	public void append(SlideItem anItem) {
-		items.addElement(anItem);
-	}
-
 	// geef de titel van de slide
-	public Displayable getTitleItem() {
+	public String getTitle() {
 		/* Geef nu de tekst van het TextItem terug */
-		return title;
+		return ((TextItem) title).getText();
 	}
 
 	// verander de titel van de slide
@@ -54,23 +49,22 @@ public class Slide extends Displayable{
 
 	// geef het betreffende SlideItem
 	public Displayable getSlideItem(int number) {
-		return (Displayable)items.elementAt(number);
+		return (Displayable)super.displayableList.get(number);
 	}
 
 	// geef alle SlideItems in een Vector
-	public Vector<Displayable> getSlideItems() {
-		return items;
+	public ArrayList<Displayable> getSlideItems() {
+		return displayableList;
 	}
 
 	// geef de afmeting van de Slide
 	public int getSize() {
-		return items.size();
+		return displayableList.size();
 	}
 
 	@Override
-	public void draw(Graphics g, Rectangle area, ImageObserver view, 
-			Displayable title, int size, Vector<Displayable> slideItems,
-			float scale) {
-		slideDrawer.draw(g, area, view, title, size, slideItems, scale);
+	public void draw(Graphics g, Rectangle area, ImageObserver view) {
+		float scale = getScale(area);
+		slideDrawer.draw(g, area, view, title, getSize() , displayableList, scale);
 	}
 }
