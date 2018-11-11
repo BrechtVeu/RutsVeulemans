@@ -16,7 +16,7 @@ import view.Style;
  * @version 1.6 2014/05/16 Sylvia Stuurman
 */
 
-public abstract class SlideItem {
+public abstract class SlideItem extends Displayable{
 	private int level = 0; // het level van het slideitem
 	public SlideItem(int lev) {
 		level = lev;

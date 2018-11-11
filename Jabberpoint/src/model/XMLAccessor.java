@@ -130,8 +130,8 @@ public class XMLAccessor extends Accessor {
 		for (int slideNumber=0; slideNumber<presentation.getSize(); slideNumber++) {
 			Slide slide = presentation.getSlide(slideNumber);
 			out.println("<slide>");
-			out.println("<title>" + ((TextItem) slide.getTitle()).getText() + "</title>");
-			Vector<SlideItem> slideItems = slide.getSlideItems();
+			out.println("<title>" + ((TextItem) slide.getTitleItem()).getText() + "</title>");
+			Vector<Displayable> slideItems = slide.getSlideItems();
 			for (int itemNumber = 0; itemNumber<slideItems.size(); itemNumber++) {
 				SlideItem slideItem = (SlideItem) slideItems.elementAt(itemNumber);
 				out.print("<item kind="); 

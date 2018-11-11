@@ -16,9 +16,9 @@ import view.SlideViewerComponent;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class Presentation {
+public class Presentation extends Displayable{
 	private String showTitle; // de titel van de presentatie
-	private ArrayList<Slide> showList = null; // een ArrayList met de Slides
+	private ArrayList<Displayable> showList = null; // een ArrayList met de Slides
 	private int currentSlideNumber = 0; // het slidenummer van de huidige Slide
 	private SlideViewerComponent slideViewComponent = null; // de viewcomponent voor de Slides
 
@@ -77,7 +77,7 @@ public class Presentation {
 
 	// Verwijder de presentatie, om klaar te zijn voor de volgende
 	public void clear() {
-		showList = new ArrayList<Slide>();
+		showList = new ArrayList<Displayable>();
 		setSlideNumber(-1);
 	}
 

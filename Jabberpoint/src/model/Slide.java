@@ -14,16 +14,16 @@ import view.drawer.TextItemDrawerImpl;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class Slide {
+public class Slide extends Displayable{
 	public final static int WIDTH = 1200;
 	public final static int HEIGHT = 800;
 	/* Geen String meer maar een TextItem */
 	protected TextItem title; // de titel wordt apart bewaard
-	protected Vector<SlideItem> items; // de slide-items worden in een Vector bewaard
+	protected Vector<Displayable> items; // de slide-items worden in een Vector bewaard
 	private SlideDrawer slideDrawer;
 
 	public Slide(SlideDrawer slideDrawer) {
-		items = new Vector<SlideItem>();
+		items = new Vector<Displayable>();
 		this.slideDrawer = slideDrawer;
 	}
 
@@ -33,7 +33,7 @@ public class Slide {
 	}
 
 	// geef de titel van de slide
-	public SlideItem getTitle() {
+	public SlideItem getTitleItem() {
 		/* Geef nu de tekst van het TextItem terug */
 		return title;
 	}
@@ -55,7 +55,7 @@ public class Slide {
 	}
 
 	// geef alle SlideItems in een Vector
-	public Vector<SlideItem> getSlideItems() {
+	public Vector<Displayable> getSlideItems() {
 		return items;
 	}
 

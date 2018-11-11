@@ -8,7 +8,7 @@ import java.awt.Rectangle;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
-import model.Presentation;
+import model.Displayable;
 import model.Slide;
 
 
@@ -26,7 +26,7 @@ public class SlideViewerComponent extends JComponent {
 		
 	private Slide slide; // de huidige slide
 	private Font labelFont = null; // het font voor labels
-	private Presentation presentation = null; // de presentatie
+	private Displayable presentation = null; // de presentatie
 	private JFrame frame = null;
 	
 	private static final long serialVersionUID = 227L;
@@ -39,7 +39,7 @@ public class SlideViewerComponent extends JComponent {
 	private static final int XPOS = 1100;
 	private static final int YPOS = 20;
 
-	public SlideViewerComponent(Presentation pres, JFrame frame) {
+	public SlideViewerComponent(Displayable pres, JFrame frame) {
 		setBackground(BGCOLOR); 
 		presentation = pres;
 		labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
@@ -50,7 +50,7 @@ public class SlideViewerComponent extends JComponent {
 		return new Dimension(Slide.WIDTH, Slide.HEIGHT);
 	}
 
-	public void update(Presentation presentation, Slide data) {
+	public void update(Displayable presentation, Slide data) {
 		if (data == null) {
 			repaint();
 			return;
@@ -75,7 +75,7 @@ public class SlideViewerComponent extends JComponent {
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 
 		float scale = getScale(area);		
-		slide.getSlideDrawer().draw(g, area, this, slide.getTitle(), slide.getSize(), slide.getSlideItems(), scale);
+		slide.getSlideDrawer().draw(g, area, this, slide.getTitleItem(), slide.getSize(), slide.getSlideItems(), scale);
 	}
 	
 	// geef de schaal om de slide te kunnen tekenen
