@@ -33,7 +33,7 @@ public class Slide extends Displayable{
 	}
 
 	// geef de titel van de slide
-	public SlideItem getTitleItem() {
+	public TextItem getTitleItem() {
 		/* Geef nu de tekst van het TextItem terug */
 		return title;
 	}
