@@ -10,6 +10,6 @@ import model.SlideItem;
 
 public interface SlideDrawer {
 	public void draw(Graphics g, Rectangle area, ImageObserver view, 
-			SlideItem title, int size, Vector<Displayable> slideItems,
+			Displayable title, int size, Vector<Displayable> slideItems,
 			float scale);
 }

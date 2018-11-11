@@ -46,15 +46,6 @@ public class TextItem extends SlideItem {
 	}
 	
 
-
-	public TextItemDrawer getSlideItemDrawer() {
-		return textItemDrawer;
-	}
-
-	public void setSlideItemDrawer(TextItemDrawer textItemDrawer) {
-		this.textItemDrawer = textItemDrawer;
-	}
-
 	@Override
 	public void draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer) {
 		if (text == null || text.length() == 0) {

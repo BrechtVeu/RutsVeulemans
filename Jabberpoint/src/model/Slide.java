@@ -1,4 +1,7 @@
 package model;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.image.ImageObserver;
 import java.util.Vector;
 
 import view.drawer.SlideDrawer;
@@ -18,7 +21,7 @@ public class Slide extends Displayable{
 	public final static int WIDTH = 1200;
 	public final static int HEIGHT = 800;
 	/* Geen String meer maar een TextItem */
-	protected TextItem title; // de titel wordt apart bewaard
+	protected Displayable title; // de titel wordt apart bewaard
 	protected Vector<Displayable> items; // de slide-items worden in een Vector bewaard
 	private SlideDrawer slideDrawer;
 
@@ -33,7 +36,7 @@ public class Slide extends Displayable{
 	}
 
 	// geef de titel van de slide
-	public TextItem getTitleItem() {
+	public Displayable getTitleItem() {
 		/* Geef nu de tekst van het TextItem terug */
 		return title;
 	}
@@ -50,8 +53,8 @@ public class Slide extends Displayable{
 	}
 
 	// geef het betreffende SlideItem
-	public SlideItem getSlideItem(int number) {
-		return (SlideItem)items.elementAt(number);
+	public Displayable getSlideItem(int number) {
+		return (Displayable)items.elementAt(number);
 	}
 
 	// geef alle SlideItems in een Vector
@@ -64,7 +67,10 @@ public class Slide extends Displayable{
 		return items.size();
 	}
 
-	public SlideDrawer getSlideDrawer() {
-		return slideDrawer;
+	@Override
+	public void draw(Graphics g, Rectangle area, ImageObserver view, 
+			Displayable title, int size, Vector<Displayable> slideItems,
+			float scale) {
+		slideDrawer.draw(g, area, view, title, size, slideItems, scale);
 	}
 }

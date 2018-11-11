@@ -24,7 +24,7 @@ import model.Slide;
 
 public class SlideViewerComponent extends JComponent {
 		
-	private Slide slide; // de huidige slide
+	private Displayable slide; // de huidige slide
 	private Font labelFont = null; // het font voor labels
 	private Displayable presentation = null; // de presentatie
 	private JFrame frame = null;
@@ -50,7 +50,7 @@ public class SlideViewerComponent extends JComponent {
 		return new Dimension(Slide.WIDTH, Slide.HEIGHT);
 	}
 
-	public void update(Displayable presentation, Slide data) {
+	public void update(Displayable presentation, Displayable data) {
 		if (data == null) {
 			repaint();
 			return;
@@ -75,7 +75,7 @@ public class SlideViewerComponent extends JComponent {
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 
 		float scale = getScale(area);		
-		slide.getSlideDrawer().draw(g, area, this, slide.getTitleItem(), slide.getSize(), slide.getSlideItems(), scale);
+		slide.draw(g, area, this, slide.getTitleItem(), slide.getSize(), slide.getSlideItems(), scale);
 	}
 	
 	// geef de schaal om de slide te kunnen tekenen
