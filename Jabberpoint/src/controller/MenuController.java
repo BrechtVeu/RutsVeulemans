@@ -10,6 +10,8 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
+import controller.command.Command;
+import controller.command.CommandFactory;
 import model.Accessor;
 import model.Presentation;
 import model.XMLAccessor;
@@ -52,7 +54,7 @@ public class MenuController extends MenuBar {
 	protected static final String LOADERR = "Load Error";
 	protected static final String SAVEERR = "Save Error";
 
-	public MenuController(Frame frame, Presentation pres) {
+	/*public MenuController(Frame frame, Presentation pres) {
 		parent = frame;
 		presentation = pres;
 		MenuItem menuItem;
@@ -131,10 +133,29 @@ public class MenuController extends MenuBar {
 			}
 		});
 		setHelpMenu(helpMenu);		// nodig for portability (Motif, etc.).
+	}*/
+	
+	public MenuController(final CommandFactory commandFactory) {
+		Menu fileMenu = new Menu(FILE);
+
+		fileMenu.add(mkMenuItem(OPEN, commandFactory.makeOpenPresentationCommand()));
+		fileMenu.add(mkMenuItem(NEW, commandFactory.makeNewPresentationCommand()));
+		fileMenu.add(mkMenuItem(SAVE, commandFactory.makeSavePresentationCommand()));
+		fileMenu.addSeparator();
+		fileMenu.add(mkMenuItem(EXIT, commandFactory.makeExitCommand()));
+		add(fileMenu);
 	}
 
-// een menu-item aanmaken
-	public MenuItem mkMenuItem(String name) {
-		return new MenuItem(name, new MenuShortcut(name.charAt(0)));
+	// een menu-item aanmaken
+	public MenuItem mkMenuItem(String name, final Command command) {
+		MenuItem item = new MenuItem(name, new MenuShortcut(name.charAt(0)));
+		item.addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent actionEvent) {						
+						command.execute();
+					}
+				});
+				
+		return item;
 	}
 }
