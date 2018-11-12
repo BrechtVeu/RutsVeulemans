@@ -15,7 +15,7 @@ import view.drawer.SlideDrawerImpl;
 
 class DemoPresentation extends Accessor {
 
-	public void loadFile(Presentation presentation, String unusedFilename) {
+	public void loadFile(Displayable presentation, String unusedFilename) {
 		presentation.setTitle("Demo Presentation");
 		Slide slide;
 		slide = new Slide(new SlideDrawerImpl());
@@ -53,7 +53,7 @@ class DemoPresentation extends Accessor {
 		presentation.append(slide);
 	}
 
-	public void saveFile(Presentation presentation, String unusedFilename) {
+	public void saveFile(Displayable presentation, String unusedFilename) {
 		throw new IllegalStateException("Save As->Demo! aangeroepen");
 	}
 }

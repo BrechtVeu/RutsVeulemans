@@ -26,40 +26,28 @@ public class Slide extends Displayable{
 	private SlideDrawer slideDrawer;
 
 	public Slide(SlideDrawer slideDrawer) {
-		super.displayableList = new ArrayList<Displayable>();
 		this.slideDrawer = slideDrawer;
 	}
 
 	// geef de titel van de slide
+	@Override
 	public String getTitle() {
 		/* Geef nu de tekst van het TextItem terug */
 		return ((TextItem) title).getText();
 	}
 
 	// verander de titel van de slide
+	@Override
 	public void setTitle(String newTitle) {
 		/* Creëer nu een TextItem op basis van de nieuwe titel */
 		title = new TextItem(0, newTitle, new TextItemDrawerImpl());
 	}
 
+	//TODO nog weg te halen zodat append van Displayable wordt aangeroepen 
+	//en een Displayable wordt toegevoegd (dus een TextItem)
 	// Maak een TextItem van String, en voeg het TextItem toe
 	public void append(int level, String message) {
 		append(new TextItem(level, message, new TextItemDrawerImpl()));
-	}
-
-	// geef het betreffende SlideItem
-	public Displayable getSlideItem(int number) {
-		return (Displayable)super.displayableList.get(number);
-	}
-
-	// geef alle SlideItems in een Vector
-	public ArrayList<Displayable> getSlideItems() {
-		return displayableList;
-	}
-
-	// geef de afmeting van de Slide
-	public int getSize() {
-		return displayableList.size();
 	}
 
 	@Override

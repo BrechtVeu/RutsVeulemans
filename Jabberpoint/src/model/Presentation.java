@@ -35,11 +35,6 @@ public class Presentation extends Displayable{
 		clear();
 	}
 
-	public int getSize() {
-		return super.displayableList.size();
-		
-	}
-
 	public String getTitle() {
 		return showTitle;
 	}
@@ -85,17 +80,9 @@ public class Presentation extends Displayable{
 		setSlideNumber(-1);
 	}
 
-	// Geef een slide met een bepaald slidenummer
-	public Slide getSlide(int number) {
-		if (number < 0 || number >= getSize()){
-			return null;
-	    }
-			return (Slide)super.displayableList.get(number);
-	}
-
 	// Geef de huidige Slide
-	public Slide getCurrentSlide() {
-		return getSlide(currentSlideNumber);
+	public Displayable getCurrentSlide() {
+		return super.getDisplayableItem(currentSlideNumber);
 	}
 
 	public void exit(int n) {

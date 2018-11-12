@@ -4,41 +4,35 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Vector;
 
 import view.SlideViewerComponent;
 
 public abstract class Displayable {
 	
-	protected ArrayList<Displayable> displayableList = null; // een ArrayList voor Displayables
+	protected ArrayList<Displayable> displayableList = new ArrayList<Displayable>(); // een ArrayList voor Displayables
 	
-	// Voeg een SlideItem toe
+	// Voeg een Displayable toe
 	public void append(Displayable anItem) {
 		displayableList.add(anItem);
 	}
 
-	public String getTitle() {		
-		return null;
+	public ArrayList<Displayable> getDisplayableItems() {
+		return displayableList;
 	}
-
-	public int getSlideNumber() {
-		// TODO Auto-generated method stub
-		return 0;
+	
+	// geef het betreffende Displayable
+	public Displayable getDisplayableItem(int number) {
+		if (number < 0 || number >= getSize()){
+			return null;
+	    }
+		return displayableList.get(number);
 	}
-
+	
+	// geef de afmeting van de Slide
 	public int getSize() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public Displayable getTitleItem() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public ArrayList<Displayable> getSlideItems() {
-		// TODO Auto-generated method stub
-		return null;
+		return displayableList.size();
 	}
 
 	public void draw(Graphics g, Rectangle area, ImageObserver view){};
@@ -49,4 +43,14 @@ public abstract class Displayable {
 	}
 
 	public Rectangle getBoundingBox(Graphics g, ImageObserver view, float scale){ return null; };
+	
+	public String getTitle() {return null;}
+	
+	public void setTitle(String title) {}
+	
+	//TODO AAN TE PASSEN - aangemaakt voor Accessor en SlideViewerComponent
+	
+	public int getSlideNumber() {return 0;}
+
+	
 }
