@@ -5,6 +5,9 @@ package model;
 
 import java.io.IOException;
 
+import view.drawer.BitmapItemDrawerImpl;
+import view.drawer.SlideDrawerImpl;
+
 /**
  * @author Dominique
  *
@@ -25,7 +28,7 @@ public class DemoFormat implements Format {
 	public void loadFile(Presentation p, String unusedFilename) throws IOException {
 		p.setTitle("Demo Presentation");
 		Slide slide;
-		slide = new Slide();
+		slide = new Slide(new SlideDrawerImpl());
 		slide.setTitle("JabberPoint");
 		slide.append(1, "Het Java Presentatie Tool");
 		slide.append(2, "Copyright (c) 1996-2000: Ian Darwin");
@@ -39,7 +42,7 @@ public class DemoFormat implements Format {
 		slide.append(3, "Stoppen: q or Q");
 		p.append(slide);
 
-		slide = new Slide();
+		slide = new Slide(new SlideDrawerImpl());
 		slide.setTitle("Demonstratie van levels en stijlen");
 		slide.append(1, "Level 1");
 		slide.append(2, "Level 2");
@@ -50,13 +53,13 @@ public class DemoFormat implements Format {
 		slide.append(4, "En dit is level 4");
 		p.append(slide);
 
-		slide = new Slide();
+		slide = new Slide(new SlideDrawerImpl());
 		slide.setTitle("De derde slide");
 		slide.append(1, "Om een nieuwe presentatie te openen,");
 		slide.append(2, "gebruik File->Open uit het menu.");
 		slide.append(1, " ");
 		slide.append(1, "Dit is het einde van de presentatie.");
-		slide.append(new BitmapItem(1, "JabberPoint.jpg"));
+		slide.append(new BitmapItem(1, "JabberPoint.jpg", new BitmapItemDrawerImpl()));
 		p.append(slide);
 	}
 
