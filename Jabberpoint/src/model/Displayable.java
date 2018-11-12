@@ -7,15 +7,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
 
+import jabberpoint.Values;
 import view.SlideViewerComponent;
+import view.theme.Theme;
 
 public abstract class Displayable {
 	
 	protected ArrayList<Displayable> displayableList = new ArrayList<Displayable>(); // een ArrayList voor Displayables
+	protected Theme theme;
 	
 	// Voeg een Displayable toe
-	public void append(Displayable anItem) {
+	public void append(Displayable anItem, Theme theme) {
 		displayableList.add(anItem);
+		this.theme = theme;
 	}
 
 	public ArrayList<Displayable> getDisplayableItems() {
@@ -39,7 +43,7 @@ public abstract class Displayable {
 	
 	// geef de schaal om de slide te kunnen tekenen
 	protected float getScale(Rectangle area) {
-		return Math.min(((float)area.width) / ((float)Slide.WIDTH), ((float)area.height) / ((float)Slide.HEIGHT));
+		return Math.min(((float)area.width) / ((float)Values.WIDTH), ((float)area.height) / ((float)Values.HEIGHT));
 	}
 
 	public Rectangle getBoundingBox(Graphics g, ImageObserver view, float scale){ return null; };

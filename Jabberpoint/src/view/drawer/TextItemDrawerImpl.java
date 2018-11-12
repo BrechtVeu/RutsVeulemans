@@ -15,24 +15,24 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import model.Slide;
-import view.Style;
+import jabberpoint.Values;
+import view.theme.Theme;
 
 public class TextItemDrawerImpl implements TextItemDrawer {
 	
 	// geef de AttributedString voor het item
-		public AttributedString getAttributedString(Style style, float scale, String text) {
+		public AttributedString getAttributedString(Theme myTheme, float scale, String text) {
 			AttributedString attrStr = new AttributedString(text);
-			attrStr.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, text.length());
+			attrStr.addAttribute(TextAttribute.FONT, myTheme.getSlideItemStyle().getFont(scale), 0, text.length());
 			return attrStr;
 		}
 
 	// geef de bounding box van het item
 		@Override
 		public Rectangle getBoundingBox(Graphics g, ImageObserver observer, 
-				float scale, Style myStyle, String text) {
-			List<TextLayout> layouts = getLayouts(g, myStyle, scale, text);
-			int xsize = 0, ysize = (int) (myStyle.getLeading() * scale);
+				float scale, Theme myTheme, String text) {
+			List<TextLayout> layouts = getLayouts(g, myTheme, scale, text);
+			int xsize = 0, ysize = (int) (myTheme.getSlideItemStyle().getLeading() * scale);
 			Iterator<TextLayout> iterator = layouts.iterator();
 			while (iterator.hasNext()) {
 				TextLayout layout = iterator.next();
@@ -45,19 +45,19 @@ public class TextItemDrawerImpl implements TextItemDrawer {
 				}
 				ysize += layout.getLeading() + layout.getDescent();
 			}
-			return new Rectangle((int) (myStyle.getIndent()*scale), 0, xsize, ysize );
+			return new Rectangle((int) (myTheme.getSlideItemStyle().getIndent()*scale), 0, xsize, ysize );
 		}
 
 	// teken het item
 		@Override
 		public void draw(int x, int y, float scale, Graphics g, 
-				Style myStyle, ImageObserver o, String text) {
+				Theme myTheme, ImageObserver o, String text) {
 			
-			List<TextLayout> layouts = getLayouts(g, myStyle, scale, text);
-			Point pen = new Point(x + (int)(myStyle.getIndent() * scale), 
-					y + (int) (myStyle.getLeading() * scale));
+			List<TextLayout> layouts = getLayouts(g, myTheme, scale, text);
+			Point pen = new Point(x + (int)(myTheme.getSlideItemStyle().getIndent() * scale), 
+					y + (int) (myTheme.getSlideItemStyle().getLeading() * scale));
 			Graphics2D g2d = (Graphics2D)g;
-			g2d.setColor(myStyle.getColor());
+			g2d.setColor(myTheme.getSlideItemStyle().getColor());
 			Iterator<TextLayout> it = layouts.iterator();
 			while (it.hasNext()) {
 				TextLayout layout = it.next();
@@ -67,13 +67,13 @@ public class TextItemDrawerImpl implements TextItemDrawer {
 			}
 		  }
 
-		private List<TextLayout> getLayouts(Graphics g, Style s, float scale, String text) {
+		private List<TextLayout> getLayouts(Graphics g, Theme myTheme, float scale, String text) {
 			List<TextLayout> layouts = new ArrayList<TextLayout>();
-			AttributedString attrStr = getAttributedString(s, scale, text);
+			AttributedString attrStr = getAttributedString(myTheme, scale, text);
 	    	Graphics2D g2d = (Graphics2D) g;
 	    	FontRenderContext frc = g2d.getFontRenderContext();
 	    	LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
-	    	float wrappingWidth = (Slide.WIDTH - s.getIndent()) * scale;
+	    	float wrappingWidth = (Values.WIDTH - myTheme.getSlideItemStyle().getIndent()) * scale;
 	    	while (measurer.getPosition() < text.length()) {
 	    		TextLayout layout = measurer.nextLayout(wrappingWidth);
 	    		layouts.add(layout);

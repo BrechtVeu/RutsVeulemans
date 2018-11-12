@@ -9,7 +9,6 @@ import java.util.Vector;
 import jabberpoint.Values;
 import model.Displayable;
 import model.SlideItem;
-import view.Style;
 
 public class SlideDrawerImpl implements SlideDrawer{
 	@Override

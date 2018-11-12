@@ -1,4 +1,4 @@
-package view;
+package view.theme;
 import java.awt.Color;
 import java.awt.Font;
 
@@ -15,7 +15,7 @@ import java.awt.Font;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class Style {
+public class Style implements SlideItemStyle {
 	private static Style[] styles; // de styles
 	
 	private static final String FONTNAME = "Helvetica";

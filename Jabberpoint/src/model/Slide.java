@@ -19,8 +19,7 @@ import view.drawer.TextItemDrawerImpl;
  */
 
 public class Slide extends Displayable{
-	public final static int WIDTH = 1200;
-	public final static int HEIGHT = 800;
+	
 	/* Geen String meer maar een TextItem */
 	protected Displayable title; // de titel wordt apart bewaard
 	private SlideDrawer slideDrawer;

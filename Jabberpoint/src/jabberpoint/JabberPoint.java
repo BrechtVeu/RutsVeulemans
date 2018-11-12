@@ -7,7 +7,7 @@ import model.Accessor;
 import model.Presentation;
 import model.XMLAccessor;
 import view.SlideViewerFrame;
-import view.Style;
+import view.theme.Style;
 
 /** JabberPoint Main Programma
  * <p>This program is distributed under the terms of the accompanying
