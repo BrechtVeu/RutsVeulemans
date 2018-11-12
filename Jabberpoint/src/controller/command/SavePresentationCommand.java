@@ -8,9 +8,9 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-import model.Accessor;
 import model.Presentation;
-import model.XMLAccessor;
+import model.Writer;
+import model.WriterImpl;
 
 /**
  * @author Dominique
@@ -36,9 +36,9 @@ public class SavePresentationCommand implements Command {
 	 */
 	@Override
 	public void execute() {
-		Accessor xmlAccessor = new XMLAccessor();
+		Writer writer = new WriterImpl();
 		try {
-			xmlAccessor.saveFile(this.presentation, SAVEFILE);
+			writer.saveFile(this.presentation, SAVEFILE);
 		} catch (IOException exc) {
 			JOptionPane.showMessageDialog(this.slideViewerFrame, IOEX + exc, 
 					SAVEERR, JOptionPane.ERROR_MESSAGE);

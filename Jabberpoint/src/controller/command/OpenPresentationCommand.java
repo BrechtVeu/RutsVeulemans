@@ -5,9 +5,9 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-import model.Accessor;
 import model.Presentation;
-import model.XMLAccessor;
+import model.Reader;
+import model.ReaderImpl;
 
 public class OpenPresentationCommand implements Command {
 	protected static final String TESTFILE = "test.xml";
@@ -27,9 +27,9 @@ public class OpenPresentationCommand implements Command {
 	@Override
 	public void execute() {
 		this.presentation.clear();
-		Accessor xmlAccessor = new XMLAccessor();
+		Reader reader = new ReaderImpl();
 		try {
-			xmlAccessor.loadFile(this.presentation, TESTFILE);
+			reader.loadFile(this.presentation, TESTFILE);
 			this.presentation.setSlideNumber(0);
 		} catch (IOException exc) {
 			JOptionPane.showMessageDialog(this.slideViewerFrame, IOEX + exc, 
