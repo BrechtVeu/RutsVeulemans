@@ -34,7 +34,7 @@ public class SlideViewerFrame extends JFrame {
 		setupWindow(slideViewerComponent, presentation);
 	}
 
-// De GUI opzetten
+	// De GUI opzetten
 	public void setupWindow(SlideViewerComponent 
 			slideViewerComponent, Presentation presentation) {
 		setTitle(JABTITLE);
@@ -43,8 +43,10 @@ public class SlideViewerFrame extends JFrame {
 					System.exit(0);
 				}
 			});
+		
+		
 		getContentPane().add(slideViewerComponent);
-		addKeyListener(new KeyController(presentation)); // een controller toevoegen
+		addKeyListener(new KeyController(this, presentation)); // een controller toevoegen
 		setMenuBar(new MenuController(this, presentation));	// nog een controller toevoegen
 		setSize(new Dimension(WIDTH, HEIGHT)); // Dezelfde maten als Slide hanteert.
 		setVisible(true);
