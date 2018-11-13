@@ -4,15 +4,15 @@ import model.Displayable;
 
 public class DisplayableBuilderImpl implements DisplayableBuilder{
 
-	private SlideFactory slideFactory;
-	private SlideItemFactory slideItemFactory;
+	private SlideFactoryImpl slideFactory;
+	private SlideItemFactoryImpl slideItemFactory;
 	
 	private Displayable displayable;
 	
 	public DisplayableBuilderImpl() {
 		super();
-		this.slideFactory = new SlideFactory();
-		this.slideItemFactory = new SlideItemFactory();
+		this.slideFactory = new SlideFactoryImpl();
+		this.slideItemFactory = new SlideItemFactoryImpl();
 	}
 
 	@Override

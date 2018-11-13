@@ -1,5 +1,9 @@
 package model;
 
+import java.io.IOException;
+
+import factory.DisplayableBuilder;
+import factory.DisplayableBuilderImpl;
 import view.drawer.BitmapItemDrawerImpl;
 import view.drawer.SlideDrawerImpl;
 import view.drawer.TextItemDrawer;
@@ -16,9 +20,17 @@ import view.drawer.TextItemDrawerImpl;
  */
 
 class DemoPresentation extends Accessor {
+	
+	DisplayableBuilder builder = new DisplayableBuilderImpl();;
 
 	public void loadFile(Displayable presentation, String unusedFilename) {
-		presentation.setTitle("Demo Presentation");
+		try {
+			loadFile2(presentation, unusedFilename);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*presentation.setTitle("Demo Presentation");
 		Displayable slide;
 		slide = new Slide(new SlideDrawerImpl());
 		slide.setTitle("JabberPoint");
@@ -53,7 +65,27 @@ class DemoPresentation extends Accessor {
 		slide.append(new TextItem(1, " ", textItemDrawer));
 		slide.append(new TextItem(1, "Dit is het einde van de presentatie.", textItemDrawer));
 		slide.append(new BitmapItem(1, "JabberPoint.jpg", new BitmapItemDrawerImpl()));
-		presentation.append(slide);
+		presentation.append(slide);*/
+	}
+	
+	private void loadFile2(Displayable presentation, String unusedFilename) throws IOException{
+		presentation.setTitle("Demo Presentation");
+		builder.mkPresentation(presentation)
+				.addSlide("JabberPoint")
+				.addTextItem(1, "Het Java Presentatie Tool")
+				.addTextItem(2, "Copyright (c) 1996-2000: Ian Darwin")
+				.addTextItem(2, "Copyright (c) 2000-now:")
+				.addTextItem(2, "Gert Florijn en Sylvia Stuurman")				
+				.addTextItem(4, "JabberPoint aanroepen zonder bestandsnaam")
+				.addTextItem(4, "laat deze presentatie zien")
+				.addTextItem(1, "Navigeren:")
+				.addTextItem(3, "Volgende slide: PgDn of Enter")
+				.addTextItem(3, "Vorige slide: PgUp of up-arrow")
+				.addTextItem(3, "Stoppen: q or Q")
+				;
+		
+		builder.build();
+				
 	}
 
 	public void saveFile(Displayable presentation, String unusedFilename) {

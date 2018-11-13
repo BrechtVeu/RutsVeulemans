@@ -32,8 +32,7 @@ public class DemoFormat implements Format {
 	 */
 	@Override
 	public void loadFile(Displayable presentation, String unusedFilename) throws IOException {
-		loadFile2(presentation, unusedFilename);
-		/*presentation.setTitle("Demo Presentation");
+		presentation.setTitle("Demo Presentation");
 		Displayable slide;
 		slide = new Slide(new SlideDrawerImpl());
 		slide.setTitle("JabberPoint");
@@ -67,27 +66,7 @@ public class DemoFormat implements Format {
 		slide.append(new TextItem(1, " ", new TextItemDrawerImpl()));
 		slide.append(new TextItem(1, "Dit is het einde van de presentatie.", new TextItemDrawerImpl()));
 		slide.append(new BitmapItem(1, "JabberPoint.jpg", new BitmapItemDrawerImpl()));
-		presentation.append(slide);*/
-	}
-	
-	private void loadFile2(Displayable presentation, String unusedFilename) throws IOException{
-		presentation.setTitle("Demo Presentation");
-		builder.mkPresentation(presentation)
-				.addSlide("JabberPoint")
-				.addTextItem(1, "Het Java Presentatie Tool")
-				.addTextItem(2, "Copyright (c) 1996-2000: Ian Darwin")
-				.addTextItem(2, "Copyright (c) 2000-now:")
-				.addTextItem(2, "Gert Florijn en Sylvia Stuurman")				
-				.addTextItem(4, "JabberPoint aanroepen zonder bestandsnaam")
-				.addTextItem(4, "laat deze presentatie zien")
-				.addTextItem(1, "Navigeren:")
-				.addTextItem(3, "Volgende slide: PgDn of Enter")
-				.addTextItem(3, "Vorige slide: PgUp of up-arrow")
-				.addTextItem(3, "Stoppen: q or Q")
-				;
-		
-		builder.build();
-				
+		presentation.append(slide);
 	}
 
 	/* (non-Javadoc)
