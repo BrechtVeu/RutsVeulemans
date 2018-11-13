@@ -5,6 +5,8 @@ package model;
 
 import java.io.IOException;
 
+import factory.DisplayableBuilder;
+import factory.DisplayableBuilderImpl;
 import view.drawer.BitmapItemDrawerImpl;
 import view.drawer.SlideDrawerImpl;
 import view.drawer.TextItemDrawerImpl;
@@ -14,20 +16,24 @@ import view.drawer.TextItemDrawerImpl;
  *
  */
 public class DemoFormat implements Format {
+	
+	DisplayableBuilder builder;
 
 	/**
 	 * 
 	 */
 	public DemoFormat() {
 		// TODO Auto-generated constructor stub
+		 builder = new DisplayableBuilderImpl();
 	}
 
 	/* (non-Javadoc)
 	 * @see model.Format#loadFile(model.Presentation, java.lang.String)
 	 */
 	@Override
-	public void loadFile(Displayable p, String unusedFilename) throws IOException {
-		p.setTitle("Demo Presentation");
+	public void loadFile(Displayable presentation, String unusedFilename) throws IOException {
+		loadFile2(presentation, unusedFilename);
+		/*presentation.setTitle("Demo Presentation");
 		Displayable slide;
 		slide = new Slide(new SlideDrawerImpl());
 		slide.setTitle("JabberPoint");
@@ -41,7 +47,7 @@ public class DemoFormat implements Format {
 		slide.append(new TextItem(3, "Volgende slide: PgDn of Enter", new TextItemDrawerImpl()));
 		slide.append(new TextItem(3, "Vorige slide: PgUp of up-arrow", new TextItemDrawerImpl()));
 		slide.append(new TextItem(3, "Stoppen: q or Q", new TextItemDrawerImpl()));
-		p.append(slide);
+		presentation.append(slide);
 
 		slide = new Slide(new SlideDrawerImpl());
 		slide.setTitle("Demonstratie van levels en stijlen");
@@ -52,7 +58,7 @@ public class DemoFormat implements Format {
 		slide.append(new TextItem(2, "Level 2 heeft stijl nummer 2", new TextItemDrawerImpl()));
 		slide.append(new TextItem(3, "Zo ziet level 3 er uit", new TextItemDrawerImpl()));
 		slide.append(new TextItem(4, "En dit is level 4", new TextItemDrawerImpl()));
-		p.append(slide);
+		presentation.append(slide);
 
 		slide = new Slide(new SlideDrawerImpl());
 		slide.setTitle("De derde slide");
@@ -61,7 +67,27 @@ public class DemoFormat implements Format {
 		slide.append(new TextItem(1, " ", new TextItemDrawerImpl()));
 		slide.append(new TextItem(1, "Dit is het einde van de presentatie.", new TextItemDrawerImpl()));
 		slide.append(new BitmapItem(1, "JabberPoint.jpg", new BitmapItemDrawerImpl()));
-		p.append(slide);
+		presentation.append(slide);*/
+	}
+	
+	private void loadFile2(Displayable presentation, String unusedFilename) throws IOException{
+		presentation.setTitle("Demo Presentation");
+		builder.mkPresentation(presentation)
+				.addSlide("JabberPoint")
+				.addTextItem(1, "Het Java Presentatie Tool")
+				.addTextItem(2, "Copyright (c) 1996-2000: Ian Darwin")
+				.addTextItem(2, "Copyright (c) 2000-now:")
+				.addTextItem(2, "Gert Florijn en Sylvia Stuurman")				
+				.addTextItem(4, "JabberPoint aanroepen zonder bestandsnaam")
+				.addTextItem(4, "laat deze presentatie zien")
+				.addTextItem(1, "Navigeren:")
+				.addTextItem(3, "Volgende slide: PgDn of Enter")
+				.addTextItem(3, "Vorige slide: PgUp of up-arrow")
+				.addTextItem(3, "Stoppen: q or Q")
+				;
+		
+		builder.build();
+				
 	}
 
 	/* (non-Javadoc)
