@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -58,7 +59,7 @@ public class XMLFormat implements Format {
 	 * @see model.Format#loadFile(model.Presentation, java.lang.String)
 	 */
 	@Override
-	public void loadFile(Presentation p, String filename) throws IOException {
+	public void loadFile(Displayable p, String filename) throws IOException {
 		int slideNumber, itemNumber, max = 0, maxItems = 0;
 		try {
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();    
@@ -107,11 +108,11 @@ public class XMLFormat implements Format {
 		}
 		String type = attributes.getNamedItem(KIND).getTextContent();
 		if (TEXT.equals(type)) {
-			slide.append(new TextItem(level, item.getTextContent(), new TextItemDrawerImpl()));
+			slide.append(new TextItem(level, item.getTextContent(),new TextItemDrawerImpl()));
 		}
 		else {
 			if (IMAGE.equals(type)) {
-				slide.append(new BitmapItem(level, item.getTextContent(), new BitmapItemDrawerImpl()));
+				slide.append(new BitmapItem(level, item.getTextContent(),new BitmapItemDrawerImpl()));
 			}
 			else {
 				System.err.println(UNKNOWNTYPE);
@@ -129,7 +130,7 @@ public class XMLFormat implements Format {
 	 * @see model.Format#saveFile(model.Presentation)
 	 */
 	@Override
-	public void saveFile(Presentation p, String filename) throws IOException {
+	public void saveFile(Displayable p, String filename) throws IOException {
 		PrintWriter out = new PrintWriter(new FileWriter(filename));
 		out.println("<?xml version=\"1.0\"?>");
 		out.println("<!DOCTYPE presentation SYSTEM \"jabberpoint.dtd\">");
@@ -138,12 +139,12 @@ public class XMLFormat implements Format {
 		out.print(p.getTitle());
 		out.println("</showtitle>");
 		for (int slideNumber=0; slideNumber<p.getSize(); slideNumber++) {
-			Slide slide = p.getSlide(slideNumber);
+			Displayable slide = p.getDisplayableItem(slideNumber);
 			out.println("<slide>");
 			out.println("<title>" + slide.getTitle() + "</title>");
-			Vector<SlideItem> slideItems = slide.getSlideItems();
+			ArrayList<Displayable> slideItems = slide.getDisplayableItems();
 			for (int itemNumber = 0; itemNumber<slideItems.size(); itemNumber++) {
-				SlideItem slideItem = (SlideItem) slideItems.elementAt(itemNumber);
+				SlideItem slideItem = (SlideItem) slideItems.get(itemNumber);
 				out.print("<item kind="); 
 				if (slideItem instanceof TextItem) {
 					out.print("\"text\" level=\"" + slideItem.getLevel() + "\">");

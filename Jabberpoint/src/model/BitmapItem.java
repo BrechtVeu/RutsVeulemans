@@ -61,13 +61,14 @@ public class BitmapItem extends SlideItem {
 	}
 
 	@Override
-	public void draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer) {
-		bitmapItemDrawer.draw(x, y, scale, g, style, observer, bufferedImage);
-		
+	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale) {
+		return bitmapItemDrawer.getBoundingBox(g, observer, scale, this.getStyle(super.getLevel()), bufferedImage);
 	}
 
 	@Override
-	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style style) {
-		return bitmapItemDrawer.getBoundingBox(g, observer, scale, style, bufferedImage);
+	public void draw(Graphics g, Rectangle area, ImageObserver observer) {
+		// TODO Auto-generated method stub
+		float scale = getScale(area);
+		bitmapItemDrawer.draw(area.x, area.y, scale, g, this.getStyle(super.getLevel()), observer, bufferedImage);
 	}
 }

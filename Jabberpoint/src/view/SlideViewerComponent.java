@@ -8,7 +8,8 @@ import java.awt.Rectangle;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
-import model.Presentation;
+import jabberpoint.Values;
+import model.Displayable;
 import model.Slide;
 
 
@@ -24,25 +25,17 @@ import model.Slide;
 
 public class SlideViewerComponent extends JComponent {
 		
-	private Slide slide; // de huidige slide
+	private Displayable slide; // de huidige slide
 	private Font labelFont = null; // het font voor labels
-	private Presentation presentation = null; // de presentatie
+	private Displayable presentation = null; // de presentatie
 	private JFrame frame = null;
 	
-	private static final long serialVersionUID = 227L;
 	
-	private static final Color BGCOLOR = Color.white;
-	private static final Color COLOR = Color.black;
-	private static final String FONTNAME = "Dialog";
-	private static final int FONTSTYLE = Font.BOLD;
-	private static final int FONTHEIGHT = 10;
-	private static final int XPOS = 1100;
-	private static final int YPOS = 20;
 
-	public SlideViewerComponent(Presentation pres, JFrame frame) {
-		setBackground(BGCOLOR); 
+	public SlideViewerComponent(Displayable pres, JFrame frame) {
+		setBackground(Values.BGCOLOR); 
 		presentation = pres;
-		labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
+		labelFont = new Font(Values.FONTNAME, Values.FONTSTYLE, Values.FONTHEIGHT);
 		this.frame = frame;
 	}
 
@@ -50,7 +43,7 @@ public class SlideViewerComponent extends JComponent {
 		return new Dimension(Slide.WIDTH, Slide.HEIGHT);
 	}
 
-	public void update(Presentation presentation, Slide data) {
+	public void update(Displayable presentation, Displayable data) {
 		if (data == null) {
 			repaint();
 			return;
@@ -63,23 +56,19 @@ public class SlideViewerComponent extends JComponent {
 
 // teken de slide
 	public void paintComponent(Graphics g) {
-		g.setColor(BGCOLOR);
+		g.setColor(Values.BGCOLOR);
 		g.fillRect(0, 0, getSize().width, getSize().height);
 		if (presentation.getSlideNumber() < 0 || slide == null) {
 			return;
 		}
 		g.setFont(labelFont);
-		g.setColor(COLOR);
+		g.setColor(Values.COLOR);
 		g.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " +
-                 presentation.getSize(), XPOS, YPOS);
-		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
-
-		float scale = getScale(area);		
-		slide.getSlideDrawer().draw(g, area, this, slide.getTitle(), slide.getSize(), slide.getSlideItems(), scale);
+                 presentation.getSize(), Values.XPOS, Values.YPOS);
+		Rectangle area = new Rectangle(0, Values.YPOS, getWidth(), (getHeight() - Values.YPOS));
+	
+		slide.draw(g, area, this);
 	}
 	
-	// geef de schaal om de slide te kunnen tekenen
-	private float getScale(Rectangle area) {
-		return Math.min(((float)area.width) / ((float)Slide.WIDTH), ((float)area.height) / ((float)Slide.HEIGHT));
-	}
+	
 }

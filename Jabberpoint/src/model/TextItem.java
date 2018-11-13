@@ -46,26 +46,20 @@ public class TextItem extends SlideItem {
 	}
 	
 
-
-	public TextItemDrawer getSlideItemDrawer() {
-		return textItemDrawer;
-	}
-
-	public void setSlideItemDrawer(TextItemDrawer textItemDrawer) {
-		this.textItemDrawer = textItemDrawer;
-	}
-
 	@Override
-	public void draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer) {
+	public void draw(Graphics g, Rectangle area, ImageObserver observer) {
+		// TODO Auto-generated method stub
 		if (text == null || text.length() == 0) {
 			return;
 		}
-		textItemDrawer.draw(x, y, scale, g, style, observer, text);		
+		float scale = getScale(area);
+		textItemDrawer.draw(area.x, area.y, scale, g, this.getStyle(super.getLevel()), observer, text);
+		
 	}
 
 	@Override
-	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style style) {
+	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale) {
 		
-		return textItemDrawer.getBoundingBox(g, observer, scale, style, text);
+		return textItemDrawer.getBoundingBox(g, observer, scale, this.getStyle(super.getLevel()), text);
 	}
 }
