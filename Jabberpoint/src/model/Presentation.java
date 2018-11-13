@@ -51,8 +51,9 @@ public class Presentation extends Displayable{
 	public int getSlideNumber() {
 		return currentSlideNumber;
 	}
-
+	
 	// verander het huidige-slide-nummer en laat het aan het window weten.
+	@Override
 	public void setSlideNumber(int number) {
 		currentSlideNumber = number;
 		if (slideViewComponent != null) {
