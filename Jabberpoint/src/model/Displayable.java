@@ -17,6 +17,13 @@ public abstract class Displayable {
 	public void append(Displayable anItem) {
 		displayableList.add(anItem);
 	}
+	
+	public Displayable getLastItem(){
+		if(displayableList.size() == 0){
+			return null;
+		}
+		return displayableList.get(displayableList.size()-1);
+	}
 
 	public ArrayList<Displayable> getDisplayableItems() {
 		return displayableList;
@@ -51,6 +58,9 @@ public abstract class Displayable {
 	//TODO AAN TE PASSEN - aangemaakt voor Accessor en SlideViewerComponent
 	
 	public int getSlideNumber() {return 0;}
+	
+	// verander het huidige-slide-nummer en laat het aan het window weten.
+	public void setSlideNumber(int number) {}
 
 	
 }

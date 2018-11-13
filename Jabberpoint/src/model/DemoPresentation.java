@@ -70,8 +70,19 @@ class DemoPresentation extends Accessor {
 	
 	private void loadFile2(Displayable presentation, String unusedFilename) throws IOException{
 		presentation.setTitle("Demo Presentation");
-		builder.mkPresentation(presentation)
+		builder.makePresentation(presentation)
 				.addSlide("JabberPoint")
+				.addTextItem(1, "Het Java Presentatie Tool")
+				.addTextItem(2, "Copyright (c) 1996-2000: Ian Darwin")
+				.addTextItem(2, "Copyright (c) 2000-now:")
+				.addTextItem(2, "Gert Florijn en Sylvia Stuurman")				
+				.addTextItem(4, "JabberPoint aanroepen zonder bestandsnaam")
+				.addTextItem(4, "laat deze presentatie zien")
+				.addTextItem(1, "Navigeren:")
+				.addTextItem(3, "Volgende slide: PgDn of Enter")
+				.addTextItem(3, "Vorige slide: PgUp of up-arrow")
+				.addTextItem(3, "Stoppen: q or Q")
+				.addSlide("JabberPoint2")
 				.addTextItem(1, "Het Java Presentatie Tool")
 				.addTextItem(2, "Copyright (c) 1996-2000: Ian Darwin")
 				.addTextItem(2, "Copyright (c) 2000-now:")

@@ -4,44 +4,47 @@ import model.Displayable;
 
 public class DisplayableBuilderImpl implements DisplayableBuilder{
 
-	private SlideFactoryImpl slideFactory;
-	private SlideItemFactoryImpl slideItemFactory;
+	private DisplayableFactoryImpl displayableFactory;
 	
 	private Displayable displayable;
 	
 	public DisplayableBuilderImpl() {
-		super();
-		this.slideFactory = new SlideFactoryImpl();
-		this.slideItemFactory = new SlideItemFactoryImpl();
+		this.displayableFactory = new DisplayableFactoryImpl();
 	}
 
 	@Override
-	public DisplayableBuilder mkPresentation(Displayable presentation) {
-		displayable = presentation;
+	public DisplayableBuilder makePresentation(Displayable presentation) {
+		displayable = displayableFactory.makePresentation();
 		return this;
 	}
 
 	@Override
 	public DisplayableBuilder addSlide(String title) {
-		displayable.append(slideFactory.makeSlide(title));
+		displayable.append(displayableFactory.makeSlide(title));
 		return this;
 	}
 
 	@Override
 	public DisplayableBuilder addTextItem(int level, String text) {
-		displayable.append(slideItemFactory.mkTextItem(level, text));		
+		if(displayable.getLastItem() == null){
+			addSlide(" ");
+		}
+		displayable.getLastItem().append(displayableFactory.makeTextItem(level, text));		
 		return this;
 	}
 
 	@Override
 	public DisplayableBuilder addBitmapItem(int level, String text) {
-		displayable.append(slideItemFactory.mkBitmapItem(level, text));		
+		if(displayable.getLastItem() == null){
+			addSlide(" ");
+		}
+		displayable.getLastItem().append(displayableFactory.makeBitmapItem(level, text));		
 		return this;
 	}
 
 	@Override
 	public Displayable build() {
-		// TODO Auto-generated method stub
+		displayable.setSlideNumber(0);
 		return displayable;
 	}
 
