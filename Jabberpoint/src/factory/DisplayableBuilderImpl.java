@@ -4,7 +4,7 @@ import model.Displayable;
 
 public class DisplayableBuilderImpl implements DisplayableBuilder{
 
-	private DisplayableFactoryImpl displayableFactory;
+	private DisplayableFactory displayableFactory;
 	
 	private Displayable displayable;
 	
@@ -14,7 +14,7 @@ public class DisplayableBuilderImpl implements DisplayableBuilder{
 
 	@Override
 	public DisplayableBuilder makePresentation(Displayable presentation) {
-		displayable = displayableFactory.makePresentation();
+		displayable = presentation;
 		return this;
 	}
 
