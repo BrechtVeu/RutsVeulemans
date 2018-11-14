@@ -19,7 +19,7 @@ public class ReaderImpl implements Reader {
 	}
 
 	@Override
-	public void loadFile(Presentation p, String filename) throws IOException {
+	public void loadFile(Displayable p, String filename) throws IOException {
 		Format format;
 		if (filename.isEmpty() || filename.length() == 0) { // een demo presentatie
 			format = new DemoFormat();

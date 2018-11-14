@@ -5,7 +5,7 @@ package controller.command;
 
 import javax.swing.JOptionPane;
 
-import model.Presentation;
+import model.Displayable;
 
 /**
  * @author Dominique
@@ -15,12 +15,12 @@ public class GotoSlideCommand implements Command {
 	
 	protected static final String PAGENR = "Page number?";
 	
-	private Presentation presentation;
+	private Displayable presentation;
 	
 	/**
 	 * 
 	 */
-	public GotoSlideCommand(Presentation presentation) {
+	public GotoSlideCommand(Displayable presentation) {
 		this.presentation = presentation;
 	}
 

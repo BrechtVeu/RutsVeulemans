@@ -3,7 +3,7 @@
  */
 package controller.command;
 
-import model.Presentation;
+import model.Displayable;
 
 /**
  * @author Dominique
@@ -11,12 +11,12 @@ import model.Presentation;
  */
 public class PreviousSlideCommand implements Command {
 
-	private Presentation presentation;
+	private Displayable presentation;
 	
 	/**
 	 * 
 	 */
-	public PreviousSlideCommand(Presentation presentation) {
+	public PreviousSlideCommand(Displayable presentation) {
 		this.presentation = presentation;
 	}
 

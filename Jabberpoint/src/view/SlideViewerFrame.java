@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 import controller.KeyController;
 import controller.MenuController;
+import model.Displayable;
 import model.Presentation;
 
 /**
@@ -27,16 +28,16 @@ public class SlideViewerFrame extends JFrame {
 	public final static int WIDTH = 1200;
 	public final static int HEIGHT = 800;
 	
-	public SlideViewerFrame(String title, Presentation presentation) {
+	public SlideViewerFrame(String title, Displayable presentation) {
 		super(title);
 		SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentation, this);
-		presentation.setShowView(slideViewerComponent);
+		presentation.attach(slideViewerComponent);
 		setupWindow(slideViewerComponent, presentation);
 	}
 
 	// De GUI opzetten
 	public void setupWindow(SlideViewerComponent 
-			slideViewerComponent, Presentation presentation) {
+			slideViewerComponent, Displayable presentation) {
 		setTitle(JABTITLE);
 		addWindowListener(new WindowAdapter() {
 				public void windowClosing(WindowEvent e) {

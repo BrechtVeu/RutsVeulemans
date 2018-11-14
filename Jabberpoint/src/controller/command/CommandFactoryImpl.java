@@ -5,7 +5,7 @@ package controller.command;
 
 import java.awt.Frame;
 
-import model.Presentation;
+import model.Displayable;
 
 /**
  * @author Dominique
@@ -14,9 +14,9 @@ import model.Presentation;
 public class CommandFactoryImpl implements CommandFactory {
 
 	private Frame slideViewerFrame;
-	private Presentation presentation;
+	private Displayable presentation;
 	
-	public CommandFactoryImpl(Frame slideViewerFrame, Presentation presentation) {
+	public CommandFactoryImpl(Frame slideViewerFrame, Displayable presentation) {
 		this.slideViewerFrame = slideViewerFrame;
 		this.presentation = presentation;
 	}

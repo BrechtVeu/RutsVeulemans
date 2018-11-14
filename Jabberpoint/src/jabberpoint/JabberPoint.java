@@ -4,6 +4,7 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 import model.Accessor;
+import model.Displayable;
 import model.Presentation;
 import model.XMLAccessor;
 import view.SlideViewerFrame;
@@ -32,7 +33,7 @@ public class JabberPoint {
 	public static void main(String argv[]) {
 		
 		Style.createStyles();
-		Presentation presentation = new Presentation();
+		Displayable presentation = new Presentation();
 		new SlideViewerFrame(JABVERSION, presentation);
 		try {
 			if (argv.length == 0) { // een demo presentatie				

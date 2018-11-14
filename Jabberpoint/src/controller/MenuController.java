@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import controller.command.Command;
 import controller.command.CommandFactory;
 import controller.command.CommandFactoryImpl;
+import model.Displayable;
 import model.Presentation;
 
 /** <p>De controller voor het menu</p>
@@ -46,7 +47,7 @@ public class MenuController extends MenuBar {
 	protected static final String LOADERR = "Load Error";
 	protected static final String SAVEERR = "Save Error";
 
-	public MenuController(Frame slideViewerFrame, Presentation presentation) {
+	public MenuController(Frame slideViewerFrame, Displayable presentation) {
 		CommandFactory commandFactory = new CommandFactoryImpl(slideViewerFrame,presentation);
 		
 		Menu fileMenu = new Menu(FILE);

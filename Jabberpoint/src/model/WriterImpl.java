@@ -19,7 +19,7 @@ public class WriterImpl implements Writer {
 	}
 
 	@Override
-	public void saveFile(Presentation p, String filename) throws IOException {
+	public void saveFile(Displayable p, String filename) throws IOException {
 		Format format;
 		
 		// TODO Rectify check on which type to save to.		

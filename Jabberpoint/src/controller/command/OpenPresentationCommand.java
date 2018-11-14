@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-import model.Presentation;
+import model.Displayable;
 import model.Reader;
 import model.ReaderImpl;
 
@@ -17,9 +17,9 @@ public class OpenPresentationCommand implements Command {
 	protected static final String SAVEERR = "Save Error";
 	
 	private Frame slideViewerFrame;
-	private Presentation presentation;
+	private Displayable presentation;
 
-	public OpenPresentationCommand(Frame slideViewerFrame, Presentation presentation) {
+	public OpenPresentationCommand(Frame slideViewerFrame, Displayable presentation) {
 		this.slideViewerFrame = slideViewerFrame;
 		this.presentation = presentation;
 	}
