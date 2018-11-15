@@ -7,6 +7,7 @@ import java.util.Vector;
 
 import view.drawer.SlideDrawer;
 import view.drawer.TextItemDrawerImpl;
+import view.theme.Theme;
 
 /** <p>Een slide. Deze klasse heeft tekenfunctionaliteit.</p>
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
@@ -43,8 +44,8 @@ public class Slide extends Displayable{
 	}
 
 	@Override
-	public void draw(Graphics g, Rectangle area, ImageObserver view) {
+	public void draw(Graphics g, Rectangle area, ImageObserver view, Theme theme) {
 		float scale = getScale(area);
-		slideDrawer.draw(g, area, view, title, getSize() , displayableList, scale);
+		slideDrawer.draw(g, area, view, title, getSize() , displayableList, scale, theme);
 	}
 }

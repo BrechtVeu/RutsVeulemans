@@ -4,6 +4,8 @@ import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
 import view.drawer.TextItemDrawer;
+import view.theme.Style;
+import view.theme.Theme;
 
 /** <p>Een tekst item.</p>
  * <p>Een TextItem heeft tekenfunctionaliteit.</p>
@@ -28,11 +30,6 @@ public class TextItem extends SlideItem {
 		text = string;
 		this.textItemDrawer = textItemDrawer;
 	}
-/*
-// een leeg textitem
-	public TextItem() {
-		this(0, EMPTYTEXT);
-	}*/
 
 // Geef de tekst
 	public String getText() {
@@ -46,19 +43,18 @@ public class TextItem extends SlideItem {
 	
 
 	@Override
-	public void draw(Graphics g, Rectangle area, ImageObserver observer) {
+	public void draw(Graphics g, Rectangle area, ImageObserver observer, Theme theme) {
 		// TODO Auto-generated method stub
 		if (text == null || text.length() == 0) {
 			return;
 		}
-		float scale = getScale(area);
-		textItemDrawer.draw(area.x, area.y, scale, g, this.getStyle(super.getLevel()), observer, text);
+		float scale = getScale(area);		
+		textItemDrawer.draw(area.x, area.y, scale, g, getStyle(theme), observer, text);
 		
 	}
 
 	@Override
-	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale) {
-		
-		return textItemDrawer.getBoundingBox(g, observer, scale, this.getStyle(super.getLevel()), text);
+	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Theme theme) {		
+		return textItemDrawer.getBoundingBox(g, observer, scale, getStyle(theme), text);
 	}
 }

@@ -8,9 +8,10 @@ import java.util.Vector;
 
 import model.Displayable;
 import model.SlideItem;
+import view.theme.Theme;
 
 public interface SlideDrawer {
 	public void draw(Graphics g, Rectangle area, ImageObserver view, 
 			Displayable title, int size, ArrayList<Displayable> slideItems,
-			float scale);
+			float scale, Theme theme);
 }

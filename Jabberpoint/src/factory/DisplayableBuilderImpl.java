@@ -5,16 +5,18 @@ import model.Displayable;
 public class DisplayableBuilderImpl implements DisplayableBuilder{
 
 	private DisplayableFactory displayableFactory;
-	
+	private ThemeFactory themeFactory;
 	private Displayable displayable;
 	
 	public DisplayableBuilderImpl() {
 		this.displayableFactory = new DisplayableFactoryImpl();
+		this.themeFactory = new ThemeFactoryImpl();
 	}
 
 	@Override
 	public DisplayableBuilder setPresentation(Displayable presentation) {
 		displayable = presentation;
+		presentation.setTheme(themeFactory.makeTheme1());
 		return this;
 	}
 

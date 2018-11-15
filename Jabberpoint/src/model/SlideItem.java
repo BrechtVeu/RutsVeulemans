@@ -3,7 +3,9 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
+import view.theme.SlideItemStyle;
 import view.theme.Style;
+import view.theme.Theme;
 
 /** <p>De abstracte klasse voor een item op een Slide<p>
  * <p>Alle SlideItems hebben tekenfunctionaliteit.</p>
@@ -17,7 +19,7 @@ import view.theme.Style;
 */
 
 public abstract class SlideItem extends Displayable{
-	private int level = 0; // het level van het slideitem
+	protected int level = 0; // het level van het slideitem
 	public SlideItem(int lev) {
 		level = lev;
 	}
@@ -27,10 +29,9 @@ public abstract class SlideItem extends Displayable{
 	public int getLevel() {
 		return level;
 	}
-	
-	protected Style getStyle(int level){
-		Style style = Style.getStyle(level);
-		return style;
+		
+	protected Style getStyle(Theme theme){
+		return theme.getSlideItemStyle().getStyle(level);
 	}
 
 }

@@ -8,8 +8,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import view.Style;
 import view.drawer.BitmapItemDrawer;
+import view.theme.Theme;
 
 
 /** <p>De klasse voor een Bitmap item</p>
@@ -44,12 +44,6 @@ public class BitmapItem extends SlideItem {
 		}
 	}
 
-	/*
-// Een leeg bitmap-item
-	public BitmapItem() {
-		this(0, null);
-	}*/
-
 // geef de bestandsnaam van de afbeelding
 	public String getName() {
 		return imageName;
@@ -61,14 +55,14 @@ public class BitmapItem extends SlideItem {
 	}
 
 	@Override
-	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale) {
-		return bitmapItemDrawer.getBoundingBox(g, observer, scale, this.getStyle(super.getLevel()), bufferedImage);
+	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Theme theme) {
+		return bitmapItemDrawer.getBoundingBox(g, observer, scale, getStyle(theme), bufferedImage);
 	}
 
 	@Override
-	public void draw(Graphics g, Rectangle area, ImageObserver observer) {
+	public void draw(Graphics g, Rectangle area, ImageObserver observer, Theme theme) {
 		// TODO Auto-generated method stub
 		float scale = getScale(area);
-		bitmapItemDrawer.draw(area.x, area.y, scale, g, this.getStyle(super.getLevel()), observer, bufferedImage);
+		bitmapItemDrawer.draw(area.x, area.y, scale, g, getStyle(theme), observer, bufferedImage);
 	}
 }

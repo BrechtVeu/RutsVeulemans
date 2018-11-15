@@ -68,7 +68,7 @@ public class SlideViewerComponent extends JComponent implements Observer {
 		g.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " +
                  presentation.getSize(), Values.XPOS, Values.YPOS);
 		Rectangle area = new Rectangle(0, Values.YPOS, getWidth(), (getHeight() - Values.YPOS));
-	
-		slide.draw(g, area, this);
+		
+		slide.draw(g, area, this, presentation.getTheme());
 	}	
 }

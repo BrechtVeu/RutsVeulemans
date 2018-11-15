@@ -33,7 +33,7 @@ public class JabberPoint {
 	/** Het Main Programma */
 	public static void main(String argv[]) {
 		
-		Style.createStyles();
+		//Style.createStyles();
 		DisplayableFactory factory = new DisplayableFactoryImpl();
 		Displayable presentation = factory.makePresentation();
 		new SlideViewerFrame(JABVERSION, presentation);

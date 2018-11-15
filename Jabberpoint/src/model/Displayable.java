@@ -17,10 +17,8 @@ public abstract class Displayable implements Observable {
 	protected ArrayList<Observer> observerList = new ArrayList<Observer>(); // een ArrayList voor Displayables
 
 	// Voeg een Displayable toe
-	public void append(Displayable anItem, Theme theme) {
+	public void append(Displayable anItem) {
 		displayableList.add(anItem);
-
-		this.theme = theme;
 	}
 	
 	public Displayable getLastItem(){
@@ -47,7 +45,7 @@ public abstract class Displayable implements Observable {
 		return displayableList.size();
 	}
 
-	public void draw(Graphics g, Rectangle area, ImageObserver view){}
+	public void draw(Graphics g, Rectangle area, ImageObserver view, Theme theme){}
 	
 	// geef de schaal om de slide te kunnen tekenen
 	protected float getScale(Rectangle area) {
@@ -68,7 +66,7 @@ public abstract class Displayable implements Observable {
 	
 	public Displayable getCurrentSlide() {return null;}
 
-	public Rectangle getBoundingBox(Graphics g, ImageObserver view, float scale){ return null; }
+	public Rectangle getBoundingBox(Graphics g, ImageObserver view, float scale, Theme theme){ return null; }
 	
 	public String getTitle() {return null;}
 	
@@ -98,6 +96,9 @@ public abstract class Displayable implements Observable {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	public Theme getTheme(){return theme;}
+	public void setTheme(Theme theme){this.theme = theme;}
 
 	
 }

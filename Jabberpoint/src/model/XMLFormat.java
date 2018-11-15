@@ -150,7 +150,7 @@ public class XMLFormat implements Format {
 			out.println("<title>" + slide.getTitle() + "</title>");
 			ArrayList<Displayable> slideItems = slide.getDisplayableItems();
 			for (int itemNumber = 0; itemNumber<slideItems.size(); itemNumber++) {
-				SlideItem slideItem = (SlideItem) slideItems.get(itemNumber);
+				Displayable slideItem = slideItems.get(itemNumber);
 				out.print("<item kind="); 
 				if (slideItem instanceof TextItem) {
 					out.print("\"text\" level=\"" + slideItem.getLevel() + "\">");
