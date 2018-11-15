@@ -19,4 +19,5 @@ public interface CommandFactory {
 	Command makePreviousSlideCommand();
 	Command makeGotoSlideCommand();
 	Command makeAboutCommand();
+	Command makeChangeThemeCommand(String Theme);
 }

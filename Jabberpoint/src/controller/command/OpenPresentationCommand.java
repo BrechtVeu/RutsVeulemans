@@ -5,21 +5,27 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-import model.Presentation;
+import event.CommandEventManager;
+import event.OpenPresentationEvent;
+import event.RepaintEvent;
+import event.SlideEvent;
+import jabberpoint.Values;
+import model.Displayable;
 import model.Reader;
 import model.ReaderImpl;
 
-public class OpenPresentationCommand implements Command {
-	protected static final String TESTFILE = "test.xml";
-	
-	protected static final String IOEX = "IO Exception: ";
-	protected static final String LOADERR = "Load Error";
-	protected static final String SAVEERR = "Save Error";
-	
+public class OpenPresentationCommand implements Command {	
 	private Frame slideViewerFrame;
-	private Presentation presentation;
+	private Displayable presentation;
+	
+	private CommandEventManager<SlideEvent> frameCommandEventManager;
+	private SlideEvent eventObject;
 
-	public OpenPresentationCommand(Frame slideViewerFrame, Presentation presentation) {
+	public OpenPresentationCommand(Frame slideViewerFrame, Displayable presentation) {
+		this.frameCommandEventManager = new CommandEventManager<SlideEvent>();
+		this.frameCommandEventManager.addListener(presentation);
+		this.eventObject = new OpenPresentationEvent(presentation);
+		
 		this.slideViewerFrame = slideViewerFrame;
 		this.presentation = presentation;
 	}
@@ -29,13 +35,12 @@ public class OpenPresentationCommand implements Command {
 		this.presentation.clear();
 		Reader reader = new ReaderImpl();
 		try {
-			reader.loadFile(this.presentation, TESTFILE);
-			this.presentation.setSlideNumber(0);
+			reader.loadFile(this.presentation, Values.TESTFILE);
+			this.frameCommandEventManager.fire(eventObject);
 		} catch (IOException exc) {
-			JOptionPane.showMessageDialog(this.slideViewerFrame, IOEX + exc, 
- 			LOADERR, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this.slideViewerFrame, Values.IOEX + exc, 
+ 			Values.LOADERR, JOptionPane.ERROR_MESSAGE);
 		}
-		this.slideViewerFrame.repaint();
 	}
 
 }

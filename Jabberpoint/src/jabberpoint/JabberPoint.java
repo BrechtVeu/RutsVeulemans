@@ -3,12 +3,11 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-import event.CommandEventManager;
-import event.NextSlideEvent;
-import model.Accessor;
+import factory.DisplayableFactory;
+import factory.DisplayableFactoryImpl;
 import model.Displayable;
-import model.Presentation;
-import model.XMLAccessor;
+import model.Reader;
+import model.ReaderImpl;
 import view.SlideViewerFrame;
 import view.Style;
 
@@ -27,25 +26,26 @@ import view.Style;
  */
 
 public class JabberPoint {
-	protected static final String IOERR = "IO Error: ";
-	protected static final String JABERR = "Jabberpoint Error ";
-	protected static final String JABVERSION = "Jabberpoint 1.6 - OU version";
 
 	/** Het Main Programma */
 	public static void main(String argv[]) {
 		
 		Style.createStyles();
-		Presentation presentation = new Presentation();
-		new SlideViewerFrame(JABVERSION, presentation);
-		try {
+		DisplayableFactory factory = new DisplayableFactoryImpl();
+		Displayable presentation = factory.makePresentation();
+		new SlideViewerFrame(Values.JABVERSION, presentation);
+		
+		Reader reader = new ReaderImpl();	
+		
+		try {			
 			if (argv.length == 0) { // een demo presentatie				
-				Accessor.getDemoAccessor().loadFile(presentation, "");
+				reader.loadFile(presentation, "");
 			} else {
-				new XMLAccessor().loadFile(presentation, argv[0]);
+				reader.loadFile(presentation, argv[0]);
 			}
 		} catch (IOException ex) {
 			JOptionPane.showMessageDialog(null,
-					IOERR + ex, JABERR,
+					Values.IOERR + ex, Values.JABERR,
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}

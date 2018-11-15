@@ -2,8 +2,6 @@ package model;
 
 import java.util.ArrayList;
 
-import view.SlideViewerComponent;
-
 
 /**
  * <p>Presentation houdt de slides in de presentatie bij.</p>
@@ -21,15 +19,8 @@ public class Presentation extends Displayable{
 	private String showTitle; // de titel van de presentatie
 	
 	private int currentSlideNumber = 0; // het slidenummer van de huidige Slide
-	private SlideViewerComponent slideViewComponent = null; // de viewcomponent voor de Slides
 
 	public Presentation() {
-		slideViewComponent = null;
-		clear();
-	}
-
-	public Presentation(SlideViewerComponent slideViewerComponent) {
-		this.slideViewComponent = slideViewerComponent;
 		clear();
 	}
 
@@ -41,10 +32,6 @@ public class Presentation extends Displayable{
 		showTitle = nt;
 	}
 
-	public void setShowView(SlideViewerComponent slideViewerComponent) {
-		this.slideViewComponent = slideViewerComponent;
-	}
-
 	// geef het nummer van de huidige slide
 	public int getSlideNumber() {
 		return currentSlideNumber;
@@ -54,9 +41,7 @@ public class Presentation extends Displayable{
 	@Override
 	public void setSlideNumber(int number) {
 		currentSlideNumber = number;
-		if (slideViewComponent != null) {
-			slideViewComponent.update(this, getCurrentSlide());
-		}
+		notifyObservers();
 	}
 
 	// ga naar de vorige slide tenzij je aan het begin van de presentatie bent

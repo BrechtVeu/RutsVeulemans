@@ -2,12 +2,17 @@ package view;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import controller.KeyController;
 import controller.MenuController;
-import model.Presentation;
+import jabberpoint.Values;
+import model.Displayable;
+import model.Reader;
+import model.ReaderImpl;
 
 /**
  * <p>Het applicatiewindow voor een slideviewcomponent</p>
@@ -22,22 +27,21 @@ import model.Presentation;
 
 public class SlideViewerFrame extends JFrame {
 	private static final long serialVersionUID = 3227L;
-	
-	private static final String JABTITLE = "Jabberpoint 1.6 - OU";
+		
 	public final static int WIDTH = 1200;
 	public final static int HEIGHT = 800;
-	
-	public SlideViewerFrame(String title, Presentation presentation) {
+		
+	public SlideViewerFrame(String title, Displayable presentation) {
 		super(title);
 		SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentation, this);
-		presentation.setShowView(slideViewerComponent);
+		presentation.attach(slideViewerComponent);
 		setupWindow(slideViewerComponent, presentation);
 	}
 
 	// De GUI opzetten
 	public void setupWindow(SlideViewerComponent 
-			slideViewerComponent, Presentation presentation) {
-		setTitle(JABTITLE);
+			slideViewerComponent, Displayable presentation) {
+		setTitle(Values.JABTITLE);
 		addWindowListener(new WindowAdapter() {
 				public void windowClosing(WindowEvent e) {
 					System.exit(0);

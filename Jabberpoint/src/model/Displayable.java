@@ -8,13 +8,16 @@ import java.util.ArrayList;
 import controller.command.NextSlideCommand;
 import event.CommandEventListener;
 import event.NextSlideEvent;
+import event.OpenPresentationEvent;
 import event.PreviousSlideEvent;
+import event.RepaintEvent;
 import event.SlideEvent;
 import event.GotoSlideEvent;
 
-public abstract class Displayable implements CommandEventListener<SlideEvent> {
+public abstract class Displayable implements Observable, CommandEventListener<SlideEvent> {
 	
 	protected ArrayList<Displayable> displayableList = new ArrayList<Displayable>(); // een ArrayList voor Displayables
+	protected ArrayList<Observer> observerList = new ArrayList<Observer>(); // een ArrayList voor Displayables
 		
 	// Voeg een Displayable toe
 	public void append(Displayable anItem) {
@@ -51,6 +54,20 @@ public abstract class Displayable implements CommandEventListener<SlideEvent> {
 	protected float getScale(Rectangle area) {
 		return Math.min(((float)area.width) / ((float)Slide.WIDTH), ((float)area.height) / ((float)Slide.HEIGHT));
 	}
+	
+	public void attach(Observer observer){
+		observerList.add(observer);
+	};
+	public void detach(Observer observer){
+		observerList.remove(observer);
+	};
+	public void notifyObservers(){
+		for(Observer observer: observerList){
+			observer.update(this, this.getCurrentSlide());
+		}
+	};
+	
+	public Displayable getCurrentSlide() {return null;}
 
 	public Rectangle getBoundingBox(Graphics g, ImageObserver view, float scale){ return null; };
 	
@@ -64,6 +81,8 @@ public abstract class Displayable implements CommandEventListener<SlideEvent> {
 	
 	// verander het huidige-slide-nummer en laat het aan het window weten.
 	public void setSlideNumber(int number) {}
+	
+	public void clear() {}
 	
 	public void nextSlide() {}
 	
@@ -83,6 +102,14 @@ public abstract class Displayable implements CommandEventListener<SlideEvent> {
 			this.setSlideNumber(event.getSlideNumber() - 1);
 			System.out.println("Displayble - eventTriggered - Source:"+event.getSource());
 			System.out.println("Displayble - instance of GotoSlideEvent");
+		} else if (event instanceof RepaintEvent) {
+			this.clear();
+			System.out.println("Displayble - eventTriggered - Source:"+event.getSource());
+			System.out.println("Displayble - instance of RepaintEvent");
+		} else if (event instanceof OpenPresentationEvent) {
+			this.setSlideNumber(0);
+			System.out.println("Displayble - eventTriggered - Source:"+event.getSource());
+			System.out.println("Displayble - instance of OpenPresentationEvent");
 		}	else {
 			System.out.println("Displayble - not sure which instance");
 		}

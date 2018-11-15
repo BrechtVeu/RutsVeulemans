@@ -7,6 +7,12 @@ public class Values {
 	
 	private static final long serialVersionUID = 227L;
 	
+	/** JabberPoint */
+	public static final String IOERR = "IO Error: ";
+	public static final String JABERR = "Jabberpoint Error ";
+	public static final String JABVERSION = "Jabberpoint 1.6 - OU version";
+	public static final String JABTITLE = "Jabberpoint 1.6 - OU";
+	
 	public static final Color BGCOLOR = Color.white;
 	public static final Color COLOR = Color.black;
 	public static final String FONTNAME = "Dialog";
@@ -34,7 +40,7 @@ public class Values {
     public static final String UNKNOWNTYPE = "Unknown Element type";
     public static final String NFE = "Number Format Exception";
 
-    /** MenuController */
+    /** MenuController + Commands */
     public static final String ABOUT = "About";
     public static final String FILE = "File";
     public static final String EXIT = "Exit";
@@ -55,4 +61,16 @@ public class Values {
     public static final String IOEX = "IO Exception: ";
     public static final String LOADERR = "Load Error";
     public static final String SAVEERR = "Save Error";
+    
+    public static final String NOTFOUND = " niet gevonden";
+    
+    /** Accessor */
+	public static final String DEMO_NAME = "Demonstratie presentatie";
+	public static final String DEFAULT_EXTENSION = ".xml";
+	
+	/** Themes */
+    public static final String THEME1 = "1 - Theme 1";
+    public static final String THEME2 = "2 - Theme 2";
+    public static final String THEME3 = "3 - Theme 3";
+	
 }

@@ -6,6 +6,7 @@ package factory;
 import java.awt.Frame;
 
 import controller.command.AboutCommand;
+import controller.command.ChangeThemeCommand;
 import controller.command.Command;
 import controller.command.EmptyCommand;
 import controller.command.ExitCommand;
@@ -15,7 +16,9 @@ import controller.command.NextSlideCommand;
 import controller.command.OpenPresentationCommand;
 import controller.command.PreviousSlideCommand;
 import controller.command.SavePresentationCommand;
+import model.Displayable;
 import model.Presentation;
+import view.SlideViewerFrame;
 
 /**
  * @author Dominique
@@ -24,9 +27,9 @@ import model.Presentation;
 public class CommandFactoryImpl implements CommandFactory {
 
 	private Frame slideViewerFrame;
-	private Presentation presentation;
+	private Displayable presentation;
 	
-	public CommandFactoryImpl(Frame slideViewerFrame, Presentation presentation) {
+	public CommandFactoryImpl(Frame slideViewerFrame, Displayable presentation) {
 		this.slideViewerFrame = slideViewerFrame;
 		this.presentation = presentation;
 	}
@@ -51,7 +54,7 @@ public class CommandFactoryImpl implements CommandFactory {
 
 	@Override
 	public Command makeNewPresentationCommand() {
-		return new NewPresentationCommand(this.slideViewerFrame, this.presentation);
+		return new NewPresentationCommand(this.presentation);
 	}
 
 	@Override
@@ -77,6 +80,11 @@ public class CommandFactoryImpl implements CommandFactory {
 	@Override
 	public Command makeAboutCommand() {
 		return new AboutCommand(this.slideViewerFrame);
+	}
+
+	@Override
+	public Command makeChangeThemeCommand(String theme) {
+		return new ChangeThemeCommand(this.presentation, theme);
 	}
 
 }

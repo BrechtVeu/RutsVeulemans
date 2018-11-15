@@ -4,7 +4,9 @@ import java.awt.event.KeyEvent;
 import controller.command.Command;
 import factory.CommandFactory;
 import factory.CommandFactoryImpl;
+import model.Displayable;
 import model.Presentation;
+import view.SlideViewerFrame;
 
 import java.awt.Frame;
 import java.awt.event.KeyAdapter;
@@ -22,7 +24,7 @@ import java.awt.event.KeyAdapter;
 public class KeyController extends KeyAdapter {
 	private CommandFactory commandFactory;
 
-	public KeyController(Frame slideViewerFrame, Presentation p) {			
+	public KeyController(Frame slideViewerFrame, Displayable p) {			
 		this.commandFactory = new CommandFactoryImpl(slideViewerFrame,p);
 	}
 

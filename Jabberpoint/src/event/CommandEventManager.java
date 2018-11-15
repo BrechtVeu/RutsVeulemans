@@ -14,7 +14,7 @@ import java.util.List;
 public class CommandEventManager<EventType extends EventObject> {
 	
 	private List<CommandEventListener<EventType>> commandEventList = new ArrayList<CommandEventListener<EventType>>();
-
+	
 	public void addListener(CommandEventListener<EventType> listener) {
 		commandEventList.add(listener);
     }

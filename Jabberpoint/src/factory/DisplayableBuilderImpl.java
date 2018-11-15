@@ -14,7 +14,7 @@ public class DisplayableBuilderImpl implements DisplayableBuilder{
 
 	@Override
 	public DisplayableBuilder makePresentation(Displayable presentation) {
-		displayable = presentation; //displayableFactory.makePresentation();
+		displayable = presentation;
 		return this;
 	}
 

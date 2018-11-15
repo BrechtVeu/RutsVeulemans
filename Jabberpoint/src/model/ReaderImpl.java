@@ -22,7 +22,7 @@ public class ReaderImpl implements Reader {
 	}
 
 	@Override
-	public void loadFile(Presentation p, String filename) throws IOException {
+	public void loadFile(Displayable p, String filename) throws IOException {
 		FormatFactory formatFactory = new FormatFactoryImpl();
 		Format format = formatFactory.makeFileFormat(filename);
 		format.loadFile(p, filename);

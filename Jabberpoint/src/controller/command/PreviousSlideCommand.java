@@ -4,9 +4,9 @@
 package controller.command;
 
 import event.CommandEventManager;
-import event.NextSlideEvent;
 import event.PreviousSlideEvent;
 import event.SlideEvent;
+import model.Displayable;
 import model.Presentation;
 
 /**
@@ -21,7 +21,7 @@ public class PreviousSlideCommand implements Command {
 	/**
 	 * 
 	 */
-	public PreviousSlideCommand(Presentation presentation) {		
+	public PreviousSlideCommand(Displayable presentation) {		
 		this.commandEventManager = new CommandEventManager<SlideEvent>();
 		this.commandEventManager.addListener(presentation);
 		this.eventObject = new PreviousSlideEvent(presentation);
@@ -32,7 +32,6 @@ public class PreviousSlideCommand implements Command {
 	 */
 	@Override
 	public void execute() {
-		//this.presentation.prevSlide();
 		System.out.println("PrevSlideCommand - execute");
 		this.commandEventManager.fire(eventObject);
 	}

@@ -3,12 +3,10 @@
  */
 package factory;
 
-import java.awt.Frame;
 import java.io.IOException;
 
 import model.DemoFormat;
 import model.Format;
-import model.Presentation;
 import model.XMLFormat;
 
 /**

@@ -22,7 +22,7 @@ public class WriterImpl implements Writer {
 	}
 
 	@Override
-	public void saveFile(Presentation p, String filename) throws IOException {
+	public void saveFile(Displayable p, String filename) throws IOException {
 		FormatFactory formatFactory = new FormatFactoryImpl();
 		Format format = formatFactory.makeFileFormat(filename);
 		format.saveFile(p, filename);

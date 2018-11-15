@@ -10,5 +10,5 @@ import java.io.IOException;
  *
  */
 public interface Reader {
-	public void loadFile(Presentation p, String filename) throws IOException;
+	public void loadFile(Displayable p, String filename) throws IOException;
 }

@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 
 import jabberpoint.Values;
 import model.Displayable;
+import model.Observer;
 import model.Slide;
 
 
@@ -23,15 +24,13 @@ import model.Slide;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class SlideViewerComponent extends JComponent {
+public class SlideViewerComponent extends JComponent implements Observer {
 		
 	private Displayable slide; // de huidige slide
 	private Font labelFont = null; // het font voor labels
 	private Displayable presentation = null; // de presentatie
 	private JFrame frame = null;
 	
-	
-
 	public SlideViewerComponent(Displayable pres, JFrame frame) {
 		setBackground(Values.BGCOLOR); 
 		presentation = pres;

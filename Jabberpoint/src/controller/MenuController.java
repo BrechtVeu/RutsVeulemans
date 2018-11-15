@@ -11,7 +11,9 @@ import controller.command.Command;
 import factory.CommandFactory;
 import factory.CommandFactoryImpl;
 import jabberpoint.Values;
+import model.Displayable;
 import model.Presentation;
+import view.SlideViewerFrame;
 
 /** <p>De controller voor het menu</p>
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
@@ -26,7 +28,7 @@ public class MenuController extends MenuBar {
 
 	private static final long serialVersionUID = 227L;
 
-	public MenuController(Frame slideViewerFrame, Presentation presentation) {
+	public MenuController(SlideViewerFrame slideViewerFrame, Displayable presentation) {
 		CommandFactory commandFactory = new CommandFactoryImpl(slideViewerFrame,presentation);
 		
 		Menu fileMenu = new Menu(Values.FILE);
@@ -44,7 +46,9 @@ public class MenuController extends MenuBar {
 		add(viewMenu);
 		
 		Menu themeMenu = new Menu(Values.THEME);
-		
+		themeMenu.add(mkMenuItem(Values.THEME1, commandFactory.makeChangeThemeCommand(Values.THEME1)));
+		themeMenu.add(mkMenuItem(Values.THEME2, commandFactory.makeChangeThemeCommand(Values.THEME2)));
+		themeMenu.add(mkMenuItem(Values.THEME3, commandFactory.makeChangeThemeCommand(Values.THEME3)));
 		add(themeMenu);
 		
 		Menu helpMenu = new Menu(Values.HELP);

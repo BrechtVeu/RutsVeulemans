@@ -4,7 +4,6 @@
 package controller.command;
 
 import event.CommandEventManager;
-import event.NextSlideEvent;
 import event.SlideEvent;
 import model.Displayable;
 
@@ -23,7 +22,6 @@ public class NextSlideCommand extends SlideEvent implements Command {
 		super(presentation);
 		this.commandEventManager = new CommandEventManager<SlideEvent>();
 		this.commandEventManager.addListener(presentation);
-		//this.eventObject = new NextSlideEvent(presentation);
 		this.eventObject = this;
 	}
 

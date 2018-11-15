@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import jabberpoint.Values;
 import view.drawer.BitmapItemDrawer;
 
 
@@ -26,9 +27,6 @@ public class BitmapItem extends SlideItem {
   private BufferedImage bufferedImage;
   private String imageName;
   private BitmapItemDrawer bitmapItemDrawer;
-  
-  protected static final String FILE = "Bestand ";
-  protected static final String NOTFOUND = " niet gevonden";
 
 // level staat voor het item-level; name voor de naam van het bestand met de afbeelding
 	public BitmapItem(int level, String name, BitmapItemDrawer bitmapItemDrawer) {
@@ -39,7 +37,7 @@ public class BitmapItem extends SlideItem {
 			bufferedImage = ImageIO.read(new File(imageName));
 		}
 		catch (IOException e) {
-			System.err.println(FILE + imageName + NOTFOUND) ;
+			System.err.println(Values.FILE + imageName + Values.NOTFOUND) ;
 		}
 	}
 
