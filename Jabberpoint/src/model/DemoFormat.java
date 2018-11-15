@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package model;
 
 import java.io.IOException;
@@ -6,24 +9,29 @@ import factory.DisplayableBuilder;
 import factory.DisplayableBuilderImpl;
 import view.drawer.BitmapItemDrawerImpl;
 import view.drawer.SlideDrawerImpl;
-import view.drawer.TextItemDrawer;
 import view.drawer.TextItemDrawerImpl;
 
-/** Een ingebouwde demo-presentatie
- * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
- * @version 1.1 2002/12/17 Gert Florijn
- * @version 1.2 2003/11/19 Sylvia Stuurman
- * @version 1.3 2004/08/17 Sylvia Stuurman
- * @version 1.4 2007/07/16 Sylvia Stuurman
- * @version 1.5 2010/03/03 Sylvia Stuurman
- * @version 1.6 2014/05/16 Sylvia Stuurman
+/**
+ * @author Dominique
+ *
  */
+public class DemoFormat implements Format {
+	
+	DisplayableBuilder builder;
 
-class DemoPresentation extends Accessor {
-	
-	DisplayableBuilder builder = new DisplayableBuilderImpl();
-	
-	public void loadFile(Displayable presentation, String unusedFilename) {
+	/**
+	 * 
+	 */
+	public DemoFormat() {
+		// TODO Auto-generated constructor stub
+		 builder = new DisplayableBuilderImpl();
+	}
+
+	/* (non-Javadoc)
+	 * @see model.Format#loadFile(model.Presentation, java.lang.String)
+	 */
+	@Override
+	public void loadFile(Displayable presentation, String unusedFilename) throws IOException {
 		presentation.setTitle("Demo Presentation");
 		builder.setPresentation(presentation)
 				.addSlide("JabberPoint")
@@ -56,7 +64,12 @@ class DemoPresentation extends Accessor {
 		builder.build();
 	}
 
-	public void saveFile(Displayable presentation, String unusedFilename) {
+	/* (non-Javadoc)
+	 * @see model.Format#saveFile(model.Presentation)
+	 */
+	@Override
+	public void saveFile(Displayable p, String unusedFilename) throws IOException {
 		throw new IllegalStateException("Save As->Demo! aangeroepen");
 	}
+
 }

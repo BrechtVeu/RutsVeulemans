@@ -42,13 +42,6 @@ public class Slide extends Displayable{
 		title = new TextItem(0, newTitle, new TextItemDrawerImpl());
 	}
 
-	//TODO nog weg te halen zodat append van Displayable wordt aangeroepen 
-	//en een Displayable wordt toegevoegd (dus een TextItem)
-	// Maak een TextItem van String, en voeg het TextItem toe
-	public void append(int level, String message) {
-		append(new TextItem(level, message, new TextItemDrawerImpl()));
-	}
-
 	@Override
 	public void draw(Graphics g, Rectangle area, ImageObserver view) {
 		float scale = getScale(area);

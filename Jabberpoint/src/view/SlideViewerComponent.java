@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 
 import jabberpoint.Values;
 import model.Displayable;
+import model.Observer;
 import model.Slide;
 
 
@@ -23,7 +24,7 @@ import model.Slide;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class SlideViewerComponent extends JComponent {
+public class SlideViewerComponent extends JComponent implements Observer {
 		
 	private Displayable slide; // de huidige slide
 	private Font labelFont = null; // het font voor labels
@@ -43,6 +44,7 @@ public class SlideViewerComponent extends JComponent {
 		return new Dimension(Values.WIDTH, Values.HEIGHT);
 	}
 
+	@Override
 	public void update(Displayable presentation, Displayable data) {
 		if (data == null) {
 			repaint();
@@ -68,7 +70,5 @@ public class SlideViewerComponent extends JComponent {
 		Rectangle area = new Rectangle(0, Values.YPOS, getWidth(), (getHeight() - Values.YPOS));
 	
 		slide.draw(g, area, this);
-	}
-	
-	
+	}	
 }

@@ -3,8 +3,10 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
+import factory.DisplayableFactory;
+import factory.DisplayableFactoryImpl;
 import model.Accessor;
-import model.Presentation;
+import model.Displayable;
 import model.XMLAccessor;
 import view.SlideViewerFrame;
 import view.theme.Style;
@@ -32,15 +34,15 @@ public class JabberPoint {
 	public static void main(String argv[]) {
 		
 		Style.createStyles();
-		Presentation presentation = new Presentation();
+		DisplayableFactory factory = new DisplayableFactoryImpl();
+		Displayable presentation = factory.makePresentation();
 		new SlideViewerFrame(JABVERSION, presentation);
 		try {
-			if (argv.length == 0) { // een demo presentatie
+			if (argv.length == 0) { // een demo presentatie		
 				Accessor.getDemoAccessor().loadFile(presentation, "");
 			} else {
 				new XMLAccessor().loadFile(presentation, argv[0]);
 			}
-			presentation.setSlideNumber(0);
 		} catch (IOException ex) {
 			JOptionPane.showMessageDialog(null,
 					IOERR + ex, JABERR,

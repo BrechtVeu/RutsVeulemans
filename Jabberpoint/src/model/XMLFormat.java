@@ -1,4 +1,8 @@
+/**
+ * 
+ */
 package model;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -22,19 +26,12 @@ import view.drawer.BitmapItemDrawerImpl;
 import view.drawer.SlideDrawerImpl;
 import view.drawer.TextItemDrawerImpl;
 
-
-/** XMLAccessor, reads and writes XML files
- * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
- * @version 1.1 2002/12/17 Gert Florijn
- * @version 1.2 2003/11/19 Sylvia Stuurman
- * @version 1.3 2004/08/17 Sylvia Stuurman
- * @version 1.4 2007/07/16 Sylvia Stuurman
- * @version 1.5 2010/03/03 Sylvia Stuurman
- * @version 1.6 2014/05/16 Sylvia Stuurman
+/**
+ * @author Dominique
+ *
  */
+public class XMLFormat implements Format {
 
-public class XMLAccessor extends Accessor {
-	
     /** Default API to use. */
     protected static final String DEFAULT_API_TO_USE = "dom";
     
@@ -53,19 +50,19 @@ public class XMLAccessor extends Accessor {
     protected static final String UNKNOWNTYPE = "Unknown Element type";
     protected static final String NFE = "Number Format Exception";
     
-    
     DisplayableBuilder presentationBuilder; 
-        
-    public XMLAccessor() {
+	
+	/**
+	 * 
+	 */
+	public XMLFormat() {
 		this.presentationBuilder = new DisplayableBuilderImpl();
 	}
 
-	private String getTitle(Element element, String tagName) {
-    	NodeList titles = element.getElementsByTagName(tagName);
-    	return titles.item(0).getTextContent();
-    	
-    }
-
+	/* (non-Javadoc)
+	 * @see model.Format#loadFile(model.Presentation, java.lang.String)
+	 */
+	@Override
 	public void loadFile(Displayable p, String filename) throws IOException {
 		int slideNumber, itemNumber, max = 0, maxItems = 0;
 		try {
@@ -99,10 +96,10 @@ public class XMLAccessor extends Accessor {
 		}
 		catch (ParserConfigurationException pcx) {
 			System.err.println(PCE);
-		}		
+		}
 	}
-
-	protected void loadSlideItem(Element item) {
+	
+	private void loadSlideItem(Element item){
 		int level = 1; // default
 		NamedNodeMap attributes = item.getAttributes();
 		String leveltext = attributes.getNamedItem(LEVEL).getTextContent();
@@ -126,24 +123,34 @@ public class XMLAccessor extends Accessor {
 			else {
 				System.err.println(UNKNOWNTYPE);
 			}
-		}
+		}	
 	}
+	
+	private String getTitle(Element element, String tagName) {
+    	NodeList titles = element.getElementsByTagName(tagName);
+    	return titles.item(0).getTextContent();
+    	
+    }
 
-	public void saveFile(Displayable presentation, String filename) throws IOException {
+	/* (non-Javadoc)
+	 * @see model.Format#saveFile(model.Presentation)
+	 */
+	@Override
+	public void saveFile(Displayable p, String filename) throws IOException {
 		PrintWriter out = new PrintWriter(new FileWriter(filename));
 		out.println("<?xml version=\"1.0\"?>");
 		out.println("<!DOCTYPE presentation SYSTEM \"jabberpoint.dtd\">");
 		out.println("<presentation>");
 		out.print("<showtitle>");
-		out.print(presentation.getTitle());
+		out.print(p.getTitle());
 		out.println("</showtitle>");
-		for (int slideNumber=0; slideNumber<presentation.getSize(); slideNumber++) {
-			Displayable slide = presentation.getDisplayableItem(slideNumber);
+		for (int slideNumber=0; slideNumber<p.getSize(); slideNumber++) {
+			Displayable slide = p.getDisplayableItem(slideNumber);
 			out.println("<slide>");
 			out.println("<title>" + slide.getTitle() + "</title>");
 			ArrayList<Displayable> slideItems = slide.getDisplayableItems();
 			for (int itemNumber = 0; itemNumber<slideItems.size(); itemNumber++) {
-				Displayable slideItem = (SlideItem) slideItems.get(itemNumber);
+				SlideItem slideItem = (SlideItem) slideItems.get(itemNumber);
 				out.print("<item kind="); 
 				if (slideItem instanceof TextItem) {
 					out.print("\"text\" level=\"" + slideItem.getLevel() + "\">");
@@ -165,4 +172,5 @@ public class XMLAccessor extends Accessor {
 		out.println("</presentation>");
 		out.close();
 	}
+
 }

@@ -1,8 +1,14 @@
 package controller;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import controller.command.Command;
+import controller.command.CommandFactory;
+import controller.command.CommandFactoryImpl;
+import model.Displayable;
 import model.Presentation;
+
+import java.awt.Frame;
+import java.awt.event.KeyAdapter;
 
 /** <p>This is the KeyController (KeyListener)</p>
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
@@ -15,31 +21,34 @@ import model.Presentation;
 */
 
 public class KeyController extends KeyAdapter {
-	private Presentation presentation; // Er worden commando's gegeven aan de presentatie
+	private CommandFactory commandFactory;
 
-	public KeyController(Presentation p) {
-		presentation = p;
+	public KeyController(Frame slideViewerFrame, Displayable p) {			
+		this.commandFactory = new CommandFactoryImpl(slideViewerFrame,p);
 	}
 
 	public void keyPressed(KeyEvent keyEvent) {
+		Command commandToExecute = this.commandFactory.makeEmptyCommand();
 		switch(keyEvent.getKeyCode()) {
 			case KeyEvent.VK_PAGE_DOWN:
 			case KeyEvent.VK_DOWN:
 			case KeyEvent.VK_ENTER:
 			case '+':
-				presentation.nextSlide();
+				commandToExecute = this.commandFactory.makeNextSlideCommand();
 				break;
 			case KeyEvent.VK_PAGE_UP:
 			case KeyEvent.VK_UP:
 			case '-':
-				presentation.prevSlide();
+				commandToExecute = this.commandFactory.makePreviousSlideCommand();
 				break;
 			case 'q':
 			case 'Q':
-				System.exit(0);
+				commandToExecute = this.commandFactory.makeExitCommand();
 				break; // wordt nooit bereikt als het goed is
 			default:
-				break;
+				break;			
 		}
+		
+		commandToExecute.execute();
 	}
 }

@@ -23,15 +23,8 @@ public class Presentation extends Displayable{
 	private String showTitle; // de titel van de presentatie
 	
 	private int currentSlideNumber = 0; // het slidenummer van de huidige Slide
-	private SlideViewerComponent slideViewComponent = null; // de viewcomponent voor de Slides
 
 	public Presentation() {
-		slideViewComponent = null;
-		clear();
-	}
-
-	public Presentation(SlideViewerComponent slideViewerComponent) {
-		this.slideViewComponent = slideViewerComponent;
 		clear();
 	}
 
@@ -43,21 +36,16 @@ public class Presentation extends Displayable{
 		showTitle = nt;
 	}
 
-	public void setShowView(SlideViewerComponent slideViewerComponent) {
-		this.slideViewComponent = slideViewerComponent;
-	}
-
 	// geef het nummer van de huidige slide
 	public int getSlideNumber() {
 		return currentSlideNumber;
 	}
-
+	
 	// verander het huidige-slide-nummer en laat het aan het window weten.
+	@Override
 	public void setSlideNumber(int number) {
 		currentSlideNumber = number;
-		if (slideViewComponent != null) {
-			slideViewComponent.update(this, getCurrentSlide());
-		}
+		notifyObservers();
 	}
 
 	// ga naar de vorige slide tenzij je aan het begin van de presentatie bent
@@ -75,12 +63,14 @@ public class Presentation extends Displayable{
 	}
 
 	// Verwijder de presentatie, om klaar te zijn voor de volgende
+	@Override
 	public void clear() {
 		super.displayableList = new ArrayList<Displayable>();
 		setSlideNumber(-1);
 	}
 
 	// Geef de huidige Slide
+	@Override
 	public Displayable getCurrentSlide() {
 		return super.getDisplayableItem(currentSlideNumber);
 	}
