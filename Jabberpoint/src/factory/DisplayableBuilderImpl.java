@@ -13,7 +13,7 @@ public class DisplayableBuilderImpl implements DisplayableBuilder{
 	}
 
 	@Override
-	public DisplayableBuilder makePresentation(Displayable presentation) {
+	public DisplayableBuilder setPresentation(Displayable presentation) {
 		displayable = presentation;
 		return this;
 	}

@@ -33,40 +33,35 @@ public class DemoFormat implements Format {
 	@Override
 	public void loadFile(Displayable presentation, String unusedFilename) throws IOException {
 		presentation.setTitle("Demo Presentation");
-		Displayable slide;
-		slide = new Slide(new SlideDrawerImpl());
-		slide.setTitle("JabberPoint");
-		slide.append(new TextItem(1, "Het Java Presentatie Tool", new TextItemDrawerImpl()));
-		slide.append(new TextItem(2, "Copyright (c) 1996-2000: Ian Darwin", new TextItemDrawerImpl()));
-		slide.append(new TextItem(2, "Copyright (c) 2000-now:", new TextItemDrawerImpl()));
-		slide.append(new TextItem(2, "Gert Florijn en Sylvia Stuurman", new TextItemDrawerImpl()));
-		slide.append(new TextItem(4, "JabberPoint aanroepen zonder bestandsnaam", new TextItemDrawerImpl()));
-		slide.append(new TextItem(4, "laat deze presentatie zien", new TextItemDrawerImpl()));
-		slide.append(new TextItem(1, "Navigeren:", new TextItemDrawerImpl()));
-		slide.append(new TextItem(3, "Volgende slide: PgDn of Enter", new TextItemDrawerImpl()));
-		slide.append(new TextItem(3, "Vorige slide: PgUp of up-arrow", new TextItemDrawerImpl()));
-		slide.append(new TextItem(3, "Stoppen: q or Q", new TextItemDrawerImpl()));
-		presentation.append(slide);
-
-		slide = new Slide(new SlideDrawerImpl());
-		slide.setTitle("Demonstratie van levels en stijlen");
-		slide.append(new TextItem(1, "Level 1", new TextItemDrawerImpl()));
-		slide.append(new TextItem(2, "Level 2", new TextItemDrawerImpl()));
-		slide.append(new TextItem(1, "Nogmaals level 1", new TextItemDrawerImpl()));
-		slide.append(new TextItem(1, "Level 1 heeft stijl nummer 1", new TextItemDrawerImpl()));
-		slide.append(new TextItem(2, "Level 2 heeft stijl nummer 2", new TextItemDrawerImpl()));
-		slide.append(new TextItem(3, "Zo ziet level 3 er uit", new TextItemDrawerImpl()));
-		slide.append(new TextItem(4, "En dit is level 4", new TextItemDrawerImpl()));
-		presentation.append(slide);
-
-		slide = new Slide(new SlideDrawerImpl());
-		slide.setTitle("De derde slide");
-		slide.append(new TextItem(1, "Om een nieuwe presentatie te openen,", new TextItemDrawerImpl()));
-		slide.append(new TextItem(2, "gebruik File->Open uit het menu.", new TextItemDrawerImpl()));
-		slide.append(new TextItem(1, " ", new TextItemDrawerImpl()));
-		slide.append(new TextItem(1, "Dit is het einde van de presentatie.", new TextItemDrawerImpl()));
-		slide.append(new BitmapItem(1, "JabberPoint.jpg", new BitmapItemDrawerImpl()));
-		presentation.append(slide);
+		builder.setPresentation(presentation)
+				.addSlide("JabberPoint")
+				.addTextItem(1, "Het Java Presentatie Tool")
+				.addTextItem(2, "Copyright (c) 1996-2000: Ian Darwin")
+				.addTextItem(2, "Copyright (c) 2000-now:")
+				.addTextItem(2, "Gert Florijn en Sylvia Stuurman")				
+				.addTextItem(4, "JabberPoint aanroepen zonder bestandsnaam")
+				.addTextItem(4, "laat deze presentatie zien")
+				.addTextItem(1, "Navigeren:")
+				.addTextItem(3, "Volgende slide: PgDn of Enter")
+				.addTextItem(3, "Vorige slide: PgUp of up-arrow")
+				.addTextItem(3, "Stoppen: q or Q")
+				.addSlide("Demonstratie van levels en stijlen")
+				.addTextItem(1, "Level 1")
+				.addTextItem(2, "Level 2")
+				.addTextItem(1, "Nogmaals level 1")
+				.addTextItem(1, "Level 1 heeft stijl nummer 1")				
+				.addTextItem(2, "Level 2 heeft stijl nummer 2")
+				.addTextItem(3, "Zo ziet level 3 er uit")
+				.addTextItem(4, "En dit is level 4")
+				.addSlide("De derde slide")
+				.addTextItem(1, "Om een nieuwe presentatie te openen,")
+				.addTextItem(2, "gebruik File->Open uit het menu.")
+				.addTextItem(1, " ")
+				.addTextItem(1, "Dit is het einde van de presentatie.")
+				.addBitmapItem(1, "JabberPoint.jpg")				
+				;
+		
+		builder.build();
 	}
 
 	/* (non-Javadoc)

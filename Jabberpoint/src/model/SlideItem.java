@@ -23,6 +23,7 @@ public abstract class SlideItem extends Displayable{
 	}
 
 // Geef het level
+	@Override
 	public int getLevel() {
 		return level;
 	}

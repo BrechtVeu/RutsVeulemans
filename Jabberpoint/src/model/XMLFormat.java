@@ -20,6 +20,8 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import factory.DisplayableBuilder;
+import factory.DisplayableBuilderImpl;
 import view.drawer.BitmapItemDrawerImpl;
 import view.drawer.SlideDrawerImpl;
 import view.drawer.TextItemDrawerImpl;
@@ -47,12 +49,14 @@ public class XMLFormat implements Format {
     protected static final String PCE = "Parser Configuration Exception";
     protected static final String UNKNOWNTYPE = "Unknown Element type";
     protected static final String NFE = "Number Format Exception";
+    
+    DisplayableBuilder presentationBuilder; 
 	
 	/**
 	 * 
 	 */
 	public XMLFormat() {
-		// TODO Auto-generated constructor stub
+		this.presentationBuilder = new DisplayableBuilderImpl();
 	}
 
 	/* (non-Javadoc)
@@ -66,20 +70,21 @@ public class XMLFormat implements Format {
 			Document document = builder.parse(new File(filename)); // maak een JDOM document
 			Element doc = document.getDocumentElement();
 			p.setTitle(getTitle(doc, SHOWTITLE));
+			
+			presentationBuilder.setPresentation(p);	
 
 			NodeList slides = doc.getElementsByTagName(SLIDE);
 			max = slides.getLength();
 			for (slideNumber = 0; slideNumber < max; slideNumber++) {
 				Element xmlSlide = (Element) slides.item(slideNumber);
-				Slide slide = new Slide(new SlideDrawerImpl());
-				slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
-				p.append(slide);
+				
+				presentationBuilder.addSlide(getTitle(xmlSlide, SLIDETITLE));
 				
 				NodeList slideItems = xmlSlide.getElementsByTagName(ITEM);
 				maxItems = slideItems.getLength();
 				for (itemNumber = 0; itemNumber < maxItems; itemNumber++) {
 					Element item = (Element) slideItems.item(itemNumber);
-					loadSlideItem(slide, item);
+					loadSlideItem(item);
 				}
 			}
 		} 
@@ -94,7 +99,7 @@ public class XMLFormat implements Format {
 		}
 	}
 	
-	protected void loadSlideItem(Slide slide, Element item) {
+	private void loadSlideItem(Element item){
 		int level = 1; // default
 		NamedNodeMap attributes = item.getAttributes();
 		String leveltext = attributes.getNamedItem(LEVEL).getTextContent();
@@ -107,17 +112,18 @@ public class XMLFormat implements Format {
 			}
 		}
 		String type = attributes.getNamedItem(KIND).getTextContent();
+		
 		if (TEXT.equals(type)) {
-			slide.append(new TextItem(level, item.getTextContent(),new TextItemDrawerImpl()));
+			presentationBuilder.addTextItem(level, item.getTextContent());
 		}
 		else {
 			if (IMAGE.equals(type)) {
-				slide.append(new BitmapItem(level, item.getTextContent(),new BitmapItemDrawerImpl()));
+				presentationBuilder.addBitmapItem(level, item.getTextContent());
 			}
 			else {
 				System.err.println(UNKNOWNTYPE);
 			}
-		}
+		}	
 	}
 	
 	private String getTitle(Element element, String tagName) {

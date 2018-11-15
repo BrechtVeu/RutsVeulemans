@@ -16,6 +16,8 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import factory.DisplayableBuilder;
+import factory.DisplayableBuilderImpl;
 import view.drawer.BitmapItemDrawerImpl;
 import view.drawer.SlideDrawerImpl;
 import view.drawer.TextItemDrawerImpl;
@@ -52,33 +54,40 @@ public class XMLAccessor extends Accessor {
     protected static final String NFE = "Number Format Exception";
     
     
-    private String getTitle(Element element, String tagName) {
+    DisplayableBuilder presentationBuilder; 
+        
+    public XMLAccessor() {
+		this.presentationBuilder = new DisplayableBuilderImpl();
+	}
+
+	private String getTitle(Element element, String tagName) {
     	NodeList titles = element.getElementsByTagName(tagName);
     	return titles.item(0).getTextContent();
     	
     }
 
-	public void loadFile(Displayable presentation, String filename) throws IOException {
+	public void loadFile(Displayable p, String filename) throws IOException {
 		int slideNumber, itemNumber, max = 0, maxItems = 0;
 		try {
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();    
 			Document document = builder.parse(new File(filename)); // maak een JDOM document
 			Element doc = document.getDocumentElement();
-			presentation.setTitle(getTitle(doc, SHOWTITLE));
+			p.setTitle(getTitle(doc, SHOWTITLE));
+			
+			presentationBuilder.setPresentation(p);	
 
 			NodeList slides = doc.getElementsByTagName(SLIDE);
 			max = slides.getLength();
 			for (slideNumber = 0; slideNumber < max; slideNumber++) {
 				Element xmlSlide = (Element) slides.item(slideNumber);
-				Slide slide = new Slide(new SlideDrawerImpl());
-				slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
-				presentation.append(slide);
+				
+				presentationBuilder.addSlide(getTitle(xmlSlide, SLIDETITLE));
 				
 				NodeList slideItems = xmlSlide.getElementsByTagName(ITEM);
 				maxItems = slideItems.getLength();
 				for (itemNumber = 0; itemNumber < maxItems; itemNumber++) {
 					Element item = (Element) slideItems.item(itemNumber);
-					loadSlideItem(slide, item);
+					loadSlideItem(item);
 				}
 			}
 		} 
@@ -90,11 +99,10 @@ public class XMLAccessor extends Accessor {
 		}
 		catch (ParserConfigurationException pcx) {
 			System.err.println(PCE);
-		}
-		
+		}		
 	}
 
-	protected void loadSlideItem(Slide slide, Element item) {
+	protected void loadSlideItem(Element item) {
 		int level = 1; // default
 		NamedNodeMap attributes = item.getAttributes();
 		String leveltext = attributes.getNamedItem(LEVEL).getTextContent();
@@ -107,12 +115,13 @@ public class XMLAccessor extends Accessor {
 			}
 		}
 		String type = attributes.getNamedItem(KIND).getTextContent();
+		
 		if (TEXT.equals(type)) {
-			slide.append(new TextItem(level, item.getTextContent(), new TextItemDrawerImpl()));
+			presentationBuilder.addTextItem(level, item.getTextContent());
 		}
 		else {
 			if (IMAGE.equals(type)) {
-				slide.append(new BitmapItem(level, item.getTextContent(), new BitmapItemDrawerImpl()));
+				presentationBuilder.addBitmapItem(level, item.getTextContent());
 			}
 			else {
 				System.err.println(UNKNOWNTYPE);
@@ -134,7 +143,7 @@ public class XMLAccessor extends Accessor {
 			out.println("<title>" + slide.getTitle() + "</title>");
 			ArrayList<Displayable> slideItems = slide.getDisplayableItems();
 			for (int itemNumber = 0; itemNumber<slideItems.size(); itemNumber++) {
-				SlideItem slideItem = (SlideItem) slideItems.get(itemNumber);
+				Displayable slideItem = (SlideItem) slideItems.get(itemNumber);
 				out.print("<item kind="); 
 				if (slideItem instanceof TextItem) {
 					out.print("\"text\" level=\"" + slideItem.getLevel() + "\">");

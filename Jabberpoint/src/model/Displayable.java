@@ -86,5 +86,10 @@ public abstract class Displayable implements Observable {
 		
 	}
 
+	public int getLevel() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 }
