@@ -5,6 +5,7 @@ import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import event.NextSlideEvent;
 import view.drawer.SlideDrawer;
 import view.drawer.TextItemDrawerImpl;
 

@@ -14,5 +14,45 @@ public class Values {
 	public static final int FONTHEIGHT = 10;
 	public static final int XPOS = 1100;
 	public static final int YPOS = 20;
+	
+	/** XML FORMAT */
+	/** Default API to use. */
+    protected static final String DEFAULT_API_TO_USE = "dom";
+    
+    /** namen van xml tags of attributen */
+    public static final String SHOWTITLE = "showtitle";
+    public static final String SLIDETITLE = "title";
+    public static final String SLIDE = "slide";
+    public static final String ITEM = "item";
+    public static final String LEVEL = "level";
+    public static final String KIND = "kind";
+    public static final String TEXT = "text";
+    public static final String IMAGE = "image";
+    
+    /** tekst van messages */
+    public static final String PCE = "Parser Configuration Exception";
+    public static final String UNKNOWNTYPE = "Unknown Element type";
+    public static final String NFE = "Number Format Exception";
 
+    /** MenuController */
+    public static final String ABOUT = "About";
+    public static final String FILE = "File";
+    public static final String EXIT = "Exit";
+    public static final String GOTO = "Go to";
+    public static final String HELP = "Help";
+    public static final String NEW = "New";
+    public static final String NEXT = "Next";
+    public static final String OPEN = "Open";
+    public static final String PAGENR = "Page number?";
+    public static final String PREV = "Prev";
+    public static final String SAVE = "Save";
+    public static final String THEME = "Theme";
+    public static final String VIEW = "View";
+	
+    public static final String TESTFILE = "test.xml";
+    public static final String SAVEFILE = "dump.xml";
+	
+    public static final String IOEX = "IO Exception: ";
+    public static final String LOADERR = "Load Error";
+    public static final String SAVEERR = "Save Error";
 }

@@ -1,10 +1,20 @@
 /**
  * 
  */
-package controller.command;
+package factory;
 
 import java.awt.Frame;
 
+import controller.command.AboutCommand;
+import controller.command.Command;
+import controller.command.EmptyCommand;
+import controller.command.ExitCommand;
+import controller.command.GotoSlideCommand;
+import controller.command.NewPresentationCommand;
+import controller.command.NextSlideCommand;
+import controller.command.OpenPresentationCommand;
+import controller.command.PreviousSlideCommand;
+import controller.command.SavePresentationCommand;
 import model.Presentation;
 
 /**

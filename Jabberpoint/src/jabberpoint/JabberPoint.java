@@ -3,7 +3,10 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
+import event.CommandEventManager;
+import event.NextSlideEvent;
 import model.Accessor;
+import model.Displayable;
 import model.Presentation;
 import model.XMLAccessor;
 import view.SlideViewerFrame;

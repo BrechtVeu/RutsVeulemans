@@ -1,7 +1,9 @@
 /**
  * 
  */
-package controller.command;
+package factory;
+
+import controller.command.Command;
 
 /**
  * @author Dominique Ruts, Brecht Veulemans

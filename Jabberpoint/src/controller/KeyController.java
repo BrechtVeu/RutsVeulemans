@@ -2,8 +2,8 @@ package controller;
 import java.awt.event.KeyEvent;
 
 import controller.command.Command;
-import controller.command.CommandFactory;
-import controller.command.CommandFactoryImpl;
+import factory.CommandFactory;
+import factory.CommandFactoryImpl;
 import model.Presentation;
 
 import java.awt.Frame;

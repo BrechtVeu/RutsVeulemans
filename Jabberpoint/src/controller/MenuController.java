@@ -8,8 +8,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import controller.command.Command;
-import controller.command.CommandFactory;
-import controller.command.CommandFactoryImpl;
+import factory.CommandFactory;
+import factory.CommandFactoryImpl;
+import jabberpoint.Values;
 import model.Presentation;
 
 /** <p>De controller voor het menu</p>
@@ -24,51 +25,30 @@ import model.Presentation;
 public class MenuController extends MenuBar {
 
 	private static final long serialVersionUID = 227L;
-	
-	protected static final String ABOUT = "About";
-	protected static final String FILE = "File";
-	protected static final String EXIT = "Exit";
-	protected static final String GOTO = "Go to";
-	protected static final String HELP = "Help";
-	protected static final String NEW = "New";
-	protected static final String NEXT = "Next";
-	protected static final String OPEN = "Open";
-	protected static final String PAGENR = "Page number?";
-	protected static final String PREV = "Prev";
-	protected static final String SAVE = "Save";
-	protected static final String THEME = "Theme";
-	protected static final String VIEW = "View";
-	
-	protected static final String TESTFILE = "test.xml";
-	protected static final String SAVEFILE = "dump.xml";
-	
-	protected static final String IOEX = "IO Exception: ";
-	protected static final String LOADERR = "Load Error";
-	protected static final String SAVEERR = "Save Error";
 
 	public MenuController(Frame slideViewerFrame, Presentation presentation) {
 		CommandFactory commandFactory = new CommandFactoryImpl(slideViewerFrame,presentation);
 		
-		Menu fileMenu = new Menu(FILE);
-		fileMenu.add(mkMenuItem(OPEN, commandFactory.makeOpenPresentationCommand()));
-		fileMenu.add(mkMenuItem(NEW, commandFactory.makeNewPresentationCommand()));
-		fileMenu.add(mkMenuItem(SAVE, commandFactory.makeSavePresentationCommand()));
+		Menu fileMenu = new Menu(Values.FILE);
+		fileMenu.add(mkMenuItem(Values.OPEN, commandFactory.makeOpenPresentationCommand()));
+		fileMenu.add(mkMenuItem(Values.NEW, commandFactory.makeNewPresentationCommand()));
+		fileMenu.add(mkMenuItem(Values.SAVE, commandFactory.makeSavePresentationCommand()));
 		fileMenu.addSeparator();
-		fileMenu.add(mkMenuItem(EXIT, commandFactory.makeExitCommand()));
+		fileMenu.add(mkMenuItem(Values.EXIT, commandFactory.makeExitCommand()));
 		add(fileMenu);
 		
-		Menu viewMenu = new Menu(VIEW);
-		viewMenu.add(mkMenuItem(NEXT, commandFactory.makeNextSlideCommand()));
-		viewMenu.add(mkMenuItem(PREV, commandFactory.makePreviousSlideCommand()));
-		viewMenu.add(mkMenuItem(GOTO, commandFactory.makeGotoSlideCommand()));
+		Menu viewMenu = new Menu(Values.VIEW);
+		viewMenu.add(mkMenuItem(Values.NEXT, commandFactory.makeNextSlideCommand()));
+		viewMenu.add(mkMenuItem(Values.PREV, commandFactory.makePreviousSlideCommand()));
+		viewMenu.add(mkMenuItem(Values.GOTO, commandFactory.makeGotoSlideCommand()));
 		add(viewMenu);
 		
-		Menu themeMenu = new Menu(THEME);
+		Menu themeMenu = new Menu(Values.THEME);
 		
 		add(themeMenu);
 		
-		Menu helpMenu = new Menu(HELP);
-		helpMenu.add(mkMenuItem(ABOUT, commandFactory.makeAboutCommand()));
+		Menu helpMenu = new Menu(Values.HELP);
+		helpMenu.add(mkMenuItem(Values.ABOUT, commandFactory.makeAboutCommand()));
 		setHelpMenu(helpMenu);		// nodig for portability (Motif, etc.).
 	}
 

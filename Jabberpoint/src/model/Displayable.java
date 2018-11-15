@@ -4,15 +4,18 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Vector;
 
-import view.SlideViewerComponent;
+import controller.command.NextSlideCommand;
+import event.CommandEventListener;
+import event.NextSlideEvent;
+import event.PreviousSlideEvent;
+import event.SlideEvent;
+import event.GotoSlideEvent;
 
-public abstract class Displayable {
+public abstract class Displayable implements CommandEventListener<SlideEvent> {
 	
 	protected ArrayList<Displayable> displayableList = new ArrayList<Displayable>(); // een ArrayList voor Displayables
-	
+		
 	// Voeg een Displayable toe
 	public void append(Displayable anItem) {
 		displayableList.add(anItem);
@@ -61,6 +64,27 @@ public abstract class Displayable {
 	
 	// verander het huidige-slide-nummer en laat het aan het window weten.
 	public void setSlideNumber(int number) {}
-
 	
+	public void nextSlide() {}
+	
+	public void prevSlide() {}
+
+	@Override
+	public void eventTriggered(SlideEvent event) {
+		if(event instanceof NextSlideEvent || event instanceof NextSlideCommand){
+			this.nextSlide();
+			System.out.println("Displayble - eventTriggered - Source:"+event.getSource());
+			System.out.println("Displayble - instance of NextSlideEvent");
+		} else if (event instanceof PreviousSlideEvent) {
+			this.prevSlide();
+			System.out.println("Displayble - eventTriggered - Source:"+event.getSource());
+			System.out.println("Displayble - instance of PreviousSlideEvent");
+		} else if (event instanceof GotoSlideEvent) {
+			this.setSlideNumber(event.getSlideNumber() - 1);
+			System.out.println("Displayble - eventTriggered - Source:"+event.getSource());
+			System.out.println("Displayble - instance of GotoSlideEvent");
+		}	else {
+			System.out.println("Displayble - not sure which instance");
+		}
+	}
 }
