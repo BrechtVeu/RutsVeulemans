@@ -5,7 +5,6 @@ import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 
-import controller.command.NextSlideCommand;
 import event.CommandEventListener;
 import event.NextSlideEvent;
 import event.OpenPresentationEvent;
@@ -90,7 +89,7 @@ public abstract class Displayable implements Observable, CommandEventListener<Sl
 
 	@Override
 	public void eventTriggered(SlideEvent event) {
-		if(event instanceof NextSlideEvent || event instanceof NextSlideCommand){
+		if(event instanceof NextSlideEvent){
 			this.nextSlide();
 			System.out.println("Displayble - eventTriggered - Source:"+event.getSource());
 			System.out.println("Displayble - instance of NextSlideEvent");

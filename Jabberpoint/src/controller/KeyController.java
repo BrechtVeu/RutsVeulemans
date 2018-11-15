@@ -5,8 +5,6 @@ import controller.command.Command;
 import factory.CommandFactory;
 import factory.CommandFactoryImpl;
 import model.Displayable;
-import model.Presentation;
-import view.SlideViewerFrame;
 
 import java.awt.Frame;
 import java.awt.event.KeyAdapter;
