@@ -1,7 +1,9 @@
 /**
  * 
  */
-package controller.command;
+package factory;
+
+import controller.command.Command;
 
 /**
  * @author Dominique Ruts, Brecht Veulemans
@@ -17,4 +19,5 @@ public interface CommandFactory {
 	Command makePreviousSlideCommand();
 	Command makeGotoSlideCommand();
 	Command makeAboutCommand();
+	Command makeChangeThemeCommand(String Theme);
 }

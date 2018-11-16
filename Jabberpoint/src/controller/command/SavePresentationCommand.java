@@ -8,6 +8,8 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
+import jabberpoint.Values;
+import model.Displayable;
 import model.Presentation;
 import model.Writer;
 import model.WriterImpl;
@@ -17,16 +19,10 @@ import model.WriterImpl;
  *
  */
 public class SavePresentationCommand implements Command {
-	protected static final String SAVEFILE = "dump.xml";
-	
-	protected static final String IOEX = "IO Exception: ";
-	protected static final String LOADERR = "Load Error";
-	protected static final String SAVEERR = "Save Error";
-	
 	private Frame slideViewerFrame;
-	private Presentation presentation;
+	private Displayable presentation;
 
-	public SavePresentationCommand(Frame slideViewerFrame, Presentation presentation) {
+	public SavePresentationCommand(Frame slideViewerFrame, Displayable presentation) {
 		this.slideViewerFrame = slideViewerFrame;
 		this.presentation = presentation;
 	}
@@ -38,10 +34,10 @@ public class SavePresentationCommand implements Command {
 	public void execute() {
 		Writer writer = new WriterImpl();
 		try {
-			writer.saveFile(this.presentation, SAVEFILE);
+			writer.saveFile(this.presentation, Values.SAVEFILE);
 		} catch (IOException exc) {
-			JOptionPane.showMessageDialog(this.slideViewerFrame, IOEX + exc, 
-					SAVEERR, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this.slideViewerFrame, Values.IOEX + exc, 
+					Values.SAVEERR, JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

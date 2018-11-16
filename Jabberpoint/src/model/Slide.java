@@ -1,6 +1,11 @@
 package model;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.image.ImageObserver;
+import java.util.ArrayList;
 import java.util.Vector;
 
+import event.NextSlideEvent;
 import view.drawer.SlideDrawer;
 import view.drawer.TextItemDrawerImpl;
 
@@ -14,57 +19,34 @@ import view.drawer.TextItemDrawerImpl;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class Slide {
+public class Slide extends Displayable{
 	public final static int WIDTH = 1200;
 	public final static int HEIGHT = 800;
 	/* Geen String meer maar een TextItem */
-	protected TextItem title; // de titel wordt apart bewaard
-	protected Vector<SlideItem> items; // de slide-items worden in een Vector bewaard
+	protected Displayable title; // de titel wordt apart bewaard
 	private SlideDrawer slideDrawer;
 
 	public Slide(SlideDrawer slideDrawer) {
-		items = new Vector<SlideItem>();
 		this.slideDrawer = slideDrawer;
 	}
 
-	// Voeg een SlideItem toe
-	public void append(SlideItem anItem) {
-		items.addElement(anItem);
-	}
-
 	// geef de titel van de slide
-	public SlideItem getTitle() {
+	@Override
+	public String getTitle() {
 		/* Geef nu de tekst van het TextItem terug */
-		return title;
+		return ((TextItem) title).getText();
 	}
 
 	// verander de titel van de slide
+	@Override
 	public void setTitle(String newTitle) {
 		/* Creëer nu een TextItem op basis van de nieuwe titel */
 		title = new TextItem(0, newTitle, new TextItemDrawerImpl());
 	}
 
-	// Maak een TextItem van String, en voeg het TextItem toe
-	public void append(int level, String message) {
-		append(new TextItem(level, message, new TextItemDrawerImpl()));
-	}
-
-	// geef het betreffende SlideItem
-	public SlideItem getSlideItem(int number) {
-		return (SlideItem)items.elementAt(number);
-	}
-
-	// geef alle SlideItems in een Vector
-	public Vector<SlideItem> getSlideItems() {
-		return items;
-	}
-
-	// geef de afmeting van de Slide
-	public int getSize() {
-		return items.size();
-	}
-
-	public SlideDrawer getSlideDrawer() {
-		return slideDrawer;
+	@Override
+	public void draw(Graphics g, Rectangle area, ImageObserver view) {
+		float scale = getScale(area);
+		slideDrawer.draw(g, area, view, title, getSize() , displayableList, scale);
 	}
 }

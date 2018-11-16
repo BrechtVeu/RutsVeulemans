@@ -10,6 +10,6 @@ import java.io.IOException;
  *
  */
 public interface Format {
-	public void loadFile(Presentation p, String filename) throws IOException;
-	public void saveFile(Presentation p, String filename) throws IOException;
+	public void loadFile(Displayable p, String filename) throws IOException;
+	public void saveFile(Displayable p, String filename) throws IOException;
 }

@@ -3,6 +3,10 @@
  */
 package controller.command;
 
+import event.CommandEventManager;
+import event.PreviousSlideEvent;
+import event.SlideEvent;
+import model.Displayable;
 import model.Presentation;
 
 /**
@@ -10,14 +14,17 @@ import model.Presentation;
  *
  */
 public class PreviousSlideCommand implements Command {
-
-	private Presentation presentation;
+	
+	private CommandEventManager<SlideEvent> commandEventManager;
+	private SlideEvent eventObject;
 	
 	/**
 	 * 
 	 */
-	public PreviousSlideCommand(Presentation presentation) {
-		this.presentation = presentation;
+	public PreviousSlideCommand(Displayable presentation) {		
+		this.commandEventManager = new CommandEventManager<SlideEvent>();
+		this.commandEventManager.addListener(presentation);
+		this.eventObject = new PreviousSlideEvent(presentation);
 	}
 
 	/* (non-Javadoc)
@@ -25,7 +32,8 @@ public class PreviousSlideCommand implements Command {
 	 */
 	@Override
 	public void execute() {
-		this.presentation.prevSlide();
+		System.out.println("PrevSlideCommand - execute");
+		this.commandEventManager.fire(eventObject);
 	}
 
 }

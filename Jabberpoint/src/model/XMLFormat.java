@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Vector;
+import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -19,6 +19,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import jabberpoint.Values;
 import view.drawer.BitmapItemDrawerImpl;
 import view.drawer.SlideDrawerImpl;
 import view.drawer.TextItemDrawerImpl;
@@ -28,24 +29,6 @@ import view.drawer.TextItemDrawerImpl;
  *
  */
 public class XMLFormat implements Format {
-
-    /** Default API to use. */
-    protected static final String DEFAULT_API_TO_USE = "dom";
-    
-    /** namen van xml tags of attributen */
-    protected static final String SHOWTITLE = "showtitle";
-    protected static final String SLIDETITLE = "title";
-    protected static final String SLIDE = "slide";
-    protected static final String ITEM = "item";
-    protected static final String LEVEL = "level";
-    protected static final String KIND = "kind";
-    protected static final String TEXT = "text";
-    protected static final String IMAGE = "image";
-    
-    /** tekst van messages */
-    protected static final String PCE = "Parser Configuration Exception";
-    protected static final String UNKNOWNTYPE = "Unknown Element type";
-    protected static final String NFE = "Number Format Exception";
 	
 	/**
 	 * 
@@ -58,23 +41,23 @@ public class XMLFormat implements Format {
 	 * @see model.Format#loadFile(model.Presentation, java.lang.String)
 	 */
 	@Override
-	public void loadFile(Presentation p, String filename) throws IOException {
+	public void loadFile(Displayable p, String filename) throws IOException {
 		int slideNumber, itemNumber, max = 0, maxItems = 0;
 		try {
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();    
 			Document document = builder.parse(new File(filename)); // maak een JDOM document
 			Element doc = document.getDocumentElement();
-			p.setTitle(getTitle(doc, SHOWTITLE));
+			p.setTitle(getTitle(doc, Values.SHOWTITLE));
 
-			NodeList slides = doc.getElementsByTagName(SLIDE);
+			NodeList slides = doc.getElementsByTagName(Values.SLIDE);
 			max = slides.getLength();
 			for (slideNumber = 0; slideNumber < max; slideNumber++) {
 				Element xmlSlide = (Element) slides.item(slideNumber);
 				Slide slide = new Slide(new SlideDrawerImpl());
-				slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
+				slide.setTitle(getTitle(xmlSlide, Values.SLIDETITLE));
 				p.append(slide);
 				
-				NodeList slideItems = xmlSlide.getElementsByTagName(ITEM);
+				NodeList slideItems = xmlSlide.getElementsByTagName(Values.ITEM);
 				maxItems = slideItems.getLength();
 				for (itemNumber = 0; itemNumber < maxItems; itemNumber++) {
 					Element item = (Element) slideItems.item(itemNumber);
@@ -89,32 +72,32 @@ public class XMLFormat implements Format {
 			System.err.println(sax.getMessage());
 		}
 		catch (ParserConfigurationException pcx) {
-			System.err.println(PCE);
+			System.err.println(Values.PCE);
 		}
 	}
 	
 	protected void loadSlideItem(Slide slide, Element item) {
 		int level = 1; // default
 		NamedNodeMap attributes = item.getAttributes();
-		String leveltext = attributes.getNamedItem(LEVEL).getTextContent();
+		String leveltext = attributes.getNamedItem(Values.LEVEL).getTextContent();
 		if (leveltext != null) {
 			try {
 				level = Integer.parseInt(leveltext);
 			}
 			catch(NumberFormatException x) {
-				System.err.println(NFE);
+				System.err.println(Values.NFE);
 			}
 		}
-		String type = attributes.getNamedItem(KIND).getTextContent();
-		if (TEXT.equals(type)) {
-			slide.append(new TextItem(level, item.getTextContent(), new TextItemDrawerImpl()));
+		String type = attributes.getNamedItem(Values.KIND).getTextContent();
+		if (Values.TEXT.equals(type)) {
+			slide.append(new TextItem(level, item.getTextContent(),new TextItemDrawerImpl()));
 		}
 		else {
-			if (IMAGE.equals(type)) {
-				slide.append(new BitmapItem(level, item.getTextContent(), new BitmapItemDrawerImpl()));
+			if (Values.IMAGE.equals(type)) {
+				slide.append(new BitmapItem(level, item.getTextContent(),new BitmapItemDrawerImpl()));
 			}
 			else {
-				System.err.println(UNKNOWNTYPE);
+				System.err.println(Values.UNKNOWNTYPE);
 			}
 		}
 	}
@@ -129,7 +112,7 @@ public class XMLFormat implements Format {
 	 * @see model.Format#saveFile(model.Presentation)
 	 */
 	@Override
-	public void saveFile(Presentation p, String filename) throws IOException {
+	public void saveFile(Displayable p, String filename) throws IOException {
 		PrintWriter out = new PrintWriter(new FileWriter(filename));
 		out.println("<?xml version=\"1.0\"?>");
 		out.println("<!DOCTYPE presentation SYSTEM \"jabberpoint.dtd\">");
@@ -138,12 +121,12 @@ public class XMLFormat implements Format {
 		out.print(p.getTitle());
 		out.println("</showtitle>");
 		for (int slideNumber=0; slideNumber<p.getSize(); slideNumber++) {
-			Slide slide = p.getSlide(slideNumber);
+			Displayable slide = p.getDisplayableItem(slideNumber);
 			out.println("<slide>");
 			out.println("<title>" + slide.getTitle() + "</title>");
-			Vector<SlideItem> slideItems = slide.getSlideItems();
+			ArrayList<Displayable> slideItems = slide.getDisplayableItems();
 			for (int itemNumber = 0; itemNumber<slideItems.size(); itemNumber++) {
-				SlideItem slideItem = (SlideItem) slideItems.elementAt(itemNumber);
+				SlideItem slideItem = (SlideItem) slideItems.get(itemNumber);
 				out.print("<item kind="); 
 				if (slideItem instanceof TextItem) {
 					out.print("\"text\" level=\"" + slideItem.getLevel() + "\">");

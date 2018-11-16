@@ -3,21 +3,26 @@
  */
 package controller.command;
 
-import model.Presentation;
+import event.CommandEventManager;
+import event.NextSlideEvent;
+import event.SlideEvent;
+import model.Displayable;
 
 /**
  * @author Dominique
  *
  */
 public class NextSlideCommand implements Command {
-
-	private Presentation presentation;
+	private CommandEventManager<SlideEvent> commandEventManager;
+	private SlideEvent eventObject;
 	
 	/**
 	 * 
 	 */
-	public NextSlideCommand(Presentation presentation) {
-		this.presentation = presentation;
+	public NextSlideCommand(Displayable presentation) {
+		this.commandEventManager = new CommandEventManager<SlideEvent>();
+		this.commandEventManager.addListener(presentation);
+		this.eventObject = new NextSlideEvent(presentation);
 	}
 
 	/* (non-Javadoc)
@@ -25,7 +30,7 @@ public class NextSlideCommand implements Command {
 	 */
 	@Override
 	public void execute() {
-		this.presentation.nextSlide();
+		System.out.println("NextSlideCommand - execute");
+		this.commandEventManager.fire(eventObject);
 	}
-
 }

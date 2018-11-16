@@ -16,7 +16,7 @@ import view.Style;
  * @version 1.6 2014/05/16 Sylvia Stuurman
 */
 
-public abstract class SlideItem {
+public abstract class SlideItem extends Displayable{
 	private int level = 0; // het level van het slideitem
 	public SlideItem(int lev) {
 		level = lev;
@@ -27,10 +27,9 @@ public abstract class SlideItem {
 		return level;
 	}
 	
-	public abstract void draw(int x, int y, float scale, 
-			Graphics g, Style style, ImageObserver observer);
-	
-	public abstract Rectangle getBoundingBox(Graphics g, 
-			ImageObserver observer, float scale, Style style);
+	protected Style getStyle(int level){
+		Style style = Style.getStyle(level);
+		return style;
+	}
 
 }

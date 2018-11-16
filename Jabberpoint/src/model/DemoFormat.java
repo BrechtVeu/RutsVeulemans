@@ -5,69 +5,66 @@ package model;
 
 import java.io.IOException;
 
-import view.drawer.BitmapItemDrawerImpl;
-import view.drawer.SlideDrawerImpl;
+import factory.DisplayableBuilder;
+import factory.DisplayableBuilderImpl;
 
 /**
  * @author Dominique
  *
  */
 public class DemoFormat implements Format {
+	
+	DisplayableBuilder builder;
 
 	/**
 	 * 
 	 */
 	public DemoFormat() {
-		// TODO Auto-generated constructor stub
+		 builder = new DisplayableBuilderImpl();
 	}
 
 	/* (non-Javadoc)
 	 * @see model.Format#loadFile(model.Presentation, java.lang.String)
 	 */
 	@Override
-	public void loadFile(Presentation p, String unusedFilename) throws IOException {
-		p.setTitle("Demo Presentation");
-		Slide slide;
-		slide = new Slide(new SlideDrawerImpl());
-		slide.setTitle("JabberPoint");
-		slide.append(1, "Het Java Presentatie Tool");
-		slide.append(2, "Copyright (c) 1996-2000: Ian Darwin");
-		slide.append(2, "Copyright (c) 2000-now:");
-		slide.append(2, "Gert Florijn en Sylvia Stuurman");
-		slide.append(4, "JabberPoint aanroepen zonder bestandsnaam");
-		slide.append(4, "laat deze presentatie zien");
-		slide.append(1, "Navigeren:");
-		slide.append(3, "Volgende slide: PgDn of Enter");
-		slide.append(3, "Vorige slide: PgUp of up-arrow");
-		slide.append(3, "Stoppen: q or Q");
-		p.append(slide);
-
-		slide = new Slide(new SlideDrawerImpl());
-		slide.setTitle("Demonstratie van levels en stijlen");
-		slide.append(1, "Level 1");
-		slide.append(2, "Level 2");
-		slide.append(1, "Nogmaals level 1");
-		slide.append(1, "Level 1 heeft stijl nummer 1");
-		slide.append(2, "Level 2 heeft stijl nummer 2");
-		slide.append(3, "Zo ziet level 3 er uit");
-		slide.append(4, "En dit is level 4");
-		p.append(slide);
-
-		slide = new Slide(new SlideDrawerImpl());
-		slide.setTitle("De derde slide");
-		slide.append(1, "Om een nieuwe presentatie te openen,");
-		slide.append(2, "gebruik File->Open uit het menu.");
-		slide.append(1, " ");
-		slide.append(1, "Dit is het einde van de presentatie.");
-		slide.append(new BitmapItem(1, "JabberPoint.jpg", new BitmapItemDrawerImpl()));
-		p.append(slide);
+	public void loadFile(Displayable presentation, String unusedFilename) throws IOException {
+		presentation.setTitle("Demo Presentation");
+		builder.makePresentation(presentation)
+				.addSlide("JabberPoint")
+				.addTextItem(1, "Het Java Presentatie Tool")
+				.addTextItem(2, "Copyright (c) 1996-2000: Ian Darwin")
+				.addTextItem(2, "Copyright (c) 2000-now:")
+				.addTextItem(2, "Gert Florijn en Sylvia Stuurman")				
+				.addTextItem(4, "JabberPoint aanroepen zonder bestandsnaam")
+				.addTextItem(4, "laat deze presentatie zien")
+				.addTextItem(1, "Navigeren:")
+				.addTextItem(3, "Volgende slide: PgDn of Enter")
+				.addTextItem(3, "Vorige slide: PgUp of up-arrow")
+				.addTextItem(3, "Stoppen: q or Q")
+				.addSlide("Demonstratie van levels en stijlen")
+				.addTextItem(1, "Level 1")
+				.addTextItem(2, "Level 2")
+				.addTextItem(1, "Nogmaals level 1")
+				.addTextItem(1, "Level 1 heeft stijl nummer 1")				
+				.addTextItem(2, "Level 2 heeft stijl nummer 2")
+				.addTextItem(3, "Zo ziet level 3 er uit")
+				.addTextItem(4, "En dit is level 4")
+				.addSlide("De derde slide")
+				.addTextItem(1, "Om een nieuwe presentatie te openen,")
+				.addTextItem(2, "gebruik File->Open uit het menu.")
+				.addTextItem(1, " ")
+				.addTextItem(1, "Dit is het einde van de presentatie.")				
+				.addBitmapItem(2, "JabberPoint.jpg")
+				;
+		
+		builder.build();
 	}
 
 	/* (non-Javadoc)
 	 * @see model.Format#saveFile(model.Presentation)
 	 */
 	@Override
-	public void saveFile(Presentation p, String unusedFilename) throws IOException {
+	public void saveFile(Displayable p, String unusedFilename) throws IOException {
 		throw new IllegalStateException("Save As->Demo! aangeroepen");
 	}
 

@@ -3,29 +3,28 @@
  */
 package controller.command;
 
-import javax.swing.JOptionPane;
-
+import event.ChangeSlideThemeEvent;
 import event.CommandEventManager;
-import event.GotoSlideEvent;
 import event.SlideEvent;
-import jabberpoint.Values;
 import model.Displayable;
 
 /**
  * @author Dominique
  *
  */
-public class GotoSlideCommand implements Command {
+public class ChangeThemeCommand implements Command {
 	private CommandEventManager<SlideEvent> commandEventManager;
 	private SlideEvent eventObject;
-			
+	private String theme;
+	
 	/**
 	 * 
 	 */
-	public GotoSlideCommand(Displayable presentation) {
+	public ChangeThemeCommand(Displayable presentation, String theme) {
 		this.commandEventManager = new CommandEventManager<SlideEvent>();
 		this.commandEventManager.addListener(presentation);
-		this.eventObject = new GotoSlideEvent(presentation);
+		this.eventObject = new ChangeSlideThemeEvent(presentation);
+		this.theme = theme;
 	}
 
 	/* (non-Javadoc)
@@ -33,10 +32,9 @@ public class GotoSlideCommand implements Command {
 	 */
 	@Override
 	public void execute() {
-		String pageNumberStr = JOptionPane.showInputDialog((Object)Values.PAGENR);
-		int pageNumber = Integer.parseInt(pageNumberStr);
+		System.out.println("ChangeThemeCommand - execute");
 		
-		this.eventObject.setSlideNumber(pageNumber);
+		this.eventObject.setTheme(this.theme);
 		this.commandEventManager.fire(eventObject);
 	}
 

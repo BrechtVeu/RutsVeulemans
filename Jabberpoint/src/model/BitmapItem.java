@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import view.Style;
+import jabberpoint.Values;
 import view.drawer.BitmapItemDrawer;
 
 
@@ -27,9 +27,6 @@ public class BitmapItem extends SlideItem {
   private BufferedImage bufferedImage;
   private String imageName;
   private BitmapItemDrawer bitmapItemDrawer;
-  
-  protected static final String FILE = "Bestand ";
-  protected static final String NOTFOUND = " niet gevonden";
 
 // level staat voor het item-level; name voor de naam van het bestand met de afbeelding
 	public BitmapItem(int level, String name, BitmapItemDrawer bitmapItemDrawer) {
@@ -40,7 +37,7 @@ public class BitmapItem extends SlideItem {
 			bufferedImage = ImageIO.read(new File(imageName));
 		}
 		catch (IOException e) {
-			System.err.println(FILE + imageName + NOTFOUND) ;
+			System.err.println(Values.FILE + imageName + Values.NOTFOUND) ;
 		}
 	}
 
@@ -61,13 +58,14 @@ public class BitmapItem extends SlideItem {
 	}
 
 	@Override
-	public void draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer) {
-		bitmapItemDrawer.draw(x, y, scale, g, style, observer, bufferedImage);
-		
+	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale) {
+		return bitmapItemDrawer.getBoundingBox(g, observer, scale, this.getStyle(super.getLevel()), bufferedImage);
 	}
 
 	@Override
-	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style style) {
-		return bitmapItemDrawer.getBoundingBox(g, observer, scale, style, bufferedImage);
+	public void draw(Graphics g, Rectangle area, ImageObserver observer) {
+		// TODO Auto-generated method stub
+		float scale = getScale(area);
+		bitmapItemDrawer.draw(area.x, area.y, scale, g, this.getStyle(super.getLevel()), observer, bufferedImage);
 	}
 }
