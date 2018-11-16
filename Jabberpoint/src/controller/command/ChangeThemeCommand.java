@@ -3,9 +3,8 @@
  */
 package controller.command;
 
-
+import event.ChangeSlideThemeEvent;
 import event.CommandEventManager;
-import event.NextSlideEvent;
 import event.SlideEvent;
 import model.Displayable;
 
@@ -13,17 +12,19 @@ import model.Displayable;
  * @author Dominique
  *
  */
-public class NextSlideCommand implements Command {
+public class ChangeThemeCommand implements Command {
 	private CommandEventManager<SlideEvent> commandEventManager;
 	private SlideEvent eventObject;
+	private String theme;
 	
 	/**
 	 * 
 	 */
-	public NextSlideCommand(Displayable presentation) {
+	public ChangeThemeCommand(Displayable presentation, String theme) {
 		this.commandEventManager = new CommandEventManager<SlideEvent>();
 		this.commandEventManager.addListener(presentation);
-		this.eventObject = new NextSlideEvent(presentation);
+		this.eventObject = new ChangeSlideThemeEvent(presentation);
+		this.theme = theme;
 	}
 
 	/* (non-Javadoc)
@@ -31,7 +32,10 @@ public class NextSlideCommand implements Command {
 	 */
 	@Override
 	public void execute() {
-		System.out.println("NextSlideCommand - execute");
+		System.out.println("ChangeThemeCommand - execute");
+		
+		this.eventObject.setTheme(this.theme);
 		this.commandEventManager.fire(eventObject);
 	}
+
 }

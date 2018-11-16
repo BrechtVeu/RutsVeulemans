@@ -5,6 +5,9 @@ package model;
 
 import java.io.IOException;
 
+import factory.FormatFactory;
+import factory.FormatFactoryImpl;
+
 /**
  * @author Dominique
  *
@@ -20,12 +23,8 @@ public class ReaderImpl implements Reader {
 
 	@Override
 	public void loadFile(Displayable p, String filename) throws IOException {
-		Format format;
-		if (filename.isEmpty() || filename.length() == 0) { // een demo presentatie
-			format = new DemoFormat();
-		} else {
-			format = new XMLFormat();
-		}
+		FormatFactory formatFactory = new FormatFactoryImpl();
+		Format format = formatFactory.makeFileFormat(filename);
 		format.loadFile(p, filename);
 	}
 

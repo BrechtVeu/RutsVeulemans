@@ -4,12 +4,18 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
-
 import jabberpoint.Values;
 import view.SlideViewerComponent;
 import view.theme.Theme;
+import event.CommandEventListener;
+import event.NextSlideEvent;
+import event.OpenPresentationEvent;
+import event.PreviousSlideEvent;
+import event.RepaintEvent;
+import event.SlideEvent;
+import event.GotoSlideEvent;
 
-public abstract class Displayable implements Observable {
+public abstract class Displayable implements Observable, CommandEventListener<SlideEvent> {
 	
 	protected ArrayList<Displayable> displayableList = new ArrayList<Displayable>(); // een ArrayList voor Displayables
 
@@ -102,5 +108,31 @@ public abstract class Displayable implements Observable {
 	public Theme getTheme(){return theme;}
 	public void setTheme(Theme theme){this.theme = theme;}
 
-	
+
+	@Override
+	public void eventTriggered(SlideEvent event) {
+		if(event instanceof NextSlideEvent){
+			this.nextSlide();
+			System.out.println("Displayble - eventTriggered - Source:"+event.getSource());
+			System.out.println("Displayble - instance of NextSlideEvent");
+		} else if (event instanceof PreviousSlideEvent) {
+			this.prevSlide();
+			System.out.println("Displayble - eventTriggered - Source:"+event.getSource());
+			System.out.println("Displayble - instance of PreviousSlideEvent");
+		} else if (event instanceof GotoSlideEvent) {
+			this.setSlideNumber(event.getSlideNumber() - 1);
+			System.out.println("Displayble - eventTriggered - Source:"+event.getSource());
+			System.out.println("Displayble - instance of GotoSlideEvent");
+		} else if (event instanceof RepaintEvent) {
+			this.clear();
+			System.out.println("Displayble - eventTriggered - Source:"+event.getSource());
+			System.out.println("Displayble - instance of RepaintEvent");
+		} else if (event instanceof OpenPresentationEvent) {
+			this.setSlideNumber(0);
+			System.out.println("Displayble - eventTriggered - Source:"+event.getSource());
+			System.out.println("Displayble - instance of OpenPresentationEvent");
+		}	else {
+			System.out.println("Displayble - not sure which instance");
+		}
+	}
 }

@@ -3,8 +3,9 @@
  */
 package controller.command;
 
-import java.awt.Frame;
-
+import event.CommandEventManager;
+import event.RepaintEvent;
+import event.SlideEvent;
 import model.Displayable;
 
 /**
@@ -13,17 +14,17 @@ import model.Displayable;
  */
 public class NewPresentationCommand implements Command {
 
-	private Frame slideViewerFrame;
-	private Displayable presentation;
-
-	public NewPresentationCommand(Frame slideViewerFrame, Displayable presentation) {
-		this.slideViewerFrame = slideViewerFrame;
-		this.presentation = presentation;
+	private CommandEventManager<SlideEvent> frameCommandEventManager;
+	private SlideEvent eventObject;
+	
+	public NewPresentationCommand(Displayable presentation) {
+		this.frameCommandEventManager = new CommandEventManager<SlideEvent>();
+		this.frameCommandEventManager.addListener(presentation);
+		this.eventObject = new RepaintEvent(presentation);
 	}
 	
 	@Override
 	public void execute() {
-		this.presentation.clear();
-		this.slideViewerFrame.repaint();
+		frameCommandEventManager.fire(eventObject);
 	}
 }

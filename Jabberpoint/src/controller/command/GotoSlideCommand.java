@@ -5,6 +5,10 @@ package controller.command;
 
 import javax.swing.JOptionPane;
 
+import event.CommandEventManager;
+import event.GotoSlideEvent;
+import event.SlideEvent;
+import jabberpoint.Values;
 import model.Displayable;
 
 /**
@@ -12,16 +16,15 @@ import model.Displayable;
  *
  */
 public class GotoSlideCommand implements Command {
-	
-	protected static final String PAGENR = "Page number?";
-	
-	private Displayable presentation;
-	
+	private CommandEventManager<SlideEvent> commandEventManager;
+	private SlideEvent eventObject;
 	/**
 	 * 
 	 */
 	public GotoSlideCommand(Displayable presentation) {
-		this.presentation = presentation;
+		this.commandEventManager = new CommandEventManager<SlideEvent>();
+		this.commandEventManager.addListener(presentation);
+		this.eventObject = new GotoSlideEvent(presentation);
 	}
 
 	/* (non-Javadoc)
@@ -29,9 +32,11 @@ public class GotoSlideCommand implements Command {
 	 */
 	@Override
 	public void execute() {
-		String pageNumberStr = JOptionPane.showInputDialog((Object)PAGENR);
+		String pageNumberStr = JOptionPane.showInputDialog((Object)Values.PAGENR);
 		int pageNumber = Integer.parseInt(pageNumberStr);
-		presentation.setSlideNumber(pageNumber - 1);
+		
+		this.eventObject.setSlideNumber(pageNumber);
+		this.commandEventManager.fire(eventObject);
 	}
 
 }

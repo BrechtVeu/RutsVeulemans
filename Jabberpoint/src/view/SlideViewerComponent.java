@@ -33,8 +33,6 @@ public class SlideViewerComponent extends JComponent implements Observer {
 	private Displayable presentation = null; // de presentatie
 	private JFrame frame = null;
 	
-	
-
 	public SlideViewerComponent(Displayable pres, JFrame frame) {
 		setBackground(Values.BGCOLOR);
 		presentation = pres;

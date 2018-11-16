@@ -23,7 +23,6 @@ public class DemoFormat implements Format {
 	 * 
 	 */
 	public DemoFormat() {
-		// TODO Auto-generated constructor stub
 		 builder = new DisplayableBuilderImpl();
 	}
 

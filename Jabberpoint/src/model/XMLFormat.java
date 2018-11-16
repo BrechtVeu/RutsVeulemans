@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Vector;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -26,6 +25,7 @@ import view.drawer.BitmapItemDrawerImpl;
 import view.drawer.SlideDrawerImpl;
 import view.drawer.TextItemDrawerImpl;
 
+import jabberpoint.Values;
 import view.drawer.BitmapItemDrawerImpl;
 import view.drawer.SlideDrawerImpl;
 import view.drawer.TextItemDrawerImpl;
@@ -36,23 +36,7 @@ import view.drawer.TextItemDrawerImpl;
  */
 public class XMLFormat implements Format {
 
-    /** Default API to use. */
-    protected static final String DEFAULT_API_TO_USE = "dom";
-    
-    /** namen van xml tags of attributen */
-    protected static final String SHOWTITLE = "showtitle";
-    protected static final String SLIDETITLE = "title";
-    protected static final String SLIDE = "slide";
-    protected static final String ITEM = "item";
-    protected static final String LEVEL = "level";
-    protected static final String KIND = "kind";
-    protected static final String TEXT = "text";
-    protected static final String IMAGE = "image";
-    
-    /** tekst van messages */
-    protected static final String PCE = "Parser Configuration Exception";
-    protected static final String UNKNOWNTYPE = "Unknown Element type";
-    protected static final String NFE = "Number Format Exception";
+   
     
     DisplayableBuilder presentationBuilder; 
 	
@@ -73,17 +57,17 @@ public class XMLFormat implements Format {
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();    
 			Document document = builder.parse(new File(filename)); // maak een JDOM document
 			Element doc = document.getDocumentElement();
-			p.setTitle(getTitle(doc, SHOWTITLE));
+			p.setTitle(getTitle(doc, Values.SHOWTITLE));
 			
 			presentationBuilder.setPresentation(p);	
 
-			NodeList slides = doc.getElementsByTagName(SLIDE);
+			NodeList slides = doc.getElementsByTagName(Values.SLIDE);
 			max = slides.getLength();
 			for (slideNumber = 0; slideNumber < max; slideNumber++) {
 				Element xmlSlide = (Element) slides.item(slideNumber);
-				presentationBuilder.addSlide(getTitle(xmlSlide, SLIDETITLE));
+				presentationBuilder.addSlide(getTitle(xmlSlide, Values.SLIDETITLE));
 				
-				NodeList slideItems = xmlSlide.getElementsByTagName(ITEM);
+				NodeList slideItems = xmlSlide.getElementsByTagName(Values.ITEM);
 				maxItems = slideItems.getLength();
 				for (itemNumber = 0; itemNumber < maxItems; itemNumber++) {
 					Element item = (Element) slideItems.item(itemNumber);
@@ -98,33 +82,33 @@ public class XMLFormat implements Format {
 			System.err.println(sax.getMessage());
 		}
 		catch (ParserConfigurationException pcx) {
-			System.err.println(PCE);
+			System.err.println(Values.PCE);
 		}
 	}
 	
 	private void loadSlideItem(Element item){
 		int level = 1; // default
 		NamedNodeMap attributes = item.getAttributes();
-		String leveltext = attributes.getNamedItem(LEVEL).getTextContent();
+		String leveltext = attributes.getNamedItem(Values.LEVEL).getTextContent();
 		if (leveltext != null) {
 			try {
 				level = Integer.parseInt(leveltext);
 			}
 			catch(NumberFormatException x) {
-				System.err.println(NFE);
+				System.err.println(Values.NFE);
 			}
 		}
-		String type = attributes.getNamedItem(KIND).getTextContent();
+		String type = attributes.getNamedItem(Values.KIND).getTextContent();
 		
-		if (TEXT.equals(type)) {
+		if (Values.TEXT.equals(type)) {
 			presentationBuilder.addTextItem(level, item.getTextContent());
 		}
 		else {
-			if (IMAGE.equals(type)) {
+			if (Values.IMAGE.equals(type)) {
 				presentationBuilder.addBitmapItem(level, item.getTextContent());
 			}
 			else {
-				System.err.println(UNKNOWNTYPE);
+				System.err.println(Values.UNKNOWNTYPE);
 			}
 		}	
 	}
