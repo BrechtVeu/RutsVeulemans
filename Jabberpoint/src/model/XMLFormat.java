@@ -26,6 +26,10 @@ import view.drawer.BitmapItemDrawerImpl;
 import view.drawer.SlideDrawerImpl;
 import view.drawer.TextItemDrawerImpl;
 
+import view.drawer.BitmapItemDrawerImpl;
+import view.drawer.SlideDrawerImpl;
+import view.drawer.TextItemDrawerImpl;
+
 /**
  * @author Dominique
  *
@@ -77,7 +81,6 @@ public class XMLFormat implements Format {
 			max = slides.getLength();
 			for (slideNumber = 0; slideNumber < max; slideNumber++) {
 				Element xmlSlide = (Element) slides.item(slideNumber);
-				
 				presentationBuilder.addSlide(getTitle(xmlSlide, SLIDETITLE));
 				
 				NodeList slideItems = xmlSlide.getElementsByTagName(ITEM);
