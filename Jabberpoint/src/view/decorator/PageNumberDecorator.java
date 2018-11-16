@@ -8,6 +8,7 @@ import java.awt.image.ImageObserver;
 
 import jabberpoint.Values;
 import model.Displayable;
+import view.theme.SlideStyle;
 import view.theme.Theme;
 
 public class PageNumberDecorator extends DisplayableDecorator{
@@ -17,14 +18,15 @@ public class PageNumberDecorator extends DisplayableDecorator{
 	}
 
 	@Override
-	public void decorate(Graphics g, Rectangle area, ImageObserver view, Theme theme, Displayable presentation) {	
-		draw(g, theme, presentation);
-		displayable.decorate(g, area, view, theme, presentation);
+	public void decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation) {	
+		draw(g, presentation);
+		displayable.decorate(g, area, view, presentation);
 	}
 
-	private void draw(Graphics g, Theme theme, Displayable presentation){
-		Font labelFont = presentation.getTheme().getSlideStyle().getFont();
-		Color labelFontColor = presentation.getTheme().getSlideStyle().getLabelFontColor();
+	private void draw(Graphics g, Displayable presentation){
+		SlideStyle style = getCorrectStyle(presentation);
+		Font labelFont = style.getFont();
+		Color labelFontColor = style.getLabelFontColor();
 		g.setFont(labelFont);
 		g.setColor(labelFontColor);
 		g.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " +

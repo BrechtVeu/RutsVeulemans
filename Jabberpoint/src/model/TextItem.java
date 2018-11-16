@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
 import view.drawer.TextItemDrawer;
+import view.theme.SlideItemStyle;
 import view.theme.Style;
 import view.theme.Theme;
 
@@ -43,18 +44,18 @@ public class TextItem extends SlideItem {
 	
 
 	@Override
-	public void draw(Graphics g, Rectangle area, ImageObserver observer, Theme theme) {
+	public void draw(Graphics g, Rectangle area, ImageObserver observer, SlideItemStyle slideItemstyle) {
 		// TODO Auto-generated method stub
 		if (text == null || text.length() == 0) {
 			return;
 		}
 		float scale = getScale(area);		
-		textItemDrawer.draw(area.x, area.y, scale, g, getStyle(theme), observer, text);
+		textItemDrawer.draw(area.x, area.y, scale, g, getStyle(slideItemstyle), observer, text);
 		
 	}
 
 	@Override
-	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Theme theme) {		
-		return textItemDrawer.getBoundingBox(g, observer, scale, getStyle(theme), text);
+	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, SlideItemStyle slideItemstyle) {		
+		return textItemDrawer.getBoundingBox(g, observer, scale, getStyle(slideItemstyle), text);
 	}
 }

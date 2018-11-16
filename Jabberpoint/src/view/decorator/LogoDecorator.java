@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
 import model.Displayable;
+import view.theme.SlideStyle;
 import view.theme.Theme;
 
 public class LogoDecorator extends DisplayableDecorator{
@@ -14,12 +15,12 @@ public class LogoDecorator extends DisplayableDecorator{
 	}
 
 	@Override
-	public void decorate(Graphics g, Rectangle area, ImageObserver view, Theme theme, Displayable presentation) {
-		draw();
-		displayable.decorate(g, area, view, theme, presentation);
+	public void decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation) {
+		draw(presentation);
+		displayable.decorate(g, area, view, presentation);
 	}
 	
-	private void draw(){
-		
+	private void draw(Displayable presentation){
+		SlideStyle style = getCorrectStyle(presentation);
 	}
 }

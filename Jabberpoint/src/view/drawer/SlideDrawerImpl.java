@@ -9,23 +9,24 @@ import java.util.Vector;
 import jabberpoint.Values;
 import model.Displayable;
 import model.SlideItem;
+import view.theme.SlideItemStyle;
 import view.theme.Theme;
 
 public class SlideDrawerImpl implements SlideDrawer{
 	@Override
 	public void draw(Graphics g, Rectangle area, ImageObserver view, Displayable title, int size,
-			ArrayList<Displayable> slideItems, float scale, Theme theme) {
+			ArrayList<Displayable> slideItems, float scale, SlideItemStyle slideItemstyle) {
 	    int y = area.y;
 		/* De titel hoeft niet meer apart behandeld te worden */
 	    Displayable slideItem = title;
 	    slideItem.getLevel();
-	    slideItem.draw(g, area, view, theme);
-	    y += slideItem.getBoundingBox(g, view, scale, theme).height;
+	    slideItem.draw(g, area, view, slideItemstyle);
+	    y += slideItem.getBoundingBox(g, view, scale, slideItemstyle).height;
 	    for (int number=0; number<size; number++) {
 	      slideItem = slideItems.get(number);
 	      area = new Rectangle(area.x, y, area.width, area.height) ;
-	      slideItem.draw(g, area, view, theme);
-	      y += slideItem.getBoundingBox(g, view, scale, theme).height;
+	      slideItem.draw(g, area, view, slideItemstyle);
+	      y += slideItem.getBoundingBox(g, view, scale, slideItemstyle).height;
 	    }
 	  }	
 }

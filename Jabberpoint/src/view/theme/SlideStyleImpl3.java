@@ -8,12 +8,12 @@ import factory.SlideDecoratorBuilderImpl;
 import jabberpoint.Values;
 import model.Displayable;
 
-public class SlideStyleImpl2 extends SlideStyle{
+public class SlideStyleImpl3 extends SlideStyle{
 
-	public SlideStyleImpl2(){
-		this.backgroundColor = Color.green;
+	public SlideStyleImpl3(){
+		this.backgroundColor = Color.red;
 		this.labelFont = new Font("Arial", Values.FONTSTYLE, Values.FONTHEIGHT);
-		this.labelFontColor = Color.blue;
+		this.labelFontColor = Color.pink;
 	}
 
 	@Override

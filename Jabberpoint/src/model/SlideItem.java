@@ -30,8 +30,8 @@ public abstract class SlideItem extends Displayable{
 		return level;
 	}
 		
-	protected Style getStyle(Theme theme){
-		return theme.getSlideItemStyle().getStyle(level);
+	protected Style getStyle(SlideItemStyle slideItemstyle){
+		return slideItemstyle.getStyle(level);
 	}
 
 }

@@ -1,5 +1,9 @@
 package view.theme;
 
+import factory.SlideDecoratorBuilder;
+import factory.SlideDecoratorBuilderImpl;
+import model.Displayable;
+
 public class ThemeImpl implements Theme {
 	SlideStyle slideStyle;
 	SlideItemStyle slideItemStyle;
@@ -10,25 +14,27 @@ public class ThemeImpl implements Theme {
 			SlideStyle slideStyleOthers, SlideItemStyle slideItemStyleOthers){
 		this.slideStyle = slideStyle;
 		this.slideItemStyle = slideItemStyle;
-		this.slideStyle = slideStyleOthers;
-		this.slideItemStyle = slideItemStyleOthers;
+		this.slideStyleOthers = slideStyleOthers;
+		this.slideItemStyleOthers = slideItemStyleOthers;
 	}
 
+	@Override
 	public SlideStyle getSlideStyle() {
 		return slideStyle;
 	}
 
-	public void setSlideStyle(SlideStyle slideStyle) {
-		this.slideStyle = slideStyle;
-	}
-
+	@Override
 	public SlideItemStyle getSlideItemStyle() {
 		return slideItemStyle;
 	}
 
-	public void setSlideItemStyle(SlideItemStyle slideItemStyle) {
-		this.slideItemStyle = slideItemStyle;
+	@Override
+	public SlideStyle getSlideStyleOthers() {
+		return slideStyleOthers;
 	}
-	
-	
+
+	@Override
+	public SlideItemStyle getSlideItemStyleOthers() {
+		return slideItemStyleOthers;
+	}	
 }

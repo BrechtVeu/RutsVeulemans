@@ -1,9 +1,11 @@
 package view.theme;
 
+import model.Displayable;
+
 public interface Theme {	
 	public SlideStyle getSlideStyle();
-	public void setSlideStyle(SlideStyle slideStyle);
 	public SlideItemStyle getSlideItemStyle();
-	public void setSlideItemStyle(SlideItemStyle slideItemStyle);
+	public SlideStyle getSlideStyleOthers();
+	public SlideItemStyle getSlideItemStyleOthers();
 		
 }

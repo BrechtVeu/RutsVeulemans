@@ -3,23 +3,20 @@ package view.theme;
 import java.awt.Color;
 import java.awt.Font;
 
+import factory.SlideDecoratorBuilder;
+import factory.SlideDecoratorBuilderImpl;
 import jabberpoint.Values;
+import model.Displayable;
 
 public class SlideStyleImpl1 extends SlideStyle{
 
 	//TODO values fontstyle en fontheight variabel per theme
 	public SlideStyleImpl1(){
-		this.backgroundColor = Color.blue;
+		this.backgroundColor = Color.white;
 		this.labelFont = new Font("Helvetica", Values.FONTSTYLE, Values.FONTHEIGHT);
-		this.labelFontColor = Color.red;
+		this.labelFontColor = Color.black;
 	}
 	
-	@Override
-	public void setLogo() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@Override
 	public Color getBackgroundColor() {
 		return backgroundColor;
@@ -34,6 +31,17 @@ public class SlideStyleImpl1 extends SlideStyle{
 	@Override
 	public Color getLabelFontColor() {
 		return labelFontColor;
+	}
+	
+	@Override
+	public Displayable wrapDecorator(Displayable slide) {
+		SlideDecoratorBuilder slideDecoratorBuilder = new SlideDecoratorBuilderImpl();
+		return slideDecoratorBuilder
+				.setDisplayable(slide)				
+				.addLogo()
+				.addPageNumber()
+				.addBackground()
+				.build();
 	}
 
 }

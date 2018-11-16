@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 
 import jabberpoint.Values;
 import view.drawer.BitmapItemDrawer;
+import view.theme.SlideItemStyle;
 import view.theme.Theme;
 
 
@@ -53,14 +54,14 @@ public class BitmapItem extends SlideItem {
 	}
 
 	@Override
-	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Theme theme) {
-		return bitmapItemDrawer.getBoundingBox(g, observer, scale, getStyle(theme), bufferedImage);
+	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, SlideItemStyle slideItemstyle) {
+		return bitmapItemDrawer.getBoundingBox(g, observer, scale, getStyle(slideItemstyle), bufferedImage);
 	}
 
 	@Override
-	public void draw(Graphics g, Rectangle area, ImageObserver observer, Theme theme) {
+	public void draw(Graphics g, Rectangle area, ImageObserver observer, SlideItemStyle slideItemstyle) {
 		// TODO Auto-generated method stub
 		float scale = getScale(area);
-		bitmapItemDrawer.draw(area.x, area.y, scale, g, getStyle(theme), observer, bufferedImage);
+		bitmapItemDrawer.draw(area.x, area.y, scale, g, getStyle(slideItemstyle), observer, bufferedImage);
 	}
 }

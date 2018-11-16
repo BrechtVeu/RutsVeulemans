@@ -56,9 +56,7 @@ public class SlideViewerComponent extends JComponent implements Observer {
 	}
 
 // teken de slide
-	public void paintComponent(Graphics g) {
-		
-		
+	public void paintComponent(Graphics g) {	
 		if (presentation.getSlideNumber() < 0 || slide == null) {
 			return;
 		}
@@ -67,7 +65,11 @@ public class SlideViewerComponent extends JComponent implements Observer {
 		//Rectangle area = new Rectangle(0, Values.YPOS, getWidth(), (getHeight() - Values.YPOS));
 		Rectangle area = new Rectangle(0, Values.YPOS, getWidth(), getHeight());
 		
-		Displayable test = new LogoDecorator(new BackgroundDecorator(new PageNumberDecorator(slide)));
-		test.decorate(g, area, this, presentation.getTheme(), presentation);
+		if(presentation.getSlideNumber() == 1){
+			slide = presentation.getTheme().getSlideStyle().wrapDecorator(slide);
+		} else{
+			slide = presentation.getTheme().getSlideStyleOthers().wrapDecorator(slide);
+		}
+		slide.decorate(g, area, this, presentation);
 	}	
 }

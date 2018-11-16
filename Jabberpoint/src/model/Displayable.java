@@ -5,14 +5,17 @@ import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 import jabberpoint.Values;
-import view.SlideViewerComponent;
+import view.theme.SlideItemStyle;
 import view.theme.Theme;
+import event.ChangeSlideThemeEvent;
 import event.CommandEventListener;
 import event.NextSlideEvent;
 import event.OpenPresentationEvent;
 import event.PreviousSlideEvent;
 import event.RepaintEvent;
 import event.SlideEvent;
+import factory.ThemeFactory;
+import factory.ThemeFactoryImpl;
 import event.GotoSlideEvent;
 
 public abstract class Displayable implements Observable, CommandEventListener<SlideEvent> {
@@ -20,6 +23,7 @@ public abstract class Displayable implements Observable, CommandEventListener<Sl
 	protected ArrayList<Displayable> displayableList = new ArrayList<Displayable>(); // een ArrayList voor Displayables
 
 	protected Theme theme;
+	protected ThemeFactory themeFactory = new ThemeFactoryImpl();
 	protected ArrayList<Observer> observerList = new ArrayList<Observer>(); // een ArrayList voor Displayables
 
 	// Voeg een Displayable toe
@@ -51,9 +55,9 @@ public abstract class Displayable implements Observable, CommandEventListener<Sl
 		return displayableList.size();
 	}
 
-	public void draw(Graphics g, Rectangle area, ImageObserver view, Theme theme){}
+	public void draw(Graphics g, Rectangle area, ImageObserver view, SlideItemStyle style){}
 	
-	public void decorate(Graphics g, Rectangle area, ImageObserver view, Theme theme, Displayable presentation){}
+	public void decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation){}
 	
 	// geef de schaal om de slide te kunnen tekenen
 	protected float getScale(Rectangle area) {
@@ -74,7 +78,7 @@ public abstract class Displayable implements Observable, CommandEventListener<Sl
 	
 	public Displayable getCurrentSlide() {return null;}
 
-	public Rectangle getBoundingBox(Graphics g, ImageObserver view, float scale, Theme theme){ return null; }
+	public Rectangle getBoundingBox(Graphics g, ImageObserver view, float scale, SlideItemStyle slideItemstyle){ return null; }
 	
 	public String getTitle() {return null;}
 	
@@ -106,7 +110,11 @@ public abstract class Displayable implements Observable, CommandEventListener<Sl
 	}
 	
 	public Theme getTheme(){return theme;}
-	public void setTheme(Theme theme){this.theme = theme;}
+	public void setTheme(String theme){
+		this.theme = themeFactory.getTheme(theme);
+		notifyObservers();
+	}
+	public ThemeFactory getThemeFactory(){return themeFactory;};
 
 
 	@Override
@@ -131,6 +139,11 @@ public abstract class Displayable implements Observable, CommandEventListener<Sl
 			this.setSlideNumber(0);
 			System.out.println("Displayble - eventTriggered - Source:"+event.getSource());
 			System.out.println("Displayble - instance of OpenPresentationEvent");
+		} else if (event instanceof ChangeSlideThemeEvent) {
+			this.setTheme(event.getTheme());
+			System.out.println("Displayble - theme:" + event.getTheme());
+			System.out.println("Displayble - eventTriggered - Source:"+event.getSource());
+			System.out.println("Displayble - instance of ChangeSlideThemeEvent");
 		}	else {
 			System.out.println("Displayble - not sure which instance");
 		}

@@ -8,6 +8,7 @@ import java.util.Vector;
 import event.NextSlideEvent;
 import view.drawer.SlideDrawer;
 import view.drawer.TextItemDrawerImpl;
+import view.theme.SlideItemStyle;
 import view.theme.Theme;
 
 /** <p>Een slide. Deze klasse heeft tekenfunctionaliteit.</p>
@@ -45,12 +46,18 @@ public class Slide extends Displayable{
 	}
 
 	@Override
-	public void draw(Graphics g, Rectangle area, ImageObserver view, Theme theme) {
+	public void draw(Graphics g, Rectangle area, ImageObserver view, SlideItemStyle slideItemstyle) {
 		float scale = getScale(area);
-		slideDrawer.draw(g, area, view, title, getSize() , displayableList, scale, theme);
+		slideDrawer.draw(g, area, view, title, getSize() , displayableList, scale, slideItemstyle);
 	}
 	
-	public void decorate(Graphics g, Rectangle area, ImageObserver view, Theme theme, Displayable presentation){
-		draw(g, area, view, theme);
+	public void decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation){
+		SlideItemStyle style;
+		if(presentation.getSlideNumber() == 1){
+			style = presentation.getTheme().getSlideItemStyle();
+		}else{
+			style = presentation.getTheme().getSlideItemStyleOthers();
+		}
+		draw(g, area, view, style);
 	}
 }
