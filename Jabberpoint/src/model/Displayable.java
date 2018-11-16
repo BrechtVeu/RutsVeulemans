@@ -47,6 +47,8 @@ public abstract class Displayable implements Observable {
 
 	public void draw(Graphics g, Rectangle area, ImageObserver view, Theme theme){}
 	
+	public void decorate(Graphics g, Rectangle area, ImageObserver view, Theme theme, Displayable presentation){}
+	
 	// geef de schaal om de slide te kunnen tekenen
 	protected float getScale(Rectangle area) {
 		return Math.min(((float)area.width) / ((float)Values.WIDTH), ((float)area.height) / ((float)Values.HEIGHT));

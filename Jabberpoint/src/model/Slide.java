@@ -48,4 +48,8 @@ public class Slide extends Displayable{
 		float scale = getScale(area);
 		slideDrawer.draw(g, area, view, title, getSize() , displayableList, scale, theme);
 	}
+	
+	public void decorate(Graphics g, Rectangle area, ImageObserver view, Theme theme, Displayable presentation){
+		draw(g, area, view, theme);
+	}
 }

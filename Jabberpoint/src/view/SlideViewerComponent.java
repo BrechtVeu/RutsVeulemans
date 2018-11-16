@@ -12,6 +12,9 @@ import jabberpoint.Values;
 import model.Displayable;
 import model.Observer;
 import model.Slide;
+import view.decorator.BackgroundDecorator;
+import view.decorator.LogoDecorator;
+import view.decorator.PageNumberDecorator;
 
 
 /** <p>SlideViewerComponent is een grafische component die Slides kan laten zien.</p>
@@ -27,16 +30,14 @@ import model.Slide;
 public class SlideViewerComponent extends JComponent implements Observer {
 		
 	private Displayable slide; // de huidige slide
-	private Font labelFont = null; // het font voor labels
 	private Displayable presentation = null; // de presentatie
 	private JFrame frame = null;
 	
 	
 
 	public SlideViewerComponent(Displayable pres, JFrame frame) {
-		setBackground(Values.BGCOLOR); 
+		setBackground(Values.BGCOLOR);
 		presentation = pres;
-		labelFont = new Font(Values.FONTNAME, Values.FONTSTYLE, Values.FONTHEIGHT);
 		this.frame = frame;
 	}
 
@@ -58,17 +59,17 @@ public class SlideViewerComponent extends JComponent implements Observer {
 
 // teken de slide
 	public void paintComponent(Graphics g) {
-		g.setColor(Values.BGCOLOR);
-		g.fillRect(0, 0, getSize().width, getSize().height);
+		
+		
 		if (presentation.getSlideNumber() < 0 || slide == null) {
 			return;
 		}
-		g.setFont(labelFont);
-		g.setColor(Values.COLOR);
-		g.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " +
-                 presentation.getSize(), Values.XPOS, Values.YPOS);
-		Rectangle area = new Rectangle(0, Values.YPOS, getWidth(), (getHeight() - Values.YPOS));
 		
-		slide.draw(g, area, this, presentation.getTheme());
+		//TODO area verandert van: 
+		//Rectangle area = new Rectangle(0, Values.YPOS, getWidth(), (getHeight() - Values.YPOS));
+		Rectangle area = new Rectangle(0, Values.YPOS, getWidth(), getHeight());
+		
+		Displayable test = new LogoDecorator(new BackgroundDecorator(new PageNumberDecorator(slide)));
+		test.decorate(g, area, this, presentation.getTheme(), presentation);
 	}	
 }
