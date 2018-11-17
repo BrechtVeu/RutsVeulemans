@@ -2,6 +2,7 @@ package view.theme;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 
 import factory.SlideDecoratorBuilder;
 import factory.SlideDecoratorBuilderImpl;
@@ -12,15 +13,30 @@ public class SlideStyleImpl1 extends SlideStyle{
 
 	//TODO values fontstyle en fontheight variabel per theme
 	public SlideStyleImpl1(){
+		this.logo = "serclogo_fc.jpg";
 		this.backgroundColor = Color.white;
 		this.labelFont = new Font("Helvetica", Values.FONTSTYLE, Values.FONTHEIGHT);
 		this.labelFontColor = Color.black;
 	}
 	
 	@Override
+	public Displayable wrapDecorator(Displayable slide) {
+		SlideDecoratorBuilder slideDecoratorBuilder = new SlideDecoratorBuilderImpl();
+		return slideDecoratorBuilder
+				.setDisplayable(slide)				
+				.addLogo()
+				.addPageNumber()
+				.build();
+	}
+
+	@Override
+	public String getLogo() {
+		return logo;
+	}
+	
+	@Override
 	public Color getBackgroundColor() {
-		return backgroundColor;
-		
+		return backgroundColor;		
 	}
 
 	@Override
@@ -33,15 +49,5 @@ public class SlideStyleImpl1 extends SlideStyle{
 		return labelFontColor;
 	}
 	
-	@Override
-	public Displayable wrapDecorator(Displayable slide) {
-		SlideDecoratorBuilder slideDecoratorBuilder = new SlideDecoratorBuilderImpl();
-		return slideDecoratorBuilder
-				.setDisplayable(slide)				
-				.addLogo()
-				.addPageNumber()
-				.addBackground()
-				.build();
-	}
 
 }

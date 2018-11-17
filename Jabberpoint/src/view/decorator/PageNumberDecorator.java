@@ -19,18 +19,22 @@ public class PageNumberDecorator extends DisplayableDecorator{
 
 	@Override
 	public void decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation) {	
-		draw(g, presentation);
+		draw(g, area, presentation);
 		displayable.decorate(g, area, view, presentation);
 	}
 
-	private void draw(Graphics g, Displayable presentation){
+	private void draw(Graphics g, Rectangle area, Displayable presentation){
 		SlideStyle style = getCorrectSlideStyle(presentation);
 		Font labelFont = style.getFont();
 		Color labelFontColor = style.getLabelFontColor();
 		g.setFont(labelFont);
 		g.setColor(labelFontColor);
+		
+		int x = (int) (Values.XPOS*getScale(area));
+		int y = (int) (Values.YPOS);
+		
 		g.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " +
-	             presentation.getSize(), Values.XPOS, Values.YPOS);
+	             presentation.getSize(), x, y);
 	}
 	
 	

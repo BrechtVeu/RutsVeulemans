@@ -65,7 +65,7 @@ public class SlideViewerComponent extends JComponent implements Observer {
 		//Rectangle area = new Rectangle(0, Values.YPOS, getWidth(), (getHeight() - Values.YPOS));
 		Rectangle area = new Rectangle(0, Values.YPOS, getWidth(), getHeight());
 		
-		if(presentation.getSlideNumber() == 1){
+		if(presentation.getSlideNumber() == 0){
 			slide = presentation.getTheme().getSlideStyle().wrapDecorator(slide);
 		} else{
 			slide = presentation.getTheme().getSlideStyleOthers().wrapDecorator(slide);

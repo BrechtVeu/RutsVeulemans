@@ -11,15 +11,31 @@ import model.Displayable;
 public class SlideStyleImpl2 extends SlideStyle{
 
 	public SlideStyleImpl2(){
+		this.logo = "JabberPoint.jpg";
 		this.backgroundColor = Color.green;
 		this.labelFont = new Font("Arial", Values.FONTSTYLE, Values.FONTHEIGHT);
 		this.labelFontColor = Color.blue;
 	}
+	
+	@Override
+	public Displayable wrapDecorator(Displayable slide) {
+		SlideDecoratorBuilder slideDecoratorBuilder = new SlideDecoratorBuilderImpl();
+		return slideDecoratorBuilder
+				.setDisplayable(slide)	
+				.addLogo()				
+				.addBackground()
+				.build();
+	}
+
+	@Override
+	public String getLogo() {
+		return logo;
+	}
+	
 
 	@Override
 	public Color getBackgroundColor() {
-		return backgroundColor;
-		
+		return backgroundColor;		
 	}
 
 	@Override
@@ -30,16 +46,5 @@ public class SlideStyleImpl2 extends SlideStyle{
 	@Override
 	public Color getLabelFontColor() {
 		return labelFontColor;
-	}
-
-	@Override
-	public Displayable wrapDecorator(Displayable slide) {
-		SlideDecoratorBuilder slideDecoratorBuilder = new SlideDecoratorBuilderImpl();
-		return slideDecoratorBuilder
-				.setDisplayable(slide)				
-				.addLogo()
-				.addPageNumber()
-				.addBackground()
-				.build();
 	}
 }
