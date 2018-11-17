@@ -44,6 +44,17 @@ public class ThemeFactoryImpl implements ThemeFactory {
 		return new ThemeImpl(slideStyle, slideItemStyle, slideStyleOthers, slideItemStyleOthers);
 	}
 	
+	@Override
+	public Theme makeTheme4() {
+		SlideStyle slideStyle = new SlideStyleImpl3();
+		SlideItemStyle slideItemStyle = new SlideItemStyleImpl3();
+		
+		SlideStyle slideStyleOthers = new SlideStyleImpl2();
+		SlideItemStyle slideItemStyleOthers = new SlideItemStyleImpl2();
+		return new ThemeImpl(slideStyle, slideItemStyle, slideStyleOthers, slideItemStyleOthers);
+	}
+	
+	
 	public Theme getTheme(String theme){
 		if(theme == Values.THEME1){
 			return makeTheme1();
@@ -51,6 +62,8 @@ public class ThemeFactoryImpl implements ThemeFactory {
 			return makeTheme2();
 		}else if(theme == Values.THEME3){
 			return makeTheme3();
+		}else if(theme == Values.THEME4){
+			return makeTheme4();
 		}else{
 			return makeTheme1();
 		}

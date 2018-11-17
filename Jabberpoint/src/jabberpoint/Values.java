@@ -73,5 +73,6 @@ public class Values {
 	/** Themes */
     public static final String THEME1 = "1 - Theme 1";
     public static final String THEME2 = "2 - Theme 2";
-    public static final String THEME3 = "3 - Theme 3";	
+    public static final String THEME3 = "3 - Theme 3";
+    public static final String THEME4 = "4 - Theme 4";
 }
