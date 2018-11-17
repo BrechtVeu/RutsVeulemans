@@ -1,6 +1,3 @@
-/**
- *
- */
 package factory;
 
 import controller.command.Command;

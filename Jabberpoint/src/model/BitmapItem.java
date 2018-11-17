@@ -18,7 +18,7 @@ import view.theme.SlideItemStyle;
  * De klasse voor een Bitmap item
  * </p>
  * <p>
- * Bitmap items hebben de verantwoordelijkheid om zichzelf te tekenen.
+ * Bitmap items have the responsibility to hold information about the image.
  * </p>
  *
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
@@ -28,6 +28,7 @@ import view.theme.SlideItemStyle;
  * @version 1.4 2007/07/16 Sylvia Stuurman
  * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
+ * @version 1.7 2018/11/17 Brecht Veulemans, Dominique Ruts
  */
 
 public class BitmapItem extends SlideItem {
@@ -35,7 +36,14 @@ public class BitmapItem extends SlideItem {
 	private String imageName;
 	private BitmapItemDrawer bitmapItemDrawer;
 
-// level staat voor het item-level; name voor de naam van het bestand met de afbeelding
+	
+	/**
+	 * Constructor for objects of class BitmapItem
+	 * 
+	 * @param level
+	 * @param name
+	 * @param bitmapItemDrawer
+	 */
 	public BitmapItem(int level, String name, BitmapItemDrawer bitmapItemDrawer) {
 		super(level);
 		imageName = name;
@@ -47,21 +55,34 @@ public class BitmapItem extends SlideItem {
 		}
 	}
 
-// geef de bestandsnaam van de afbeelding
+	/**
+	 * Get the name of the image
+	 * 
+	 * @return name of the image
+	 */
 	public String getName() {
 		return imageName;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "BitmapItem[" + getLevel() + "," + imageName + "]";
 	}
 
+	/* (non-Javadoc)
+	 * @see model.Displayable#getBoundingBox(java.awt.Graphics, java.awt.image.ImageObserver, float, view.theme.SlideItemStyle)
+	 */
 	@Override
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, SlideItemStyle slideItemstyle) {
 		return bitmapItemDrawer.getBoundingBox(g, observer, scale, getStyle(slideItemstyle), bufferedImage);
 	}
 
+	/* (non-Javadoc)
+	 * @see model.Displayable#draw(java.awt.Graphics, java.awt.Rectangle, java.awt.image.ImageObserver, view.theme.SlideItemStyle)
+	 */
 	@Override
 	public void draw(Graphics g, Rectangle area, ImageObserver observer, SlideItemStyle slideItemstyle) {
 		float scale = getScale(area);

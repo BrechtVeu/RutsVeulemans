@@ -70,7 +70,7 @@ public class DisplayableBuilderImpl implements DisplayableBuilder {
 	 */
 	@Override
 	public Displayable build() {
-		displayable.setSlideNumber(0);
+		displayable.setDisplayableNumber(0);
 		displayable.setIterator();
 		return displayable;
 	}

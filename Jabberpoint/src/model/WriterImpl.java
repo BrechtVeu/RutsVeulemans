@@ -9,17 +9,16 @@ import factory.FormatFactory;
 import factory.FormatFactoryImpl;
 
 /**
- * @author Dominique
+ * @author Brecht Veulemans, Dominique Ruts
+ *
+ * Concrete implementation of Writer.
  *
  */
 public class WriterImpl implements Writer {
 
-	/**
-	 *
+	/* (non-Javadoc)
+	 * @see model.Writer#saveFile(model.Displayable, java.lang.String)
 	 */
-	public WriterImpl() {
-	}
-
 	@Override
 	public void saveFile(Displayable p, String filename) throws IOException {
 		FormatFactory formatFactory = new FormatFactoryImpl();

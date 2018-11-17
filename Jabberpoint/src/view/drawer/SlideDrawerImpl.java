@@ -13,7 +13,7 @@ public class SlideDrawerImpl implements SlideDrawer {
 			DisplayableIterator<Displayable> displayableIterator, float scale, SlideItemStyle slideItemstyle) {
 		int y = area.y;
 
-		displayableIterator.setSlideNumber(0);
+		displayableIterator.setCurrentDisplayableNumber(0);
 		while (displayableIterator.hasNext()) {
 			Displayable slideItem = displayableIterator.next();
 			area = new Rectangle(area.x, y, area.width, area.height);

@@ -24,7 +24,9 @@ import factory.DisplayableBuilderImpl;
 import jabberpoint.Values;
 
 /**
- * @author Dominique
+ * @author Brecht Veulemans, Dominique Ruts
+ *
+ * Concrete implementation of Format.
  *
  */
 public class XMLFormat implements Format {
@@ -32,7 +34,7 @@ public class XMLFormat implements Format {
 	DisplayableBuilder presentationBuilder;
 
 	/**
-	 *
+	 * Constructor for objects of class XMLFormat
 	 */
 	public XMLFormat() {
 		this.presentationBuilder = new DisplayableBuilderImpl();
@@ -78,6 +80,11 @@ public class XMLFormat implements Format {
 		}
 	}
 
+	/**
+	 * load a SlideItem from an Element
+	 * 
+	 * @param item
+	 */
 	private void loadSlideItem(Element item) {
 		int level = 1; // default
 		NamedNodeMap attributes = item.getAttributes();
@@ -102,6 +109,13 @@ public class XMLFormat implements Format {
 		}
 	}
 
+	/**
+	 * Get the title of an Element based on a tag
+	 * 
+	 * @param element
+	 * @param tagName
+	 * @return the text of the title
+	 */
 	private String getTitle(Element element, String tagName) {
 		NodeList titles = element.getElementsByTagName(tagName);
 		return titles.item(0).getTextContent();

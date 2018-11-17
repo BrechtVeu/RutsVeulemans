@@ -32,7 +32,7 @@ public class PageNumberDecorator extends DisplayableDecorator {
 		int x = (int) (Values.XPOS * getScale(area));
 		int y = (Values.YPOS);
 
-		g.drawString("Slide " + (1 + presentation.iterator().getSlideNumber()) + " of " + presentation.getSize(), x, y);
+		g.drawString("Slide " + (1 + presentation.iterator().getDisplayableNumber()) + " of " + presentation.getSize(), x, y);
 	}
 
 }

@@ -15,25 +15,40 @@ package model;
  * @version 1.4 2007/07/16 Sylvia Stuurman
  * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
+ * @version 1.7 2018/11/17 Brecht Veulemans, Dominique Ruts
  */
-
 public class Presentation extends Displayable {
 	private String showTitle; // de titel van de presentatie
 
+	/**
+	 * Constructor to make a new Presentation.
+	 * Clears on initialization.
+	 */
 	public Presentation() {
 		clear();
 	}
 
+	/* (non-Javadoc)
+	 * @see model.Displayable#getTitle()
+	 */
 	@Override
 	public String getTitle() {
 		return showTitle;
 	}
 
+	/* (non-Javadoc)
+	 * @see model.Displayable#setTitle(java.lang.String)
+	 */
 	@Override
 	public void setTitle(String nt) {
 		showTitle = nt;
 	}
 
+	/**
+	 * Exits the presentation
+	 * 
+	 * @param n
+	 */
 	public void exit(int n) {
 		System.exit(n);
 	}

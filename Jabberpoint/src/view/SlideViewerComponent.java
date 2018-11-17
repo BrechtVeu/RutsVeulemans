@@ -61,13 +61,13 @@ public class SlideViewerComponent extends JComponent implements Observer {
 // teken de slide
 	@Override
 	public void paintComponent(Graphics g) {
-		if (presentation.getSlideNumber() < 0 || slide == null) {
+		if (presentation.getDisplayableNumber() < 0 || slide == null) {
 			return;
 		}
 
 		Rectangle area = new Rectangle(0, Values.YPOS, getWidth(), getHeight());
 
-		if (presentation.getSlideNumber() == 0) {
+		if (presentation.getDisplayableNumber() == 0) {
 			slide = presentation.getTheme().getSlideStyle().wrapDecorator(slide);
 		} else {
 			slide = presentation.getTheme().getSlideStyleOthers().wrapDecorator(slide);

@@ -9,17 +9,16 @@ import factory.FormatFactory;
 import factory.FormatFactoryImpl;
 
 /**
- * @author Dominique
+ * @author Brecht Veulemans, Dominique Ruts
+ *
+ * Concrete implementation of Reader.
  *
  */
 public class ReaderImpl implements Reader {
 
-	/**
-	 *
+	/* (non-Javadoc)
+	 * @see model.Reader#loadFile(model.Displayable, java.lang.String)
 	 */
-	public ReaderImpl() {
-	}
-
 	@Override
 	public void loadFile(Displayable p, String filename) throws IOException {
 		FormatFactory formatFactory = new FormatFactoryImpl();

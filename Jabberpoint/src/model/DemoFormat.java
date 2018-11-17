@@ -9,7 +9,9 @@ import factory.DisplayableBuilder;
 import factory.DisplayableBuilderImpl;
 
 /**
- * @author Dominique
+ * @author Brecht Veulemans, Dominique Ruts
+ * 
+ * Concrete implementation of Format.
  *
  */
 public class DemoFormat implements Format {
@@ -17,7 +19,7 @@ public class DemoFormat implements Format {
 	DisplayableBuilder builder;
 
 	/**
-	 *
+	 * Constructor for objects of class DemoFormat
 	 */
 	public DemoFormat() {
 		builder = new DisplayableBuilderImpl();

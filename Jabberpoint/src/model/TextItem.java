@@ -9,10 +9,10 @@ import view.theme.SlideItemStyle;
 
 /**
  * <p>
- * Een tekst item.
+ * A TextItem
  * </p>
  * <p>
- * Een TextItem heeft tekenfunctionaliteit.
+ * A TextItem is responsible for knowing its text.
  * </p>
  *
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
@@ -22,6 +22,7 @@ import view.theme.SlideItemStyle;
  * @version 1.4 2007/07/16 Sylvia Stuurman
  * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
+ * @version 1.7 2018/11/17 Brecht Veulemans, Dominique Ruts
  */
 
 public class TextItem extends SlideItem {
@@ -30,23 +31,39 @@ public class TextItem extends SlideItem {
 
 	private static final String EMPTYTEXT = "No Text Given";
 
-// een textitem van level level, met als tekst string
+	/**
+	 * Constructor for objects of class TextItem
+	 * 
+	 * @param level
+	 * @param string
+	 * @param textItemDrawer
+	 */
 	public TextItem(int level, String string, TextItemDrawer textItemDrawer) {
 		super(level);
 		text = string;
 		this.textItemDrawer = textItemDrawer;
 	}
 
-// Geef de tekst
+	/**
+	 * Get the text of the TextItem
+	 * 
+	 * @return the text of the TextItem
+	 */
 	public String getText() {
 		return text == null ? "" : text;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "TextItem[" + getLevel() + "," + getText() + "]";
 	}
 
+	/* (non-Javadoc)
+	 * @see model.Displayable#draw(java.awt.Graphics, java.awt.Rectangle, java.awt.image.ImageObserver, view.theme.SlideItemStyle)
+	 */
 	@Override
 	public void draw(Graphics g, Rectangle area, ImageObserver observer, SlideItemStyle slideItemstyle) {
 		if (text == null || text.length() == 0) {
@@ -57,6 +74,9 @@ public class TextItem extends SlideItem {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see model.Displayable#getBoundingBox(java.awt.Graphics, java.awt.image.ImageObserver, float, view.theme.SlideItemStyle)
+	 */
 	@Override
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, SlideItemStyle slideItemstyle) {
 		return textItemDrawer.getBoundingBox(g, observer, scale, getStyle(slideItemstyle), text);
