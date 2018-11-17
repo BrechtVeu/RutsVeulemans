@@ -39,7 +39,7 @@ public class CommandFactoryImpl implements CommandFactory {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see controller.command.CommandFactory#makeExitCommand()
 	 */
 	@Override

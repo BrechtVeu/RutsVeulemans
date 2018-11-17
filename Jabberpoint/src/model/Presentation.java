@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 /**
  * <p>
  * Presentation houdt de slides in de presentatie bij.
@@ -9,7 +7,7 @@ import java.util.ArrayList;
  * <p>
  * Er is slechts één instantie van deze klasse aanwezig.
  * </p>
- * 
+ *
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman

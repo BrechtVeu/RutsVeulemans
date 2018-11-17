@@ -5,9 +5,6 @@ import java.awt.Font;
 import model.Displayable;
 
 public abstract class SlideStyle {
-	// logo
-	// achtergrondkleur
-	// afbeelding
 	protected String logo;
 	protected Color backgroundColor;
 	protected Font labelFont;

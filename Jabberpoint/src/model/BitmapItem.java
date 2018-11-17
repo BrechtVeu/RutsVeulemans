@@ -20,7 +20,7 @@ import view.theme.SlideItemStyle;
  * <p>
  * Bitmap items hebben de verantwoordelijkheid om zichzelf te tekenen.
  * </p>
- * 
+ *
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman
@@ -64,7 +64,6 @@ public class BitmapItem extends SlideItem {
 
 	@Override
 	public void draw(Graphics g, Rectangle area, ImageObserver observer, SlideItemStyle slideItemstyle) {
-		// TODO Auto-generated method stub
 		float scale = getScale(area);
 		bitmapItemDrawer.draw(area.x, area.y, scale, g, getStyle(slideItemstyle), observer, bufferedImage);
 	}

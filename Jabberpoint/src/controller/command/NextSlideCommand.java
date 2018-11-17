@@ -27,7 +27,7 @@ public class NextSlideCommand implements Command {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see controller.command.Command#execute()
 	 */
 	@Override

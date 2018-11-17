@@ -28,7 +28,7 @@ public class PreviousSlideCommand implements Command {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see controller.command.Command#execute()
 	 */
 	@Override

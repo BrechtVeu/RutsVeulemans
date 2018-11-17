@@ -9,7 +9,6 @@ import model.Displayable;
 
 public class SlideStyleImpl1 extends SlideStyle {
 
-	// TODO values fontstyle en fontheight variabel per theme
 	public SlideStyleImpl1() {
 		this.logo = "serclogo_fc.jpg";
 		this.backgroundColor = Color.white;

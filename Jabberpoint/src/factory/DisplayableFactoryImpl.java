@@ -23,7 +23,6 @@ public class DisplayableFactoryImpl implements DisplayableFactory {
 	public Displayable makeSlide() {
 		SlideDrawer slideDrawer = new SlideDrawerImpl();
 		Displayable slide = new Slide(slideDrawer);
-		//slide.setTitle(title);
 		return slide;
 	}
 

@@ -2,7 +2,6 @@ package factory;
 
 import jabberpoint.Values;
 import model.Displayable;
-import model.DisplayableIteratorImpl;
 
 public class DisplayableBuilderImpl implements DisplayableBuilder {
 
@@ -27,7 +26,6 @@ public class DisplayableBuilderImpl implements DisplayableBuilder {
 		return this;
 	}
 
-
 	@Override
 	public DisplayableBuilder addTextItem(int level, String text) {
 		if (displayable.getLastItem() == null) {
@@ -48,7 +46,7 @@ public class DisplayableBuilderImpl implements DisplayableBuilder {
 
 	@Override
 	public Displayable build() {
-		displayable.setSlideNumber(0);	
+		displayable.setSlideNumber(0);
 		displayable.setIterator();
 		return displayable;
 	}

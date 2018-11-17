@@ -23,10 +23,11 @@ import event.GotoSlideEvent;
 public abstract class Displayable implements Observable, Iterable<Displayable>, CommandEventListener<SlideEvent> {
 
 	protected int currentSlideNumber = 0; // het slidenummer van de huidige Slide
-	
+
 	protected ArrayList<Displayable> displayableList = new ArrayList<Displayable>(); // een ArrayList voor Displayables
-	protected DisplayableIterator<Displayable> displayableIterator = new DisplayableIteratorImpl<Displayable>(displayableList, currentSlideNumber);
-	
+	protected DisplayableIterator<Displayable> displayableIterator = new DisplayableIteratorImpl<Displayable>(
+			displayableList, currentSlideNumber);
+
 	protected Theme theme;
 	protected ThemeFactory themeFactory = new ThemeFactoryImpl();
 	protected ArrayList<Observer> observerList = new ArrayList<Observer>(); // een ArrayList voor Displayables
@@ -34,7 +35,7 @@ public abstract class Displayable implements Observable, Iterable<Displayable>, 
 	public void setIterator() {
 		displayableIterator = new DisplayableIteratorImpl<Displayable>(displayableList, currentSlideNumber);
 	}
-	
+
 	// Voeg een Displayable toe
 	public void append(Displayable anItem) {
 		displayableList.add(anItem);
@@ -136,35 +137,34 @@ public abstract class Displayable implements Observable, Iterable<Displayable>, 
 		if (displayableIterator.hasNext()) {
 			displayableIterator.next();
 			setSlideNumber(displayableIterator.getSlideNumber());
-		}			
+		}
 	}
 
 	public void prevSlide() {
 		if (displayableIterator.hasPrevious()) {
 			displayableIterator.previous();
 			setSlideNumber(displayableIterator.getSlideNumber());
-		}		
+		}
 	}
-	
+
 	// Verwijder de presentatie, om klaar te zijn voor de volgende
 	public void clear() {
 		displayableList.clear();
 		iterator().clear();
 		setSlideNumber(-1);
 	}
-	
+
 	public void gotoSlide(int displayableNumber) {
-		if (displayableList.size()>0) {
+		if (displayableList.size() > 0) {
 			this.iterator().setSlideNumber(displayableNumber);
 			this.setSlideNumber(displayableNumber);
 		}
 	}
-	
 
-		public void setSlideNumber(int number) {
-			currentSlideNumber = number;
-			notifyObservers();
-		}
+	public void setSlideNumber(int number) {
+		currentSlideNumber = number;
+		notifyObservers();
+	}
 
 	public int getLevel() {
 		return 0;
@@ -201,7 +201,7 @@ public abstract class Displayable implements Observable, Iterable<Displayable>, 
 			System.out.println("Displayble - not sure which instance");
 		}
 	}
-	
+
 	@Override
 	public DisplayableIterator<Displayable> iterator() {
 		return displayableIterator;

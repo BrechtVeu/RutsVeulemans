@@ -18,7 +18,6 @@ public class WriterImpl implements Writer {
 	 *
 	 */
 	public WriterImpl() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

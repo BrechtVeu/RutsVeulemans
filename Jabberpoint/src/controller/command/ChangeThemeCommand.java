@@ -29,7 +29,7 @@ public class ChangeThemeCommand implements Command {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see controller.command.Command#execute()
 	 */
 	@Override

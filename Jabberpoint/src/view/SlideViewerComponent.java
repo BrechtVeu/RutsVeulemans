@@ -15,7 +15,7 @@ import model.Observer;
  * <p>
  * SlideViewerComponent is een grafische component die Slides kan laten zien.
  * </p>
- * 
+ *
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman
@@ -65,9 +65,6 @@ public class SlideViewerComponent extends JComponent implements Observer {
 			return;
 		}
 
-		// TODO area verandert van:
-		// Rectangle area = new Rectangle(0, Values.YPOS, getWidth(), (getHeight() -
-		// Values.YPOS));
 		Rectangle area = new Rectangle(0, Values.YPOS, getWidth(), getHeight());
 
 		if (presentation.getSlideNumber() == 0) {

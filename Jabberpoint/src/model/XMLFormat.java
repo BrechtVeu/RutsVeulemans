@@ -40,7 +40,7 @@ public class XMLFormat implements Format {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see model.Format#loadFile(model.Presentation, java.lang.String)
 	 */
 	@Override
@@ -58,7 +58,7 @@ public class XMLFormat implements Format {
 			max = slides.getLength();
 			for (slideNumber = 0; slideNumber < max; slideNumber++) {
 				Element xmlSlide = (Element) slides.item(slideNumber);
-				presentationBuilder.addSlide().addTextItem(0,getTitle(xmlSlide, Values.SLIDETITLE));
+				presentationBuilder.addSlide().addTextItem(0, getTitle(xmlSlide, Values.SLIDETITLE));
 
 				NodeList slideItems = xmlSlide.getElementsByTagName(Values.ITEM);
 				maxItems = slideItems.getLength();
@@ -67,7 +67,7 @@ public class XMLFormat implements Format {
 					loadSlideItem(item);
 				}
 			}
-			
+
 			presentationBuilder.build();
 		} catch (IOException iox) {
 			System.err.println(iox.toString());
@@ -110,7 +110,7 @@ public class XMLFormat implements Format {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see model.Format#saveFile(model.Presentation)
 	 */
 	@Override
@@ -129,7 +129,7 @@ public class XMLFormat implements Format {
 			ArrayList<Displayable> slideItems = slide.getDisplayableItems();
 			for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
 				Displayable slideItem = slideItems.get(itemNumber);
-				
+
 				if (slideItem instanceof TextItem && slideItem.getLevel() != 0) {
 					out.print("<item kind=");
 					out.print("\"text\" level=\"" + slideItem.getLevel() + "\">");
@@ -147,7 +147,7 @@ public class XMLFormat implements Format {
 						System.out.println("Ignoring " + slideItem);
 					}
 				}
-				
+
 			}
 			out.println("</slide>");
 		}

@@ -12,7 +12,7 @@ public class SlideDrawerImpl implements SlideDrawer {
 	public void draw(Graphics g, Rectangle area, ImageObserver view, int size,
 			DisplayableIterator<Displayable> displayableIterator, float scale, SlideItemStyle slideItemstyle) {
 		int y = area.y;
-		
+
 		displayableIterator.setSlideNumber(0);
 		while (displayableIterator.hasNext()) {
 			Displayable slideItem = displayableIterator.next();

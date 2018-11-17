@@ -19,7 +19,7 @@ import view.SlideViewerFrame;
  * of the software constitutes acceptance of the terms in the COPYRIGHT.txt
  * file.
  * </p>
- * 
+ *
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman
@@ -33,9 +33,10 @@ public class JabberPoint {
 
 	/**
 	 * <p>
-	 * Main program; a default presentation will be loaded if no arguments are passed.
+	 * Main program; a default presentation will be loaded if no arguments are
+	 * passed.
 	 * </p>
-	 * 
+	 *
 	 * @param argv
 	 */
 	public static void main(String argv[]) {

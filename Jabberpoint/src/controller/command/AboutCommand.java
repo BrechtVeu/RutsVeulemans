@@ -24,7 +24,7 @@ public class AboutCommand implements Command {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see controller.command.Command#execute()
 	 */
 	@Override

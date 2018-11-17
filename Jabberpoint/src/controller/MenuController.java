@@ -16,9 +16,10 @@ import view.SlideViewerFrame;
 
 /**
  * <p>
- * This is the MenuController that builds the MenuBar and triggers the correct action linked to each menu-item.
+ * This is the MenuController that builds the MenuBar and triggers the correct
+ * action linked to each menu-item.
  * </p>
- * 
+ *
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman
@@ -32,7 +33,7 @@ public class MenuController extends MenuBar {
 	private static final long serialVersionUID = 227L;
 
 	/**
-	 * 
+	 *
 	 * @param slideViewerFrame
 	 * @param presentation
 	 */
@@ -66,7 +67,7 @@ public class MenuController extends MenuBar {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param name
 	 * @param command
 	 * @return

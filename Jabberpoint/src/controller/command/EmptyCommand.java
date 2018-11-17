@@ -11,7 +11,7 @@ public class EmptyCommand implements Command {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see controller.command.Command#execute()
 	 */
 	@Override

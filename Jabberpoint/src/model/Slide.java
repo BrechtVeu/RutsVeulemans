@@ -10,7 +10,7 @@ import view.theme.SlideItemStyle;
  * <p>
  * Een slide. Deze klasse heeft tekenfunctionaliteit.
  * </p>
- * 
+ *
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman
