@@ -12,15 +12,20 @@ import jabberpoint.Values;
 import model.Displayable;
 
 /**
- * @author Dominique
+ * Goto slide command triggered by the user to switch the presentation to another slide.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
  *
  */
 public class GotoSlideCommand implements Command {
+
 	private CommandEventManager<SlideEvent> commandEventManager;
 	private SlideEvent eventObject;
 
 	/**
-	 *
+	 * Constructor for objects of class GotoSlideCommand
+	 * 
+	 * @param presentation
 	 */
 	public GotoSlideCommand(Displayable presentation) {
 		this.commandEventManager = new CommandEventManager<SlideEvent>();
@@ -28,9 +33,7 @@ public class GotoSlideCommand implements Command {
 		this.eventObject = new GotoSlideEvent(presentation);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
+	/* (non-Javadoc)
 	 * @see controller.command.Command#execute()
 	 */
 	@Override

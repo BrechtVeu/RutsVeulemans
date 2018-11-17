@@ -9,7 +9,9 @@ import event.SlideEvent;
 import model.Displayable;
 
 /**
- * @author Dominique
+ * Change Theme command triggered by the user to change the theme on the active presentation.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
  *
  */
 public class ChangeThemeCommand implements Command {
@@ -17,8 +19,12 @@ public class ChangeThemeCommand implements Command {
 	private SlideEvent eventObject;
 	private String theme;
 
+
 	/**
-	 *
+	 * Constructor objects of class ChangeThemeCommand
+	 * 
+	 * @param presentation
+	 * @param theme
 	 */
 	public ChangeThemeCommand(Displayable presentation, String theme) {
 		this.commandEventManager = new CommandEventManager<SlideEvent>();

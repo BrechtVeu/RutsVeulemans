@@ -4,7 +4,9 @@
 package controller.command;
 
 /**
- * @author Dominique
+ * Empty command that can be used in case no immediate action is needed by a keystroke or menu action.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
  *
  */
 public class EmptyCommand implements Command {

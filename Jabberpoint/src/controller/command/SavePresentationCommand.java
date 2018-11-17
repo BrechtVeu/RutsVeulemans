@@ -14,21 +14,27 @@ import model.Writer;
 import model.WriterImpl;
 
 /**
- * @author Dominique
+ * Save Presentation command triggered by the user to save the active presentation to the file system.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
  *
  */
 public class SavePresentationCommand implements Command {
 	private Frame slideViewerFrame;
 	private Displayable presentation;
 
+	/**
+	 * Constructor for objects of class SavePresentationCommand
+	 * 
+	 * @param slideViewerFrame
+	 * @param presentation
+	 */
 	public SavePresentationCommand(Frame slideViewerFrame, Displayable presentation) {
 		this.slideViewerFrame = slideViewerFrame;
 		this.presentation = presentation;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
+	/* (non-Javadoc)
 	 * @see controller.command.Command#execute()
 	 */
 	@Override

@@ -8,7 +8,9 @@ import java.awt.Frame;
 import view.AboutBox;
 
 /**
- * @author Dominique
+ * About command triggered by the user to open the About box.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
  *
  */
 public class AboutCommand implements Command {
@@ -16,7 +18,9 @@ public class AboutCommand implements Command {
 	private Frame slideViewerFrame;
 
 	/**
-	 *
+	 * Constructor for objects of class AboutCommand
+	 * 
+	 * @param slideViewerFrame
 	 */
 	public AboutCommand(Frame slideViewerFrame) {
 		this.slideViewerFrame = slideViewerFrame;

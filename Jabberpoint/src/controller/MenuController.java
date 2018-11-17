@@ -27,12 +27,14 @@ import view.SlideViewerFrame;
  * @version 1.4 2007/07/16 Sylvia Stuurman
  * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
+ * @version 1.7 2018/11/17 Brecht Veulemans, Dominique Ruts
  */
 public class MenuController extends MenuBar {
 
 	private static final long serialVersionUID = 227L;
 
 	/**
+	 * Constructor for MenuController
 	 *
 	 * @param slideViewerFrame
 	 * @param presentation
@@ -67,6 +69,7 @@ public class MenuController extends MenuBar {
 	}
 
 	/**
+	 * Create a menu item in the menu bar and assign the Action Listener
 	 *
 	 * @param name
 	 * @param command

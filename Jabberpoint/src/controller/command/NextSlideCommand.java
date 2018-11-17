@@ -9,7 +9,9 @@ import event.SlideEvent;
 import model.Displayable;
 
 /**
- * @author Dominique
+ * Next Slide command triggered by the user to navigate to the next slide in the presentation.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
  *
  */
 public class NextSlideCommand implements Command {
@@ -17,7 +19,9 @@ public class NextSlideCommand implements Command {
 	private SlideEvent eventObject;
 
 	/**
-	 *
+	 * Constructor for objects of class NextSlideCommand
+	 * 
+	 * @param presentation
 	 */
 	public NextSlideCommand(Displayable presentation) {
 		this.commandEventManager = new CommandEventManager<SlideEvent>();
@@ -25,9 +29,7 @@ public class NextSlideCommand implements Command {
 		this.eventObject = new NextSlideEvent(presentation);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
+	/* (non-Javadoc)
 	 * @see controller.command.Command#execute()
 	 */
 	@Override

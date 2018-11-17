@@ -23,15 +23,28 @@ import java.awt.event.KeyAdapter;
  * @version 1.4 2007/07/16 Sylvia Stuurman
  * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
+ * @version 1.7 2018/11/17 Brecht Veulemans, Dominique Ruts
  */
 
 public class KeyController extends KeyAdapter {
+	/**
+	 * 
+	 */
 	private CommandFactory commandFactory;
 
+	/**
+	 * Constructor for KeyController
+	 * 
+	 * @param slideViewerFrame
+	 * @param p
+	 */
 	public KeyController(Frame slideViewerFrame, Displayable p) {
 		this.commandFactory = new CommandFactoryImpl(slideViewerFrame, p);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.KeyAdapter#keyPressed(java.awt.event.KeyEvent)
+	 */
 	@Override
 	public void keyPressed(KeyEvent keyEvent) {
 		Command commandToExecute = this.commandFactory.makeEmptyCommand();
@@ -50,7 +63,7 @@ public class KeyController extends KeyAdapter {
 		case 'q':
 		case 'Q':
 			commandToExecute = this.commandFactory.makeExitCommand();
-			break; // wordt nooit bereikt als het goed is
+			break;
 		default:
 			break;
 		}

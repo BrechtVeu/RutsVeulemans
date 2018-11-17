@@ -8,8 +8,11 @@ import event.PreviousSlideEvent;
 import event.SlideEvent;
 import model.Displayable;
 
+
 /**
- * @author Dominique
+ * Previous Slide Command triggered by the user to navigate to the previous slide in the presentation.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
  *
  */
 public class PreviousSlideCommand implements Command {
@@ -18,7 +21,9 @@ public class PreviousSlideCommand implements Command {
 	private SlideEvent eventObject;
 
 	/**
-	 *
+	 * Constructor for objects of class PreviousSlideCommand
+	 * 
+	 * @param presentation
 	 */
 	public PreviousSlideCommand(Displayable presentation) {
 		this.commandEventManager = new CommandEventManager<SlideEvent>();
@@ -29,6 +34,9 @@ public class PreviousSlideCommand implements Command {
 	/*
 	 * (non-Javadoc)
 	 *
+	 * @see controller.command.Command#execute()
+	 */
+	/* (non-Javadoc)
 	 * @see controller.command.Command#execute()
 	 */
 	@Override
