@@ -10,17 +10,14 @@ import model.Format;
 import model.XMLFormat;
 
 /**
- * @author Dominique
+ * @author Brecht Veulemans, Dominique Ruts
+ * 
+ * Concrete implementation of FormatFactory.
  *
  */
 public class FormatFactoryImpl implements FormatFactory {
-
-	public FormatFactoryImpl() {
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
+	
+	/* (non-Javadoc)
 	 * @see factory.FormatFactory#makeLoadFileCommand()
 	 */
 	@Override

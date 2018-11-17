@@ -12,8 +12,17 @@ import view.theme.SlideStyleImpl3;
 import view.theme.Theme;
 import view.theme.ThemeImpl;
 
+/**
+ * @author Brecht Veulemans, Dominique Ruts
+ *
+ * Concrete implementation of ThemeFactory.
+ *
+ */
 public class ThemeFactoryImpl implements ThemeFactory {
-
+	
+	/* (non-Javadoc)
+	 * @see factory.ThemeFactory#makeTheme1()
+	 */
 	@Override
 	public Theme makeTheme1() {
 		SlideStyle slideStyle = new SlideStyleImpl1();
@@ -24,6 +33,9 @@ public class ThemeFactoryImpl implements ThemeFactory {
 		return new ThemeImpl(slideStyle, slideItemStyle, slideStyleOthers, slideItemStyleOthers);
 	}
 
+	/* (non-Javadoc)
+	 * @see factory.ThemeFactory#makeTheme2()
+	 */
 	@Override
 	public Theme makeTheme2() {
 		SlideStyle slideStyle = new SlideStyleImpl2();
@@ -33,7 +45,10 @@ public class ThemeFactoryImpl implements ThemeFactory {
 		SlideItemStyle slideItemStyleOthers = new SlideItemStyleImpl1();
 		return new ThemeImpl(slideStyle, slideItemStyle, slideStyleOthers, slideItemStyleOthers);
 	}
-
+	
+	/* (non-Javadoc)
+	 * @see factory.ThemeFactory#makeTheme3()
+	 */
 	@Override
 	public Theme makeTheme3() {
 		SlideStyle slideStyle = new SlideStyleImpl3();
@@ -44,6 +59,9 @@ public class ThemeFactoryImpl implements ThemeFactory {
 		return new ThemeImpl(slideStyle, slideItemStyle, slideStyleOthers, slideItemStyleOthers);
 	}
 
+	/* (non-Javadoc)
+	 * @see factory.ThemeFactory#makeTheme4()
+	 */
 	@Override
 	public Theme makeTheme4() {
 		SlideStyle slideStyle = new SlideStyleImpl3();
@@ -54,6 +72,9 @@ public class ThemeFactoryImpl implements ThemeFactory {
 		return new ThemeImpl(slideStyle, slideItemStyle, slideStyleOthers, slideItemStyleOthers);
 	}
 
+	/* (non-Javadoc)
+	 * @see factory.ThemeFactory#getTheme(java.lang.String)
+	 */
 	@Override
 	public Theme getTheme(String theme) {
 		if (theme == Values.THEME1) {

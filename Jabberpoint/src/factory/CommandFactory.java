@@ -6,60 +6,82 @@ package factory;
 import controller.command.Command;
 
 /**
- * @author Dominique Ruts, Brecht Veulemans
+ * @author Brecht Veulemans, Dominique Ruts
+ * 
+ * Gives interface for concrete implementations of a CommandFactory.
+ * Responsible for creating commands.
  *
  */
 public interface CommandFactory {
+	
 	/**
-	 * 
+	 * Create a new empty Command
 	 * 
 	 * @return EmptyCommand
 	 */
 	Command makeEmptyCommand();
-
+	
 	/**
+	 * Create a new OpenPresentation Command
+	 *
 	 * @return OpenPresentationCommand
 	 */
 	Command makeOpenPresentationCommand();
-
+	
 	/**
+	 * Create a new NewPresentation Command
+	 *
 	 * @return NewPresentationCommand
 	 */
 	Command makeNewPresentationCommand();
 
 	/**
+	 * Create a new SavePresentation Command
+	 * 
 	 * @return SavePresentationCommand
 	 */
 	Command makeSavePresentationCommand();
 
 	/**
+	 * Create a new Exit Command
+	 * 
 	 * @return ExitCommand
 	 */
 	Command makeExitCommand();
 
 	/**
-	 * @return 
+	 * Create a new NextSlide Command
+	 * 
+	 * @return NextSlideCommand
 	 */
 	Command makeNextSlideCommand();
 
 	/**
-	 * @return
+	 * Create a new PreviousSlide Command
+	 * 
+	 * @return PreviousSlideCommand
 	 */
 	Command makePreviousSlideCommand();
 
 	/**
-	 * @return
+	 * Create a new GotoSlide Command
+	 * 
+	 * @return GotoSlideCommand
 	 */
 	Command makeGotoSlideCommand();
 
 	/**
-	 * @return
+	 * Create a new About Command
+	 * 
+	 * @return AboutCommand
 	 */
 	Command makeAboutCommand();
-
+	
 	/**
-	 * @param Theme
-	 * @return
+	 * Create a new ChangeTheme Command
+	 * 
+	 * @param theme
+	 * @return ChangeThemeCommand
 	 */
-	Command makeChangeThemeCommand(String Theme);
+	Command makeChangeThemeCommand(String theme);
 }
