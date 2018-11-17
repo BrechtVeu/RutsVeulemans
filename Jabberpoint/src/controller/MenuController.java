@@ -57,6 +57,7 @@ public class MenuController extends MenuBar {
 		themeMenu.add(mkMenuItem(Values.THEME1, commandFactory.makeChangeThemeCommand(Values.THEME1)));
 		themeMenu.add(mkMenuItem(Values.THEME2, commandFactory.makeChangeThemeCommand(Values.THEME2)));
 		themeMenu.add(mkMenuItem(Values.THEME3, commandFactory.makeChangeThemeCommand(Values.THEME3)));
+		themeMenu.add(mkMenuItem(Values.THEME4, commandFactory.makeChangeThemeCommand(Values.THEME4)));
 		add(themeMenu);
 
 		Menu helpMenu = new Menu(Values.HELP);
