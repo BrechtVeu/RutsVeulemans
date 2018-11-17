@@ -21,6 +21,7 @@ public class LogoDecorator extends DisplayableDecorator{
 	}
 	
 	private void draw(Displayable presentation){
-		SlideStyle style = getCorrectStyle(presentation);
+		SlideStyle style = getCorrectSlideStyle(presentation);
+		
 	}
 }

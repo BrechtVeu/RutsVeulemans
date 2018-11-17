@@ -15,16 +15,6 @@ public abstract class DisplayableDecorator extends Displayable {
 	public DisplayableDecorator(Displayable displayable) {
 		this.displayable = displayable;
 	}
-	
-	public SlideStyle getCorrectStyle(Displayable presentation){
-		SlideStyle style;
-		if(presentation.getSlideNumber() == 1){
-			style = presentation.getTheme().getSlideStyle();
-		}else{
-			style = presentation.getTheme().getSlideStyleOthers();
-		}
-		return style;
-	}
 
 	public abstract void decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation);
 

@@ -6,6 +6,7 @@ import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 import jabberpoint.Values;
 import view.theme.SlideItemStyle;
+import view.theme.SlideStyle;
 import view.theme.Theme;
 import event.ChangeSlideThemeEvent;
 import event.CommandEventListener;
@@ -75,6 +76,26 @@ public abstract class Displayable implements Observable, CommandEventListener<Sl
 			observer.update(this, this.getCurrentSlide());
 		}
 	};
+		
+	public SlideStyle getCorrectSlideStyle(Displayable presentation){
+		SlideStyle style;
+		if(presentation.getSlideNumber() == 0){
+			style = presentation.getTheme().getSlideStyle();
+		}else{
+			style = presentation.getTheme().getSlideStyleOthers();
+		}
+		return style;
+	}
+	
+	public SlideItemStyle getCorrectSlideItemStyle(Displayable presentation){
+		SlideItemStyle style;
+		if(presentation.getSlideNumber() == 0){
+			style = presentation.getTheme().getSlideItemStyle();
+		}else{
+			style = presentation.getTheme().getSlideItemStyleOthers();
+		}
+		return style;
+	}
 	
 	public Displayable getCurrentSlide() {return null;}
 

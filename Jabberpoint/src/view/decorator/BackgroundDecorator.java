@@ -23,7 +23,7 @@ public class BackgroundDecorator extends DisplayableDecorator{
 	}
 	
 	private void draw(Graphics g, Displayable presentation, Rectangle area){
-		SlideStyle style = getCorrectStyle(presentation);
+		SlideStyle style = getCorrectSlideStyle(presentation);
 		Color backgroundColor = style.getBackgroundColor();
 		g.setColor(backgroundColor);
 		g.fillRect(0, 0, area.width, area.height);

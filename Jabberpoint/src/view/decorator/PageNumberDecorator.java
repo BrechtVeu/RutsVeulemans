@@ -24,7 +24,7 @@ public class PageNumberDecorator extends DisplayableDecorator{
 	}
 
 	private void draw(Graphics g, Displayable presentation){
-		SlideStyle style = getCorrectStyle(presentation);
+		SlideStyle style = getCorrectSlideStyle(presentation);
 		Font labelFont = style.getFont();
 		Color labelFontColor = style.getLabelFontColor();
 		g.setFont(labelFont);

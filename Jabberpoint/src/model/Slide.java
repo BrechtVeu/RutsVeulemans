@@ -52,12 +52,7 @@ public class Slide extends Displayable{
 	}
 	
 	public void decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation){
-		SlideItemStyle style;
-		if(presentation.getSlideNumber() == 1){
-			style = presentation.getTheme().getSlideItemStyle();
-		}else{
-			style = presentation.getTheme().getSlideItemStyleOthers();
-		}
+		SlideItemStyle style = getCorrectSlideItemStyle(presentation);
 		draw(g, area, view, style);
 	}
 }
