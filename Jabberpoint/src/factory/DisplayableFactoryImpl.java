@@ -16,26 +16,26 @@ public class DisplayableFactoryImpl implements DisplayableFactory {
 
 	@Override
 	public Displayable makePresentation() {
-		return new Presentation();		
+		return new Presentation();
 	}
-	
+
 	@Override
-	public Displayable makeSlide(String title){
+	public Displayable makeSlide() {
 		SlideDrawer slideDrawer = new SlideDrawerImpl();
 		Displayable slide = new Slide(slideDrawer);
-		slide.setTitle(title);
+		//slide.setTitle(title);
 		return slide;
 	}
-	
+
 	@Override
-	public Displayable makeTextItem(int level, String text){
+	public Displayable makeTextItem(int level, String text) {
 		TextItemDrawer textItemDrawer = new TextItemDrawerImpl();
 		Displayable textItem = new TextItem(level, text, textItemDrawer);
 		return textItem;
 	}
-	
+
 	@Override
-	public Displayable makeBitmapItem(int level, String text){
+	public Displayable makeBitmapItem(int level, String text) {
 		BitmapItemDrawer bitmapItemDrawer = new BitmapItemDrawerImpl();
 		Displayable textItem = new BitmapItem(level, text, bitmapItemDrawer);
 		return textItem;

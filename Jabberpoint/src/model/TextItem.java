@@ -1,15 +1,20 @@
 package model;
+
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
 import view.drawer.TextItemDrawer;
 import view.theme.SlideItemStyle;
-import view.theme.Style;
-import view.theme.Theme;
 
-/** <p>Een tekst item.</p>
- * <p>Een TextItem heeft tekenfunctionaliteit.</p>
+/**
+ * <p>
+ * Een tekst item.
+ * </p>
+ * <p>
+ * Een TextItem heeft tekenfunctionaliteit.
+ * </p>
+ * 
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman
@@ -22,7 +27,7 @@ import view.theme.Theme;
 public class TextItem extends SlideItem {
 	private String text;
 	private TextItemDrawer textItemDrawer;
-	
+
 	private static final String EMPTYTEXT = "No Text Given";
 
 // een textitem van level level, met als tekst string
@@ -37,11 +42,10 @@ public class TextItem extends SlideItem {
 		return text == null ? "" : text;
 	}
 
-
+	@Override
 	public String toString() {
-		return "TextItem[" + getLevel()+","+getText()+"]";
+		return "TextItem[" + getLevel() + "," + getText() + "]";
 	}
-	
 
 	@Override
 	public void draw(Graphics g, Rectangle area, ImageObserver observer, SlideItemStyle slideItemstyle) {
@@ -49,13 +53,13 @@ public class TextItem extends SlideItem {
 		if (text == null || text.length() == 0) {
 			return;
 		}
-		float scale = getScale(area);		
+		float scale = getScale(area);
 		textItemDrawer.draw(area.x, area.y, scale, g, getStyle(slideItemstyle), observer, text);
-		
+
 	}
 
 	@Override
-	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, SlideItemStyle slideItemstyle) {		
+	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, SlideItemStyle slideItemstyle) {
 		return textItemDrawer.getBoundingBox(g, observer, scale, getStyle(slideItemstyle), text);
 	}
 }

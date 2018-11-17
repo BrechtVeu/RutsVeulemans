@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package factory;
 
@@ -17,8 +17,6 @@ import controller.command.OpenPresentationCommand;
 import controller.command.PreviousSlideCommand;
 import controller.command.SavePresentationCommand;
 import model.Displayable;
-import model.Presentation;
-import view.SlideViewerFrame;
 
 /**
  * @author Dominique
@@ -28,18 +26,20 @@ public class CommandFactoryImpl implements CommandFactory {
 
 	private Frame slideViewerFrame;
 	private Displayable presentation;
-	
+
 	public CommandFactoryImpl(Frame slideViewerFrame, Displayable presentation) {
 		this.slideViewerFrame = slideViewerFrame;
 		this.presentation = presentation;
 	}
-	
+
 	@Override
 	public Command makeEmptyCommand() {
 		return new EmptyCommand();
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see controller.command.CommandFactory#makeExitCommand()
 	 */
 	@Override

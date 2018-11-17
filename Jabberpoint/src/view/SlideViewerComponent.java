@@ -1,7 +1,6 @@
 package view;
-import java.awt.Color;
+
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -11,13 +10,12 @@ import javax.swing.JFrame;
 import jabberpoint.Values;
 import model.Displayable;
 import model.Observer;
-import model.Slide;
-import view.decorator.BackgroundDecorator;
-import view.decorator.LogoDecorator;
-import view.decorator.PageNumberDecorator;
 
-
-/** <p>SlideViewerComponent is een grafische component die Slides kan laten zien.</p>
+/**
+ * <p>
+ * SlideViewerComponent is een grafische component die Slides kan laten zien.
+ * </p>
+ * 
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman
@@ -28,17 +26,22 @@ import view.decorator.PageNumberDecorator;
  */
 
 public class SlideViewerComponent extends JComponent implements Observer {
-		
+
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private Displayable slide; // de huidige slide
 	private Displayable presentation = null; // de presentatie
 	private JFrame frame = null;
-	
+
 	public SlideViewerComponent(Displayable pres, JFrame frame) {
 		setBackground(Values.BGCOLOR);
 		presentation = pres;
 		this.frame = frame;
 	}
 
+	@Override
 	public Dimension getPreferredSize() {
 		return new Dimension(Values.WIDTH, Values.HEIGHT);
 	}
@@ -56,20 +59,22 @@ public class SlideViewerComponent extends JComponent implements Observer {
 	}
 
 // teken de slide
-	public void paintComponent(Graphics g) {	
+	@Override
+	public void paintComponent(Graphics g) {
 		if (presentation.getSlideNumber() < 0 || slide == null) {
 			return;
 		}
-		
-		//TODO area verandert van: 
-		//Rectangle area = new Rectangle(0, Values.YPOS, getWidth(), (getHeight() - Values.YPOS));
+
+		// TODO area verandert van:
+		// Rectangle area = new Rectangle(0, Values.YPOS, getWidth(), (getHeight() -
+		// Values.YPOS));
 		Rectangle area = new Rectangle(0, Values.YPOS, getWidth(), getHeight());
-		
-		if(presentation.getSlideNumber() == 0){
+
+		if (presentation.getSlideNumber() == 0) {
 			slide = presentation.getTheme().getSlideStyle().wrapDecorator(slide);
-		} else{
+		} else {
 			slide = presentation.getTheme().getSlideStyleOthers().wrapDecorator(slide);
 		}
 		slide.decorate(g, area, this, presentation);
-	}	
+	}
 }

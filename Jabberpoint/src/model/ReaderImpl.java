@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package model;
 
@@ -15,7 +15,7 @@ import factory.FormatFactoryImpl;
 public class ReaderImpl implements Reader {
 
 	/**
-	 * 
+	 *
 	 */
 	public ReaderImpl() {
 		// TODO Auto-generated constructor stub

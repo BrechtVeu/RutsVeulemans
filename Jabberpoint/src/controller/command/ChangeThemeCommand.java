@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package controller.command;
 
@@ -16,9 +16,9 @@ public class ChangeThemeCommand implements Command {
 	private CommandEventManager<SlideEvent> commandEventManager;
 	private SlideEvent eventObject;
 	private String theme;
-	
+
 	/**
-	 * 
+	 *
 	 */
 	public ChangeThemeCommand(Displayable presentation, String theme) {
 		this.commandEventManager = new CommandEventManager<SlideEvent>();
@@ -27,13 +27,15 @@ public class ChangeThemeCommand implements Command {
 		this.theme = theme;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see controller.command.Command#execute()
 	 */
 	@Override
 	public void execute() {
 		System.out.println("ChangeThemeCommand - execute");
-		
+
 		this.eventObject.setTheme(this.theme);
 		this.commandEventManager.fire(eventObject);
 	}

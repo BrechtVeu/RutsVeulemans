@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package controller.command;
 
@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
 
 import jabberpoint.Values;
 import model.Displayable;
-import model.Presentation;
 import model.Writer;
 import model.WriterImpl;
 
@@ -26,8 +25,10 @@ public class SavePresentationCommand implements Command {
 		this.slideViewerFrame = slideViewerFrame;
 		this.presentation = presentation;
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see controller.command.Command#execute()
 	 */
 	@Override
@@ -36,8 +37,8 @@ public class SavePresentationCommand implements Command {
 		try {
 			writer.saveFile(this.presentation, Values.SAVEFILE);
 		} catch (IOException exc) {
-			JOptionPane.showMessageDialog(this.slideViewerFrame, Values.IOEX + exc, 
-					Values.SAVEERR, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this.slideViewerFrame, Values.IOEX + exc, Values.SAVEERR,
+					JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package controller.command;
 
@@ -8,8 +8,10 @@ package controller.command;
  *
  */
 public class EmptyCommand implements Command {
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see controller.command.Command#execute()
 	 */
 	@Override

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package controller.command;
 
@@ -14,15 +14,17 @@ import view.AboutBox;
 public class AboutCommand implements Command {
 
 	private Frame slideViewerFrame;
-	
+
 	/**
-	 * 
+	 *
 	 */
 	public AboutCommand(Frame slideViewerFrame) {
 		this.slideViewerFrame = slideViewerFrame;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see controller.command.Command#execute()
 	 */
 	@Override

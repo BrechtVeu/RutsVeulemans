@@ -1,11 +1,17 @@
 package view.theme;
+
 import java.awt.Color;
 import java.awt.Font;
 
-/** <p>Style staat voor Indent, Color, Font and Leading.</p>
- * <p>De koppeling tussen style-nummer en item-level is nu direct:
- * in Slide wordt de style opgehaald voor een item
- * met als style-nummer het item-level.</p>
+/**
+ * <p>
+ * Style staat voor Indent, Color, Font and Leading.
+ * </p>
+ * <p>
+ * De koppeling tussen style-nummer en item-level is nu direct: in Slide wordt
+ * de style opgehaald voor een item met als style-nummer het item-level.
+ * </p>
+ * 
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman
@@ -16,7 +22,7 @@ import java.awt.Font;
  */
 
 public class Style {
-	
+
 	private String fontName;
 	private int indent;
 	private Color color;
@@ -28,12 +34,13 @@ public class Style {
 		this.fontName = fontName;
 		this.indent = indent;
 		this.color = color;
-		font = new Font(fontName, Font.BOLD, fontSize=points);
+		font = new Font(fontName, Font.BOLD, fontSize = points);
 		this.leading = leading;
 	}
 
+	@Override
 	public String toString() {
-		return "["+ getIndent() + "," + getColor() + "; " + fontSize + " on " + getLeading() +"]";
+		return "[" + getIndent() + "," + getColor() + "; " + fontSize + " on " + getLeading() + "]";
 	}
 
 	public Font getFont(float scale) {
@@ -62,5 +69,5 @@ public class Style {
 
 	public void setColor(Color color) {
 		this.color = color;
-}
+	}
 }

@@ -2,10 +2,14 @@ package model;
 
 import java.util.ArrayList;
 
-
 /**
- * <p>Presentation houdt de slides in de presentatie bij.</p>
- * <p>Er is slechts één instantie van deze klasse aanwezig.</p>
+ * <p>
+ * Presentation houdt de slides in de presentatie bij.
+ * </p>
+ * <p>
+ * Er is slechts één instantie van deze klasse aanwezig.
+ * </p>
+ * 
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman
@@ -15,60 +19,21 @@ import java.util.ArrayList;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class Presentation extends Displayable{
+public class Presentation extends Displayable {
 	private String showTitle; // de titel van de presentatie
-	
-	private int currentSlideNumber = 0; // het slidenummer van de huidige Slide
 
 	public Presentation() {
 		clear();
 	}
 
+	@Override
 	public String getTitle() {
 		return showTitle;
 	}
 
+	@Override
 	public void setTitle(String nt) {
 		showTitle = nt;
-	}
-
-	// geef het nummer van de huidige slide
-	public int getSlideNumber() {
-		return currentSlideNumber;
-	}
-	
-	// verander het huidige-slide-nummer en laat het aan het window weten.
-	@Override
-	public void setSlideNumber(int number) {
-		currentSlideNumber = number;
-		notifyObservers();
-	}
-
-	// ga naar de vorige slide tenzij je aan het begin van de presentatie bent
-	public void prevSlide() {
-		if (currentSlideNumber > 0) {
-			setSlideNumber(currentSlideNumber - 1);
-	    }
-	}
-
-	// Ga naar de volgende slide tenzij je aan het einde van de presentatie bent.
-	public void nextSlide() {
-		if (currentSlideNumber < (super.displayableList.size()-1)) {
-			setSlideNumber(currentSlideNumber + 1);
-		}
-	}
-
-	// Verwijder de presentatie, om klaar te zijn voor de volgende
-	@Override
-	public void clear() {
-		super.displayableList = new ArrayList<Displayable>();
-		setSlideNumber(-1);
-	}
-
-	// Geef de huidige Slide
-	@Override
-	public Displayable getCurrentSlide() {
-		return super.getDisplayableItem(currentSlideNumber);
 	}
 
 	public void exit(int n) {

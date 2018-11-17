@@ -2,12 +2,13 @@ package factory;
 
 import jabberpoint.Values;
 import model.Displayable;
+import model.DisplayableIteratorImpl;
 
-public class DisplayableBuilderImpl implements DisplayableBuilder{
+public class DisplayableBuilderImpl implements DisplayableBuilder {
 
 	private DisplayableFactory displayableFactory;
 	private Displayable displayable;
-	
+
 	public DisplayableBuilderImpl() {
 		this.displayableFactory = new DisplayableFactoryImpl();
 	}
@@ -20,34 +21,35 @@ public class DisplayableBuilderImpl implements DisplayableBuilder{
 	}
 
 	@Override
-	public DisplayableBuilder addSlide(String title) {
-		
-		Displayable slide = displayableFactory.makeSlide(title);
+	public DisplayableBuilder addSlide() {
+		Displayable slide = displayableFactory.makeSlide();
 		displayable.append(slide);
 		return this;
 	}
 
+
 	@Override
 	public DisplayableBuilder addTextItem(int level, String text) {
-		if(displayable.getLastItem() == null){
-			addSlide(" ");
+		if (displayable.getLastItem() == null) {
+			addSlide();
 		}
-		displayable.getLastItem().append(displayableFactory.makeTextItem(level, text));		
+		displayable.getLastItem().append(displayableFactory.makeTextItem(level, text));
 		return this;
 	}
 
 	@Override
 	public DisplayableBuilder addBitmapItem(int level, String text) {
-		if(displayable.getLastItem() == null){
-			addSlide(" ");
+		if (displayable.getLastItem() == null) {
+			addSlide();
 		}
-		displayable.getLastItem().append(displayableFactory.makeBitmapItem(level, text));		
+		displayable.getLastItem().append(displayableFactory.makeBitmapItem(level, text));
 		return this;
 	}
 
 	@Override
 	public Displayable build() {
-		displayable.setSlideNumber(0);
+		displayable.setSlideNumber(0);	
+		displayable.setIterator();
 		return displayable;
 	}
 

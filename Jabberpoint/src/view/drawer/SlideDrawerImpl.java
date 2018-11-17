@@ -3,30 +3,22 @@ package view.drawer;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
-import java.util.ArrayList;
-import java.util.Vector;
-
-import jabberpoint.Values;
 import model.Displayable;
-import model.SlideItem;
+import model.DisplayableIterator;
 import view.theme.SlideItemStyle;
-import view.theme.Theme;
 
-public class SlideDrawerImpl implements SlideDrawer{
+public class SlideDrawerImpl implements SlideDrawer {
 	@Override
-	public void draw(Graphics g, Rectangle area, ImageObserver view, Displayable title, int size,
-			ArrayList<Displayable> slideItems, float scale, SlideItemStyle slideItemstyle) {
-	    int y = area.y;
-		/* De titel hoeft niet meer apart behandeld te worden */
-	    Displayable slideItem = title;
-	    slideItem.getLevel();
-	    slideItem.draw(g, area, view, slideItemstyle);
-	    y += slideItem.getBoundingBox(g, view, scale, slideItemstyle).height;
-	    for (int number=0; number<size; number++) {
-	      slideItem = slideItems.get(number);
-	      area = new Rectangle(area.x, y, area.width, area.height) ;
-	      slideItem.draw(g, area, view, slideItemstyle);
-	      y += slideItem.getBoundingBox(g, view, scale, slideItemstyle).height;
-	    }
-	  }	
+	public void draw(Graphics g, Rectangle area, ImageObserver view, int size,
+			DisplayableIterator<Displayable> displayableIterator, float scale, SlideItemStyle slideItemstyle) {
+		int y = area.y;
+		
+		displayableIterator.setSlideNumber(0);
+		while (displayableIterator.hasNext()) {
+			Displayable slideItem = displayableIterator.next();
+			area = new Rectangle(area.x, y, area.width, area.height);
+			slideItem.draw(g, area, view, slideItemstyle);
+			y += slideItem.getBoundingBox(g, view, scale, slideItemstyle).height;
+		}
+	}
 }

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package controller.command;
 
@@ -18,8 +18,9 @@ import model.Displayable;
 public class GotoSlideCommand implements Command {
 	private CommandEventManager<SlideEvent> commandEventManager;
 	private SlideEvent eventObject;
+
 	/**
-	 * 
+	 *
 	 */
 	public GotoSlideCommand(Displayable presentation) {
 		this.commandEventManager = new CommandEventManager<SlideEvent>();
@@ -27,14 +28,16 @@ public class GotoSlideCommand implements Command {
 		this.eventObject = new GotoSlideEvent(presentation);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see controller.command.Command#execute()
 	 */
 	@Override
 	public void execute() {
-		String pageNumberStr = JOptionPane.showInputDialog((Object)Values.PAGENR);
+		String pageNumberStr = JOptionPane.showInputDialog(Values.PAGENR);
 		int pageNumber = Integer.parseInt(pageNumberStr);
-		
+
 		this.eventObject.setSlideNumber(pageNumber);
 		this.commandEventManager.fire(eventObject);
 	}

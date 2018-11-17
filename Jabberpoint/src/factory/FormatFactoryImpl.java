@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package factory;
 
@@ -14,11 +14,13 @@ import model.XMLFormat;
  *
  */
 public class FormatFactoryImpl implements FormatFactory {
-	
+
 	public FormatFactoryImpl() {
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see factory.FormatFactory#makeLoadFileCommand()
 	 */
 	@Override

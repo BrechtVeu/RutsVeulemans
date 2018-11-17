@@ -1,8 +1,7 @@
 /**
- * 
+ *
  */
 package controller.command;
-
 
 import event.CommandEventManager;
 import event.NextSlideEvent;
@@ -16,9 +15,9 @@ import model.Displayable;
 public class NextSlideCommand implements Command {
 	private CommandEventManager<SlideEvent> commandEventManager;
 	private SlideEvent eventObject;
-	
+
 	/**
-	 * 
+	 *
 	 */
 	public NextSlideCommand(Displayable presentation) {
 		this.commandEventManager = new CommandEventManager<SlideEvent>();
@@ -26,7 +25,9 @@ public class NextSlideCommand implements Command {
 		this.eventObject = new NextSlideEvent(presentation);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see controller.command.Command#execute()
 	 */
 	@Override

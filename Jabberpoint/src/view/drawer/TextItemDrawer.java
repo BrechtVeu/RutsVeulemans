@@ -8,10 +8,8 @@ import view.theme.Style;
 
 public interface TextItemDrawer {
 	// Geef de bounding box
-		public Rectangle getBoundingBox(Graphics g, 
-				ImageObserver observer, float scale, Style style, String text);
+	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style style, String text);
 
 	// teken het item
-		public void draw(int x, int y, float scale, 
-				Graphics g, Style style, ImageObserver observer, String text);
+	public void draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer, String text);
 }

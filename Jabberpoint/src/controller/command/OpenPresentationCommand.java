@@ -7,17 +7,16 @@ import javax.swing.JOptionPane;
 
 import event.CommandEventManager;
 import event.OpenPresentationEvent;
-import event.RepaintEvent;
 import event.SlideEvent;
 import jabberpoint.Values;
 import model.Displayable;
 import model.Reader;
 import model.ReaderImpl;
 
-public class OpenPresentationCommand implements Command {	
+public class OpenPresentationCommand implements Command {
 	private Frame slideViewerFrame;
 	private Displayable presentation;
-	
+
 	private CommandEventManager<SlideEvent> frameCommandEventManager;
 	private SlideEvent eventObject;
 
@@ -28,7 +27,7 @@ public class OpenPresentationCommand implements Command {
 		this.slideViewerFrame = slideViewerFrame;
 		this.presentation = presentation;
 	}
-	
+
 	@Override
 	public void execute() {
 		this.presentation.clear();
@@ -37,8 +36,8 @@ public class OpenPresentationCommand implements Command {
 			reader.loadFile(this.presentation, Values.TESTFILE);
 			this.frameCommandEventManager.fire(eventObject);
 		} catch (IOException exc) {
-			JOptionPane.showMessageDialog(this.slideViewerFrame, Values.IOEX + exc, 
- 			Values.LOADERR, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this.slideViewerFrame, Values.IOEX + exc, Values.LOADERR,
+					JOptionPane.ERROR_MESSAGE);
 		}
 	}
 

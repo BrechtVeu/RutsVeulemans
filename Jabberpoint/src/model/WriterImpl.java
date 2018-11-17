@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package model;
 
@@ -15,7 +15,7 @@ import factory.FormatFactoryImpl;
 public class WriterImpl implements Writer {
 
 	/**
-	 * 
+	 *
 	 */
 	public WriterImpl() {
 		// TODO Auto-generated constructor stub
