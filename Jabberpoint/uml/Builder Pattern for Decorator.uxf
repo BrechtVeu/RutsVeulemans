@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>522</x>
+      <x>258</x>
       <y>456</y>
       <w>252</w>
       <h>84</h>
@@ -25,7 +25,7 @@ group=2</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>522</x>
+      <x>258</x>
       <y>348</y>
       <w>252</w>
       <h>84</h>
@@ -46,7 +46,7 @@ group=2</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>636</x>
+      <x>372</x>
       <y>426</y>
       <w>18</w>
       <h>42</h>
@@ -58,7 +58,7 @@ group=2</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>576</x>
+      <x>312</x>
       <y>240</y>
       <w>156</w>
       <h>48</h>
@@ -75,7 +75,7 @@ group=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>750</x>
+      <x>486</x>
       <y>240</y>
       <w>156</w>
       <h>48</h>
@@ -91,7 +91,7 @@ group=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>648</x>
+      <x>384</x>
       <y>162</y>
       <w>186</w>
       <h>90</h>
@@ -103,7 +103,7 @@ group=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>648</x>
+      <x>384</x>
       <y>162</y>
       <w>18</w>
       <h>90</h>
@@ -115,7 +115,7 @@ group=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>474</x>
+      <x>210</x>
       <y>162</y>
       <w>192</w>
       <h>90</h>
@@ -127,7 +127,7 @@ group=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>588</x>
+      <x>324</x>
       <y>120</y>
       <w>132</w>
       <h>48</h>
@@ -144,7 +144,7 @@ group=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>402</x>
+      <x>138</x>
       <y>240</y>
       <w>156</w>
       <h>48</h>
@@ -161,7 +161,7 @@ group=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>642</x>
+      <x>378</x>
       <y>282</y>
       <w>192</w>
       <h>78</h>
@@ -172,7 +172,7 @@ group=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>474</x>
+      <x>210</x>
       <y>282</y>
       <w>186</w>
       <h>78</h>
@@ -183,7 +183,7 @@ group=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>642</x>
+      <x>378</x>
       <y>282</y>
       <w>18</w>
       <h>78</h>
@@ -194,7 +194,7 @@ group=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>768</x>
+      <x>504</x>
       <y>474</y>
       <w>216</w>
       <h>108</h>
@@ -207,7 +207,7 @@ of DiplayableDecorator &gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>462</x>
+      <x>198</x>
       <y>282</y>
       <w>324</w>
       <h>216</h>
@@ -219,7 +219,7 @@ creates &gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>462</x>
+      <x>198</x>
       <y>282</y>
       <w>72</w>
       <h>216</h>
@@ -230,7 +230,7 @@ creates &gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>462</x>
+      <x>198</x>
       <y>282</y>
       <w>72</w>
       <h>216</h>
@@ -241,7 +241,7 @@ creates &gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>462</x>
+      <x>198</x>
       <y>282</y>
       <w>144</w>
       <h>216</h>
@@ -252,7 +252,7 @@ creates &gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>666</x>
+      <x>402</x>
       <y>708</y>
       <w>354</w>
       <h>60</h>
@@ -270,7 +270,7 @@ group=4</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1032</x>
+      <x>768</x>
       <y>708</y>
       <w>354</w>
       <h>48</h>
@@ -287,7 +287,7 @@ group=4</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>300</x>
+      <x>36</x>
       <y>708</y>
       <w>354</w>
       <h>48</h>
@@ -303,7 +303,7 @@ group=4</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>834</x>
+      <x>570</x>
       <y>624</y>
       <w>390</w>
       <h>96</h>
@@ -315,7 +315,7 @@ group=4</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>834</x>
+      <x>570</x>
       <y>624</y>
       <w>18</w>
       <h>96</h>
@@ -327,7 +327,7 @@ group=4</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>468</x>
+      <x>204</x>
       <y>624</y>
       <w>384</w>
       <h>96</h>
@@ -339,7 +339,7 @@ group=4</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>666</x>
+      <x>402</x>
       <y>570</y>
       <w>354</w>
       <h>60</h>
@@ -353,5 +353,90 @@ group=4</panel_attributes>
 bg=yellow
 group=4</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>780</x>
+      <y>222</y>
+      <w>546</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>/model::Displayable/
+--
+#currentDisplayableNumber = 0: int
+#displayableList = new ArrayList&lt;Displayable&gt;(): ArrayList&lt;Displayable&gt;
+#displayableIterator = new DisplayableIteratorImpl&lt;Displayable&gt;(displayableList, currentDisplayableNumber): DisplayableIterator&lt;Displayable&gt;
+#theme: Theme
+#themeFactory = new ThemeFactoryImpl(): ThemeFactory
+#observerList = new ArrayList&lt;Observer&gt;(): ArrayList&lt;Observer&gt;
+--
++setIterator(): void
++append(Displayable displayable): void
++getLastItem(): Displayable
++getDisplayableItems(): ArrayList&lt;Displayable&gt;
++getDisplayableItem(int number): Displayable
++getSize(): int
++draw(Graphics g, Rectangle area, ImageObserver view, SlideItemStyle style): void
++decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation): void
++attach(Observer observer): void
++detach(Observer observer): void
++notifyObservers(): void
++getCorrectSlideStyle(Displayable presentation): SlideStyle
++getCorrectSlideItemStyle(Displayable presentation): SlideItemStyle
++getCurrentSlide(): Displayable
++getBoundingBox(Graphics g, ImageObserver view, float scale, SlideItemStyle slideItemstyle): Rectangle
++getTitle(): String
++setTitle(String title): void
++getDisplayableNumber(): int
++nextDisplayable(): void
++prevDisplayable(): void
++clear(): void
++gotoSlide(int displayableNumber): void
++setDisplayableNumber(int number): void
++getLevel(): int
++getTheme(): Theme
++setTheme(String theme): void
++getThemeFactory(): ThemeFactory
++eventTriggered(SlideEvent event): void
++iterator(): DisplayableIterator&lt;Displayable&gt;
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>456</y>
+      <w>288</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>460.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>726</x>
+      <y>486</y>
+      <w>66</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=0..1</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>576</y>
+      <w>174</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>270.0;10.0;270.0;50.0;10.0;50.0</additional_attributes>
   </element>
 </diagram>
