@@ -272,7 +272,7 @@ public abstract class Displayable implements Observable, Iterable<Displayable>, 
 	 * @param displayableNumber
 	 */
 	public void gotoSlide(int displayableNumber) {
-		if (displayableList.size() > 0) {
+		if (displayableList.size() > 0 && displayableNumber < displayableList.size() && displayableNumber > 0) {
 			this.iterator().setCurrentDisplayableNumber(displayableNumber);
 			this.setDisplayableNumber(displayableNumber);
 		}
