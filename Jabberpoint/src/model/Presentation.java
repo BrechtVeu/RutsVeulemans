@@ -43,13 +43,4 @@ public class Presentation extends Displayable {
 	public void setTitle(String nt) {
 		showTitle = nt;
 	}
-
-	/**
-	 * Exits the presentation
-	 * 
-	 * @param n
-	 */
-	public void exit(int n) {
-		System.exit(n);
-	}
 }

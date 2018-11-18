@@ -41,7 +41,6 @@ public class PreviousSlideCommand implements Command {
 	 */
 	@Override
 	public void execute() {
-		System.out.println("PrevSlideCommand - execute");
 		this.commandEventManager.fire(eventObject);
 	}
 

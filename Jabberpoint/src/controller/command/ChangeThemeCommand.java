@@ -40,8 +40,6 @@ public class ChangeThemeCommand implements Command {
 	 */
 	@Override
 	public void execute() {
-		System.out.println("ChangeThemeCommand - execute");
-
 		this.eventObject.setTheme(this.theme);
 		this.commandEventManager.fire(eventObject);
 	}

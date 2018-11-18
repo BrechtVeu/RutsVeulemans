@@ -34,7 +34,6 @@ public class NextSlideCommand implements Command {
 	 */
 	@Override
 	public void execute() {
-		System.out.println("NextSlideCommand - execute");
 		this.commandEventManager.fire(eventObject);
 	}
 }
