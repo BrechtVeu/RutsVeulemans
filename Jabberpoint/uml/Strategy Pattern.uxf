@@ -1,0 +1,880 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.1.1">
+  <zoom_level>4</zoom_level>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>84</x>
+      <y>232</y>
+      <w>12</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+group=12</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>296</x>
+      <y>232</y>
+      <w>12</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+group=12</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>188</x>
+      <y>284</y>
+      <w>60</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+group=12</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>144</x>
+      <y>284</y>
+      <w>56</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+group=12</panel_attributes>
+    <additional_attributes>120.0;120.0;120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>112</x>
+      <y>364</y>
+      <w>88</w>
+      <h>68</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+group=12</panel_attributes>
+    <additional_attributes>200.0;10.0;200.0;90.0;10.0;90.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>188</x>
+      <y>364</y>
+      <w>104</w>
+      <h>68</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+group=12</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0;240.0;90.0;240.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>32</x>
+      <y>424</y>
+      <w>168</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>model::DemoFormat
+--
+~builder: DisplayableBuilder
+--
++DemoFormat(): ctor
++loadFile(Displayable presentation, String unusedFilename): void
++saveFile(Displayable p, String unusedFilename): void
+group=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>12</x>
+      <y>208</y>
+      <w>156</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+model::Reader
+--
+--
++loadFile(Displayable p, String filename): void
+bg=red
+group=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>28</x>
+      <y>276</y>
+      <w>120</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>model::ReaderImpl
+--
+--
++loadFile(Displayable p, String filename): void
+
+group=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>208</y>
+      <w>124</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+model::Writer
+--
+--
++saveFile(Displayable p, String filename): void
+bg=red
+group=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>276</y>
+      <w>124</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>model::WriterImpl
+--
+--
++saveFile(Displayable p, String filename): void
+group=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>224</x>
+      <y>424</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>model::XMLFormat
+--
+~presentationBuilder: DisplayableBuilder
+--
++XMLFormat(): ctor
++loadFile(Displayable p, String filename): void
++saveFile(Displayable p, String filename): void
+group=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>132</x>
+      <y>332</y>
+      <w>120</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+model::Format
+--
+--
++loadFile(Displayable p, String filename): void
++saveFile(Displayable p, String filename): void
+bg=red
+group=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>424</x>
+      <y>332</y>
+      <w>416</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>view.drawer::SlideDrawerImpl
+--
+--
++draw(Graphics g, Rectangle area, ImageObserver view, int size, DisplayableIterator&lt;Displayable&gt; displayableIterator, float scale, SlideItemStyle slideItemstyle): void
+
+group=11</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>632</x>
+      <y>300</y>
+      <w>12</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+group=11</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>436</x>
+      <y>272</y>
+      <w>396</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+view.drawer::SlideDrawer
+--
+--
++draw(Graphics g, Rectangle area, ImageObserver view, int size, DisplayableIterator&lt;Displayable&gt; displayableIterator, float scale, SlideItemStyle style): void
+bg=red
+group=11</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>632</x>
+      <y>248</y>
+      <w>12</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+group=11</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>500</x>
+      <y>212</y>
+      <w>268</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>model::Slide
+--
+-slideDrawer: SlideDrawer
+--
++Slide(SlideDrawer slideDrawer): ctor
++draw(Graphics g, Rectangle area, ImageObserver view, SlideItemStyle slideItemstyle): void
++decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation): void
+
+group=11</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>880</x>
+      <y>364</y>
+      <w>260</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>view.drawer::TextItemDrawerImpl
+--
+--
++getAttributedString(Style style, float scale, String text): AttributedString
++getBoundingBox(Graphics g, ImageObserver observer, float scale, Style style, String text): Rectangle
++draw(int x, int y, float scale, Graphics g, Style style, ImageObserver o, String text): void
+
+group=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1008</x>
+      <y>332</y>
+      <w>12</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+group=10</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>880</x>
+      <y>296</y>
+      <w>260</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+view.drawer::TextItemDrawer
+--
+--
++getBoundingBox(Graphics g, ImageObserver observer, float scale, Style style, String text): Rectangle
++draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer, String text): void
+bg=red
+group=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1008</x>
+      <y>272</y>
+      <w>12</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+group=10</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1156</x>
+      <y>364</y>
+      <w>308</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>view.drawer::BitmapItemDrawerImpl
+--
+--
++getBoundingBox(Graphics g, ImageObserver observer, float scale, Style style, BufferedImage bufferedImage): Rectangle
++draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer, BufferedImage bufferedImage): void
+group=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1304</x>
+      <y>332</y>
+      <w>12</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+group=10</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1156</x>
+      <y>296</y>
+      <w>312</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+view.drawer::BitmapItemDrawer
+--
+--
++getBoundingBox(Graphics g, ImageObserver observer, float scale, Style style, BufferedImage bufferedImage): Rectangle
++draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer, BufferedImage bufferedImage): void
+bg=red
+group=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1308</x>
+      <y>272</y>
+      <w>12</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+group=10</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>876</x>
+      <y>208</y>
+      <w>276</w>
+      <h>68</h>
+    </coordinates>
+    <panel_attributes>model::TextItem
+--
+-text: String
+-textItemDrawer: TextItemDrawer
+--
++TextItem(int level, String string, TextItemDrawer textItemDrawer): ctor
++getText(): String
++toString(): String
++draw(Graphics g, Rectangle area, ImageObserver observer, SlideItemStyle slideItemstyle): void
++getBoundingBox(Graphics g, ImageObserver observer, float scale, SlideItemStyle slideItemstyle): Rectangle
+
+group=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1172</x>
+      <y>208</y>
+      <w>276</w>
+      <h>68</h>
+    </coordinates>
+    <panel_attributes>model::BitmapItem
+--
+-bufferedImage: BufferedImage
+-imageName: String
+-bitmapItemDrawer: BitmapItemDrawer
+--
++BitmapItem(int level, String name, BitmapItemDrawer bitmapItemDrawer): ctor
++getName(): String
++toString(): String
++draw(Graphics g, Rectangle area, ImageObserver observer, SlideItemStyle slideItemstyle): void
++getBoundingBox(Graphics g, ImageObserver observer, float scale, SlideItemStyle slideItemstyle): Rectangle
+
+
+group=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>572</x>
+      <y>676</y>
+      <w>112</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+view.theme::Theme
+--
+--
++getSlideStyle(): SlideStyle
++getSlideItemStyle(): SlideItemStyle
++getSlideStyleOthers(): SlideStyle
++getSlideItemStyleOthers(): SlideItemStyle
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>624</x>
+      <y>724</y>
+      <w>12</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>456</x>
+      <y>752</y>
+      <w>344</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>view.theme::ThemeImpl
+--
+~slideStyle: SlideStyle
+~slideItemStyle: SlideItemStyle
+~slideStyleOthers: SlideStyle
+~slideItemStyleOthers: SlideItemStyle
+--
++ThemeImpl(SlideStyle slideStyle, SlideItemStyle slideItemStyle, SlideStyle slideStyleOthers, SlideItemStyle slideItemStyleOthers): ctor
++getSlideStyle(): SlideStyle
++getSlideItemStyle(): SlideItemStyle
++getSlideStyleOthers(): SlideStyle
++getSlideItemStyleOthers(): SlideItemStyle
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>436</x>
+      <y>412</y>
+      <w>364</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>/model::Displayable/
+--
+#currentDisplayableNumber = 0: int
+#displayableList = new ArrayList&lt;Displayable&gt;(): ArrayList&lt;Displayable&gt;
+#displayableIterator = new DisplayableIteratorImpl&lt;Displayable&gt;(displayableList, currentDisplayableNumber): DisplayableIterator&lt;Displayable&gt;
+#theme: Theme
+#themeFactory = new ThemeFactoryImpl(): ThemeFactory
+#observerList = new ArrayList&lt;Observer&gt;(): ArrayList&lt;Observer&gt;
+--
++setIterator(): void
++append(Displayable displayable): void
++getLastItem(): Displayable
++getDisplayableItems(): ArrayList&lt;Displayable&gt;
++getDisplayableItem(int number): Displayable
++getSize(): int
++draw(Graphics g, Rectangle area, ImageObserver view, SlideItemStyle style): void
++decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation): void
++attach(Observer observer): void
++detach(Observer observer): void
++notifyObservers(): void
++getCorrectSlideStyle(Displayable presentation): SlideStyle
++getCorrectSlideItemStyle(Displayable presentation): SlideItemStyle
++getCurrentSlide(): Displayable
++getBoundingBox(Graphics g, ImageObserver view, float scale, SlideItemStyle slideItemstyle): Rectangle
++getTitle(): String
++setTitle(String title): void
++getDisplayableNumber(): int
++nextDisplayable(): void
++prevDisplayable(): void
++clear(): void
++gotoSlide(int displayableNumber): void
++setDisplayableNumber(int number): void
++getLevel(): int
++getTheme(): Theme
++setTheme(String theme): void
++getThemeFactory(): ThemeFactory
++eventTriggered(SlideEvent event): void
++iterator(): DisplayableIterator&lt;Displayable&gt;
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>624</x>
+      <y>648</y>
+      <w>12</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1364</x>
+      <y>612</y>
+      <w>104</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>view.theme::SlideItemStyleImpl1
+--
+--
++SlideItemStyleImpl1(): ctor
++getStyle(int level): Style
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1480</x>
+      <y>612</y>
+      <w>104</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>view.theme::SlideItemStyleImpl2
+--
+--
++SlideItemStyleImpl2(): ctor
++getStyle(int level): Style
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1596</x>
+      <y>612</y>
+      <w>104</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>view.theme::SlideItemStyleImpl3
+--
+--
++SlideItemStyleImpl3(): ctor
++getStyle(int level): Style</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1528</x>
+      <y>560</y>
+      <w>124</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;290.0;70.0;290.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1528</x>
+      <y>560</y>
+      <w>12</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1412</x>
+      <y>560</y>
+      <w>128</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>300.0;10.0;300.0;70.0;10.0;70.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1488</x>
+      <y>532</y>
+      <w>88</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>/view.theme::SlideItemStyle/
+--
+#styles: Style[]
+--
++getStyle(int level): Style
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>848</x>
+      <y>648</y>
+      <w>124</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>view.theme::SlideStyleImpl1
+--
+--
++SlideStyleImpl1(): ctor
++wrapDecorator(Displayable slide): Displayable
++getLogo(): String
++getBackgroundColor(): Color
++getFont(): Font
++getLabelFontColor(): Color
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>984</x>
+      <y>648</y>
+      <w>124</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>view.theme::SlideStyleImpl2
+--
+--
++SlideStyleImpl2(): ctor
++wrapDecorator(Displayable slide): Displayable
++getLogo(): String
++getBackgroundColor(): Color
++getFont(): Font
++getLabelFontColor(): Color
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1128</x>
+      <y>648</y>
+      <w>124</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>view.theme::SlideStyleImpl3
+--
+--
++SlideStyleImpl3(): ctor
++wrapDecorator(Displayable slide): Displayable
++getLogo(): String
++getBackgroundColor(): Color
++getFont(): Font
++getLabelFontColor(): Color</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1044</x>
+      <y>464</y>
+      <w>92</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0;210.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>904</x>
+      <y>604</y>
+      <w>152</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>360.0;10.0;360.0;70.0;10.0;70.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1044</x>
+      <y>604</y>
+      <w>12</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1044</x>
+      <y>604</y>
+      <w>152</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;360.0;70.0;360.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>988</x>
+      <y>532</y>
+      <w>124</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>/view.theme::SlideStyle/
+--
+#logo: String
+#backgroundColor: Color
+#labelFont: Font
+#labelFontColor: Color
+--
++getLogo(): String
++getBackgroundColor(): Color
++getFont(): Font
++getLabelFontColor(): Color
++wrapDecorator(Displayable slide): Displayable
+bg=yellow
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1128</x>
+      <y>444</y>
+      <w>344</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>view.theme::ThemeImpl
+--
+~slideStyle: SlideStyle
+~slideItemStyle: SlideItemStyle
+~slideStyleOthers: SlideStyle
+~slideItemStyleOthers: SlideItemStyle
+--
++ThemeImpl(SlideStyle slideStyle, SlideItemStyle slideItemStyle, SlideStyle slideStyleOthers, SlideItemStyle slideItemStyleOthers): ctor
++getSlideStyle(): SlideStyle
++getSlideItemStyle(): SlideItemStyle
++getSlideStyleOthers(): SlideStyle
++getSlideItemStyleOthers(): SlideItemStyle
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1468</x>
+      <y>464</y>
+      <w>72</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>160.0;170.0;160.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>0</x>
+      <y>188</y>
+      <w>392</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>Strategy reader/writer -&gt; format
+--
+
+group=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>416</x>
+      <y>192</y>
+      <w>436</w>
+      <h>188</h>
+    </coordinates>
+    <panel_attributes>Strategy Slide -&gt; SlideDrawer
+--
+
+group=11</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>868</x>
+      <y>188</y>
+      <w>608</w>
+      <h>224</h>
+    </coordinates>
+    <panel_attributes>Strategy SlideItem -&gt; SlideItemDrawer
+--
+
+group=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>836</x>
+      <y>428</y>
+      <w>876</w>
+      <h>284</h>
+    </coordinates>
+    <panel_attributes>Strategy Theme -&gt; SlideStyle and SlideItemStyle
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>416</x>
+      <y>400</y>
+      <w>408</w>
+      <h>440</h>
+    </coordinates>
+    <panel_attributes>Displayable -&gt; Theme
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

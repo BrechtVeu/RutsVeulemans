@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.1.1">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>834</y>
+      <w>546</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>/model::Displayable/
+--
+#currentDisplayableNumber = 0: int
+#displayableList = new ArrayList&lt;Displayable&gt;(): ArrayList&lt;Displayable&gt;
+#displayableIterator = new DisplayableIteratorImpl&lt;Displayable&gt;(displayableList, currentDisplayableNumber): DisplayableIterator&lt;Displayable&gt;
+#theme: Theme
+#themeFactory = new ThemeFactoryImpl(): ThemeFactory
+#observerList = new ArrayList&lt;Observer&gt;(): ArrayList&lt;Observer&gt;
+--
++setIterator(): void
++append(Displayable displayable): void
++getLastItem(): Displayable
++getDisplayableItems(): ArrayList&lt;Displayable&gt;
++getDisplayableItem(int number): Displayable
++getSize(): int
++draw(Graphics g, Rectangle area, ImageObserver view, SlideItemStyle style): void
++decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation): void
++attach(Observer observer): void
++detach(Observer observer): void
++notifyObservers(): void
++getCorrectSlideStyle(Displayable presentation): SlideStyle
++getCorrectSlideItemStyle(Displayable presentation): SlideItemStyle
++getCurrentSlide(): Displayable
++getBoundingBox(Graphics g, ImageObserver view, float scale, SlideItemStyle slideItemstyle): Rectangle
++getTitle(): String
++setTitle(String title): void
++getDisplayableNumber(): int
++nextDisplayable(): void
++prevDisplayable(): void
++clear(): void
++gotoSlide(int displayableNumber): void
++setDisplayableNumber(int number): void
++getLevel(): int
++getTheme(): Theme
++setTheme(String theme): void
++getThemeFactory(): ThemeFactory
++eventTriggered(SlideEvent event): void
++iterator(): DisplayableIterator&lt;Displayable&gt;
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>876</y>
+      <w>432</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>10.0;10.0;700.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>1032</y>
+      <w>222</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt; creates concrete implementations of Displayable</panel_attributes>
+    <additional_attributes>10.0;20.0;350.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>750</x>
+      <y>1014</y>
+      <w>204</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+factory::DisplayableFactory
+--
+--
++makePresentation(): Displayable
++makeSlide(): Displayable
++makeTextItem(int level, String text): Displayable
++makeBitmapItem(int level, String text): Displayable
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>750</x>
+      <y>1116</y>
+      <w>204</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>factory::DisplayableFactoryImpl
+--
+--
++makePresentation(): Displayable
++makeSlide(): Displayable
++makeTextItem(int level, String text): Displayable
++makeBitmapItem(int level, String text): Displayable</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>846</x>
+      <y>1080</y>
+      <w>18</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>948</x>
+      <y>906</y>
+      <w>60</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>10.0;230.0;80.0;230.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>948</x>
+      <y>906</y>
+      <w>156</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt; creates</panel_attributes>
+    <additional_attributes>10.0;400.0;240.0;400.0;240.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>780</y>
+      <w>18</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+group=3</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>960</x>
+      <y>810</y>
+      <w>246</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>factory::DisplayableBuilderImpl
+--
+-displayableFactory: DisplayableFactory
+-displayable: Displayable
+--
++DisplayableBuilderImpl(): ctor
++setPresentation(Displayable presentation): DisplayableBuilder
++addSlide(): DisplayableBuilder
++addTextItem(int level, String text): DisplayableBuilder
++addBitmapItem(int level, String text): DisplayableBuilder
++build(): Displayable
+
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>960</x>
+      <y>702</y>
+      <w>246</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+factory::DisplayableBuilder
+--
+--
++setPresentation(Displayable presentation): DisplayableBuilder
++addSlide(): DisplayableBuilder
++addTextItem(int level, String text): DisplayableBuilder
++addBitmapItem(int level, String text): DisplayableBuilder
++build(): Displayable
+bg=red
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1200</x>
+      <y>672</y>
+      <w>114</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>10.0;130.0;170.0;130.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1200</x>
+      <y>678</y>
+      <w>396</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;120.0;640.0;120.0;640.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1350</x>
+      <y>336</y>
+      <w>18</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+group=4</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1668</x>
+      <y>336</y>
+      <w>18</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+group=4</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1506</x>
+      <y>414</y>
+      <w>90</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+group=4</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1440</x>
+      <y>414</y>
+      <w>84</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+group=4</panel_attributes>
+    <additional_attributes>120.0;120.0;120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1392</x>
+      <y>534</y>
+      <w>132</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+group=4</panel_attributes>
+    <additional_attributes>200.0;10.0;200.0;90.0;10.0;90.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1506</x>
+      <y>534</y>
+      <w>156</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+group=4</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0;240.0;90.0;240.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1272</x>
+      <y>618</y>
+      <w>252</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>model::DemoFormat
+--
+~builder: DisplayableBuilder
+--
++DemoFormat(): ctor
++loadFile(Displayable presentation, String unusedFilename): void
++saveFile(Displayable p, String unusedFilename): void
+group=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1422</x>
+      <y>486</y>
+      <w>180</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+model::Format
+--
+--
++loadFile(Displayable p, String filename): void
++saveFile(Displayable p, String filename): void
+bg=red
+group=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1242</x>
+      <y>300</y>
+      <w>234</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+model::Reader
+--
+--
++loadFile(Displayable p, String filename): void
+bg=red
+group=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1266</x>
+      <y>402</y>
+      <w>180</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>model::ReaderImpl
+--
+--
++loadFile(Displayable p, String filename): void
+
+group=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1584</x>
+      <y>300</y>
+      <w>186</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+model::Writer
+--
+--
++saveFile(Displayable p, String filename): void
+bg=red
+group=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1584</x>
+      <y>402</y>
+      <w>186</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>model::WriterImpl
+--
+--
++saveFile(Displayable p, String filename): void
+group=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1560</x>
+      <y>624</y>
+      <w>180</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>model::XMLFormat
+--
+~presentationBuilder: DisplayableBuilder
+--
++XMLFormat(): ctor
++loadFile(Displayable p, String filename): void
++saveFile(Displayable p, String filename): void
+group=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1200</x>
+      <y>678</y>
+      <w>486</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt; creates</panel_attributes>
+    <additional_attributes>10.0;310.0;790.0;310.0;790.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1200</x>
+      <y>672</y>
+      <w>192</w>
+      <h>204</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt; creates</panel_attributes>
+    <additional_attributes>10.0;320.0;300.0;320.0;300.0;10.0</additional_attributes>
+  </element>
+</diagram>

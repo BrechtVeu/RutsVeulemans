@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.1.1">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>834</x>
+      <y>492</y>
+      <w>150</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+group=1</panel_attributes>
+    <additional_attributes>10.0;10.0;230.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1098</x>
+      <y>258</y>
+      <w>18</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+group=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>990</x>
+      <y>222</y>
+      <w>222</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+model::Observer
+--
+--
++update(Displayable presenation, Displayable slide): void
+bg=red
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>624</x>
+      <y>234</y>
+      <w>378</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..*
+m2=1
+group=1</panel_attributes>
+    <additional_attributes>610.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>498</x>
+      <y>216</y>
+      <w>132</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+model::Observable
+--
+--
++attach(Observer observer): void
++detach(Observer observer): void
++notifyObservers(): void
+bg=red
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>552</x>
+      <y>276</y>
+      <w>18</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+group=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>972</x>
+      <y>450</y>
+      <w>246</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>view::SlideViewerComponent
+--
+-serialVersionUID = 1L: long
+-slide: Displayable
+-presentation = null: Displayable
+-frame = null: JFrame
+--
++SlideViewerComponent(Displayable pres, JFrame frame): ctor
++getPreferredSize(): Dimension
++update(Displayable presentation, Displayable data): void
++paintComponent(Graphics g): void
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>294</x>
+      <y>378</y>
+      <w>546</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>/model::Displayable/
+--
+#currentDisplayableNumber = 0: int
+#displayableList = new ArrayList&lt;Displayable&gt;(): ArrayList&lt;Displayable&gt;
+#displayableIterator = new DisplayableIteratorImpl&lt;Displayable&gt;(displayableList, currentDisplayableNumber): DisplayableIterator&lt;Displayable&gt;
+#theme: Theme
+#themeFactory = new ThemeFactoryImpl(): ThemeFactory
+#observerList = new ArrayList&lt;Observer&gt;(): ArrayList&lt;Observer&gt;
+--
++setIterator(): void
++append(Displayable displayable): void
++getLastItem(): Displayable
++getDisplayableItems(): ArrayList&lt;Displayable&gt;
++getDisplayableItem(int number): Displayable
++getSize(): int
++draw(Graphics g, Rectangle area, ImageObserver view, SlideItemStyle style): void
++decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation): void
++attach(Observer observer): void
++detach(Observer observer): void
++notifyObservers(): void
++getCorrectSlideStyle(Displayable presentation): SlideStyle
++getCorrectSlideItemStyle(Displayable presentation): SlideItemStyle
++getCurrentSlide(): Displayable
++getBoundingBox(Graphics g, ImageObserver view, float scale, SlideItemStyle slideItemstyle): Rectangle
++getTitle(): String
++setTitle(String title): void
++getDisplayableNumber(): int
++nextDisplayable(): void
++prevDisplayable(): void
++clear(): void
++gotoSlide(int displayableNumber): void
++setDisplayableNumber(int number): void
++getLevel(): int
++getTheme(): Theme
++setTheme(String theme): void
++getThemeFactory(): ThemeFactory
++eventTriggered(SlideEvent event): void
++iterator(): DisplayableIterator&lt;Displayable&gt;
+bg=yellow
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

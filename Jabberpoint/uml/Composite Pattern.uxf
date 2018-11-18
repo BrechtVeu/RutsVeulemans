@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.1.1">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>546</x>
+      <y>70</y>
+      <w>637</w>
+      <h>420</h>
+    </coordinates>
+    <panel_attributes>/model::Displayable/
+--
+#currentDisplayableNumber = 0: int
+#displayableList = new ArrayList&lt;Displayable&gt;(): ArrayList&lt;Displayable&gt;
+#displayableIterator = new DisplayableIteratorImpl&lt;Displayable&gt;(displayableList, currentDisplayableNumber): DisplayableIterator&lt;Displayable&gt;
+#theme: Theme
+#themeFactory = new ThemeFactoryImpl(): ThemeFactory
+#observerList = new ArrayList&lt;Observer&gt;(): ArrayList&lt;Observer&gt;
+--
++setIterator(): void
++append(Displayable displayable): void
++getLastItem(): Displayable
++getDisplayableItems(): ArrayList&lt;Displayable&gt;
++getDisplayableItem(int number): Displayable
++getSize(): int
++draw(Graphics g, Rectangle area, ImageObserver view, SlideItemStyle style): void
++decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation): void
++attach(Observer observer): void
++detach(Observer observer): void
++notifyObservers(): void
++getCorrectSlideStyle(Displayable presentation): SlideStyle
++getCorrectSlideItemStyle(Displayable presentation): SlideItemStyle
++getCurrentSlide(): Displayable
++getBoundingBox(Graphics g, ImageObserver view, float scale, SlideItemStyle slideItemstyle): Rectangle
++getTitle(): String
++setTitle(String title): void
++getDisplayableNumber(): int
++nextDisplayable(): void
++prevDisplayable(): void
++clear(): void
++gotoSlide(int displayableNumber): void
++setDisplayableNumber(int number): void
++getLevel(): int
++getTheme(): Theme
++setTheme(String theme): void
++getThemeFactory(): ThemeFactory
++eventTriggered(SlideEvent event): void
++iterator(): DisplayableIterator&lt;Displayable&gt;
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>483</x>
+      <y>483</y>
+      <w>364</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=3</panel_attributes>
+    <additional_attributes>500.0;10.0;500.0;60.0;10.0;60.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>476</x>
+      <y>602</y>
+      <w>196</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=3</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;260.0;60.0;260.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>217</x>
+      <y>602</y>
+      <w>280</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=3</panel_attributes>
+    <additional_attributes>380.0;10.0;380.0;60.0;10.0;60.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>490</x>
+      <y>672</y>
+      <w>483</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>model::BitmapItem
+--
+-bufferedImage: BufferedImage
+-imageName: String
+-bitmapItemDrawer: BitmapItemDrawer
+--
++BitmapItem(int level, String name, BitmapItemDrawer bitmapItemDrawer): ctor
++getName(): String
++toString(): String
++draw(Graphics g, Rectangle area, ImageObserver observer, SlideItemStyle slideItemstyle): void
++getBoundingBox(Graphics g, ImageObserver observer, float scale, SlideItemStyle slideItemstyle): Rectangle
+
+
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>672</y>
+      <w>483</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>model::TextItem
+--
+-text: String
+-textItemDrawer: TextItemDrawer
+-EMPTYTEXT = "No Text Given": String
+--
++TextItem(int level, String string, TextItemDrawer textItemDrawer): ctor
++getText(): String
++toString(): String
++draw(Graphics g, Rectangle area, ImageObserver observer, SlideItemStyle slideItemstyle): void
++getBoundingBox(Graphics g, ImageObserver observer, float scale, SlideItemStyle slideItemstyle): Rectangle
+
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>420</x>
+      <y>546</y>
+      <w>147</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>/model::SlideItem/
+--
+#level = 0: int
+--
++SlideItem(int lev): ctor
++getLevel(): int
+bg=yellow
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>826</x>
+      <y>483</y>
+      <w>21</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1029</x>
+      <y>441</y>
+      <w>301</w>
+      <h>217</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..*
+m2=1
+group=2</panel_attributes>
+    <additional_attributes>220.0;10.0;410.0;10.0;410.0;290.0;10.0;290.0;10.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>609</x>
+      <y>546</y>
+      <w>469</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>model::Slide
+--
+-slideDrawer: SlideDrawer
+--
++Slide(SlideDrawer slideDrawer): ctor
++draw(Graphics g, Rectangle area, ImageObserver view, SlideItemStyle slideItemstyle): void
++decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation): void
+
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>826</x>
+      <y>483</y>
+      <w>357</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;490.0;60.0;490.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1176</x>
+      <y>462</y>
+      <w>77</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..*
+m2=1
+group=1</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0;90.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1106</x>
+      <y>546</y>
+      <w>161</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>model::Presentation
+--
+-showTitle: String
+--
++Presentation(): ctor
++getTitle(): String
++setTitle(String nt): void
+
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

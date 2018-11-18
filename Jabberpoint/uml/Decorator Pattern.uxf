@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.1.1">
+  <zoom_level>4</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>780</x>
+      <y>120</y>
+      <w>364</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>/model::Displayable/
+--
+#currentDisplayableNumber = 0: int
+#displayableList = new ArrayList&lt;Displayable&gt;(): ArrayList&lt;Displayable&gt;
+#displayableIterator = new DisplayableIteratorImpl&lt;Displayable&gt;(displayableList, currentDisplayableNumber): DisplayableIterator&lt;Displayable&gt;
+#theme: Theme
+#themeFactory = new ThemeFactoryImpl(): ThemeFactory
+#observerList = new ArrayList&lt;Observer&gt;(): ArrayList&lt;Observer&gt;
+--
++setIterator(): void
++append(Displayable displayable): void
++getLastItem(): Displayable
++getDisplayableItems(): ArrayList&lt;Displayable&gt;
++getDisplayableItem(int number): Displayable
++getSize(): int
++draw(Graphics g, Rectangle area, ImageObserver view, SlideItemStyle style): void
++decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation): void
++attach(Observer observer): void
++detach(Observer observer): void
++notifyObservers(): void
++getCorrectSlideStyle(Displayable presentation): SlideStyle
++getCorrectSlideItemStyle(Displayable presentation): SlideItemStyle
++getCurrentSlide(): Displayable
++getBoundingBox(Graphics g, ImageObserver view, float scale, SlideItemStyle slideItemstyle): Rectangle
++getTitle(): String
++setTitle(String title): void
++getDisplayableNumber(): int
++nextDisplayable(): void
++prevDisplayable(): void
++clear(): void
++gotoSlide(int displayableNumber): void
++setDisplayableNumber(int number): void
++getLevel(): int
++getTheme(): Theme
++setTheme(String theme): void
++getThemeFactory(): ThemeFactory
++eventTriggered(SlideEvent event): void
++iterator(): DisplayableIterator&lt;Displayable&gt;
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>940</x>
+      <y>356</y>
+      <w>12</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>816</x>
+      <y>392</y>
+      <w>268</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>model::Slide
+--
+-slideDrawer: SlideDrawer
+--
++Slide(SlideDrawer slideDrawer): ctor
++draw(Graphics g, Rectangle area, ImageObserver view, SlideItemStyle slideItemstyle): void
++decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>544</x>
+      <y>488</y>
+      <w>236</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>view.decorator::LogoDecorator
+--
+-bufferedImage: BufferedImage
+--
++LogoDecorator(Displayable displayable): ctor
++decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>788</x>
+      <y>488</y>
+      <w>236</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>view.decorator::BackgroundDecorator
+--
+--
++BackgroundDecorator(Displayable displayable): ctor
++decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>300</x>
+      <y>488</y>
+      <w>236</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>view.decorator::PageNumberDecorator
+--
+--
++PageNumberDecorator(Displayable displayable): ctor
++decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>656</x>
+      <y>432</y>
+      <w>260</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;630.0;70.0;630.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>656</x>
+      <y>432</y>
+      <w>12</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>412</x>
+      <y>432</y>
+      <w>256</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>620.0;10.0;620.0;70.0;10.0;70.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>656</x>
+      <y>356</y>
+      <w>296</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>720.0;10.0;720.0;50.0;10.0;50.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>544</x>
+      <y>396</y>
+      <w>236</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>/view.decorator::DisplayableDecorator/
+--
+#displayable: Displayable
+--
++DisplayableDecorator(Displayable displayable): ctor
++decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation): void
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>624</x>
+      <y>340</y>
+      <w>164</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=0..1</panel_attributes>
+    <additional_attributes>390.0;10.0;10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+</diagram>

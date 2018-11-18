@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.1.1">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1290</x>
+      <y>490</y>
+      <w>300</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>controller.command::OpenPresentationCommand
+--
+-slideViewerFrame: Frame
+-presentation: Displayable
+-frameCommandEventManager: CommandEventManager&lt;SlideEvent&gt;
+-eventObject: SlideEvent
+--
++OpenPresentationCommand(Frame slideViewerFrame, Displayable presentation): ctor
++execute(): void
+
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1000</x>
+      <y>490</y>
+      <w>230</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>controller.command::ChangeThemeCommand
+--
+-commandEventManager: CommandEventManager&lt;SlideEvent&gt;
+-eventObject: SlideEvent
+-theme: String
+--
++ChangeThemeCommand(Displayable presentation, String theme): ctor
++execute(): void
+
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1000</x>
+      <y>420</y>
+      <w>230</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>controller.command::GotoSlideCommand
+--
+-commandEventManager: CommandEventManager&lt;SlideEvent&gt;
+-eventObject: SlideEvent
+--
++GotoSlideCommand(Displayable presentation): ctor
++execute(): void
+
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1290</x>
+      <y>420</y>
+      <w>250</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>controller.command::NewPresentationCommand
+--
+-frameCommandEventManager: CommandEventManager&lt;SlideEvent&gt;
+-eventObject: SlideEvent
+--
++NewPresentationCommand(Displayable presentation): ctor
++execute(): void
+
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1290</x>
+      <y>240</y>
+      <w>300</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>controller.command::SavePresentationCommand
+--
+-slideViewerFrame: Frame
+-presentation: Displayable
+--
++SavePresentationCommand(Frame slideViewerFrame, Displayable presentation): ctor
++execute(): void
+
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1290</x>
+      <y>305</y>
+      <w>145</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>controller.command::EmptyCommand
+--
+--
++execute(): void
+
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1095</x>
+      <y>305</y>
+      <w>135</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>controller.command::ExitCommand
+--
+--
++execute(): void
+
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1255</x>
+      <y>215</y>
+      <w>45</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0;70.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1225</x>
+      <y>215</y>
+      <w>45</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=2</panel_attributes>
+    <additional_attributes>70.0;10.0;70.0;110.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1225</x>
+      <y>215</y>
+      <w>45</w>
+      <h>115</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=2</panel_attributes>
+    <additional_attributes>70.0;10.0;70.0;210.0;10.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1255</x>
+      <y>215</y>
+      <w>45</w>
+      <h>115</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;210.0;70.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1255</x>
+      <y>215</y>
+      <w>45</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;320.0;70.0;320.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1225</x>
+      <y>215</y>
+      <w>45</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=2</panel_attributes>
+    <additional_attributes>70.0;10.0;70.0;320.0;10.0;320.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1255</x>
+      <y>215</y>
+      <w>45</w>
+      <h>245</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;470.0;70.0;470.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1225</x>
+      <y>215</y>
+      <w>45</w>
+      <h>245</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=2</panel_attributes>
+    <additional_attributes>70.0;10.0;70.0;470.0;10.0;470.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1255</x>
+      <y>215</y>
+      <w>45</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;620.0;70.0;620.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1225</x>
+      <y>215</y>
+      <w>45</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=2</panel_attributes>
+    <additional_attributes>70.0;10.0;70.0;620.0;10.0;620.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1175</x>
+      <y>180</y>
+      <w>185</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>/controller.command::Command/
+--
+#eventFactory = new EventFactoryImpl(): EventFactory
+--
++execute(): void
+bg=yellow
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1290</x>
+      <y>350</y>
+      <w>180</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>controller.command::AboutCommand
+--
+-slideViewerFrame: Frame
+--
++AboutCommand(Frame slideViewerFrame): ctor
++execute(): void
+
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1000</x>
+      <y>235</y>
+      <w>230</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>controller.command::NextSlideCommand
+--
+-commandEventManager: CommandEventManager&lt;SlideEvent&gt;
+-eventObject: SlideEvent
+--
++NextSlideCommand(Displayable presentation): ctor
++execute(): void
+
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1500</x>
+      <y>370</y>
+      <w>95</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>view::AboutBox
+--
+--
+_+show(Frame parent): void_
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1465</x>
+      <y>380</y>
+      <w>45</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+group=2</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1000</x>
+      <y>345</y>
+      <w>230</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>controller.command::PreviousSlideCommand
+--
+-commandEventManager: CommandEventManager&lt;SlideEvent&gt;
+-eventObject: SlideEvent
+--
++PreviousSlideCommand(Displayable presentation): ctor
++execute(): void
+
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>820</x>
+      <y>285</y>
+      <w>190</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;180.0;360.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>820</x>
+      <y>270</y>
+      <w>190</w>
+      <h>115</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;210.0;280.0;210.0;280.0;10.0;360.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>735</x>
+      <y>400</y>
+      <w>275</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>10.0;10.0;450.0;10.0;450.0;200.0;530.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>820</x>
+      <y>285</y>
+      <w>190</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;180.0;280.0;180.0;280.0;330.0;360.0;330.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>600</y>
+      <w>160</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>event::ChangeSlideThemeEvent
+--
+-serialVersionUID = 1L: long
+-theme = "": String
+--
++ChangeSlideThemeEvent(Object source): ctor
++setTheme(String theme): void
++getTheme(): String
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>700</x>
+      <y>600</y>
+      <w>130</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>event::GotoSlideEvent
+--
+-serialVersionUID = 1L: long
+-slideNumber = 0: int
+--
++GotoSlideEvent(Object source): ctor
++setSlideNumber(int slideNumber): void
++getSlideNumber(): int
+
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>490</x>
+      <y>235</y>
+      <w>390</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>event::CommandEventManager
+--
+-commandEventList = new ArrayList&lt;CommandEventListener&lt;EventType&gt;&gt;(): List&lt;CommandEventListener&lt;EventType&gt;&gt;
+--
++addListener(CommandEventListener&lt;EventType&gt; listener): void
++removeListener(CommandEventListener&lt;EventType&gt; listener): void
++fire(EventType event): void
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>310</x>
+      <y>240</y>
+      <w>135</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+event::CommandEventListener
+--
+--
++eventTriggered(EventType event): void
+bg=red
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>700</x>
+      <y>545</y>
+      <w>125</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>event::NextSlideEvent
+--
+-serialVersionUID = 1L: long
+--
++NextSlideEvent(Object source): ctor
+
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>485</x>
+      <y>485</y>
+      <w>155</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>event::OpenPresentationEvent
+--
+-serialVersionUID = 1L: long
+--
++OpenPresentationEvent(Object source): ctor
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>700</x>
+      <y>485</y>
+      <w>135</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>event::PreviousSlideEvent
+--
+-serialVersionUID = 1L: long
+--
++PreviousSlideEvent(Object source): ctor
+
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>545</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>event::RepaintEvent
+--
+-serialVersionUID = 1L: long
+--
++RepaintEvent(Object source): ctor
+
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>665</x>
+      <y>445</y>
+      <w>45</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=3</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0;70.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>635</x>
+      <y>445</y>
+      <w>45</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=3</panel_attributes>
+    <additional_attributes>70.0;10.0;70.0;110.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>635</x>
+      <y>445</y>
+      <w>45</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=3</panel_attributes>
+    <additional_attributes>70.0;10.0;70.0;240.0;10.0;240.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>665</x>
+      <y>445</y>
+      <w>45</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=3</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;240.0;70.0;240.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>665</x>
+      <y>445</y>
+      <w>45</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=3</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;370.0;70.0;370.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>635</x>
+      <y>445</y>
+      <w>45</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=3</panel_attributes>
+    <additional_attributes>70.0;10.0;70.0;370.0;10.0;370.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>440</x>
+      <y>260</y>
+      <w>60</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..*
+m2=1
+group=3</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>535</x>
+      <y>315</y>
+      <w>125</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>Events coupled through
+generic EventType and EventObject
+bg=orange
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>670</x>
+      <y>285</y>
+      <w>15</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+group=3</panel_attributes>
+    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>605</x>
+      <y>365</y>
+      <w>135</w>
+      <h>85</h>
+    </coordinates>
+    <panel_attributes>/event::SlideEvent/
+--
+-serialVersionUID = 1L: long
+-slideNumber = 0: int
+-theme = "": String
+--
++SlideEvent(Object source): ctor
++getSlideNumber(): int
++setSlideNumber(int slideNumber): void
++getTheme(): String
++setTheme(String theme): void
+bg=yellow
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>280</y>
+      <w>155</w>
+      <h>205</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>290.0;10.0;290.0;340.0;10.0;340.0;10.0;390.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>475</y>
+      <w>455</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>/model::Displayable/
+--
+#currentDisplayableNumber = 0: int
+#displayableList = new ArrayList&lt;Displayable&gt;(): ArrayList&lt;Displayable&gt;
+#displayableIterator = new DisplayableIteratorImpl&lt;Displayable&gt;(displayableList, currentDisplayableNumber): DisplayableIterator&lt;Displayable&gt;
+#theme: Theme
+#themeFactory = new ThemeFactoryImpl(): ThemeFactory
+#observerList = new ArrayList&lt;Observer&gt;(): ArrayList&lt;Observer&gt;
+--
++setIterator(): void
++append(Displayable displayable): void
++getLastItem(): Displayable
++getDisplayableItems(): ArrayList&lt;Displayable&gt;
++getDisplayableItem(int number): Displayable
++getSize(): int
++draw(Graphics g, Rectangle area, ImageObserver view, SlideItemStyle style): void
++decorate(Graphics g, Rectangle area, ImageObserver view, Displayable presentation): void
++attach(Observer observer): void
++detach(Observer observer): void
++notifyObservers(): void
++getCorrectSlideStyle(Displayable presentation): SlideStyle
++getCorrectSlideItemStyle(Displayable presentation): SlideItemStyle
++getCurrentSlide(): Displayable
++getBoundingBox(Graphics g, ImageObserver view, float scale, SlideItemStyle slideItemstyle): Rectangle
++getTitle(): String
++setTitle(String title): void
++getDisplayableNumber(): int
++nextDisplayable(): void
++prevDisplayable(): void
++clear(): void
++gotoSlide(int displayableNumber): void
++setDisplayableNumber(int number): void
++getLevel(): int
++getTheme(): Theme
++setTheme(String theme): void
++getThemeFactory(): ThemeFactory
++eventTriggered(SlideEvent event): void
++iterator(): DisplayableIterator&lt;Displayable&gt;
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>735</x>
+      <y>400</y>
+      <w>890</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;450.0;10.0;450.0;370.0;1760.0;370.0;1760.0;100.0;1610.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>735</x>
+      <y>400</y>
+      <w>890</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;450.0;10.0;450.0;370.0;1760.0;370.0;1760.0;260.0;1710.0;260.0</additional_attributes>
+  </element>
+</diagram>
