@@ -24,9 +24,9 @@ import factory.DisplayableBuilderImpl;
 import jabberpoint.Values;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- *
  * Concrete implementation of Format.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
  *
  */
 public class XMLFormat implements Format {

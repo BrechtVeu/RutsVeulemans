@@ -13,10 +13,10 @@ import view.drawer.TextItemDrawer;
 import view.drawer.TextItemDrawerImpl;
 
 /**
+ * Concrete implementation of DisplayableFactory.
+ * 
  * @author Brecht Veulemans, Dominique Ruts
  * 
- * Concrete implementation of DisplayableFactory.
- *
  */
 public class DisplayableFactoryImpl implements DisplayableFactory {
 

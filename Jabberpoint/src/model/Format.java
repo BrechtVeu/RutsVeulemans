@@ -6,11 +6,11 @@ package model;
 import java.io.IOException;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- * 
  * Gives interface for concrete implementations of a Format.
  * Responsible for loading and writing in a format.
- *
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
+ * 
  */
 public interface Format {
 	/**

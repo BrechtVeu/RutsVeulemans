@@ -6,9 +6,9 @@ import view.decorator.LogoDecorator;
 import view.decorator.PageNumberDecorator;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- *
  * Concrete implementation of SlideDecoratorBuilder.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
  *
  */
 public class SlideDecoratorBuilderImpl implements SlideDecoratorBuilder {

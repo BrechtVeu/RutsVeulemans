@@ -3,11 +3,11 @@ package factory;
 import view.theme.Theme;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- * 
  * Gives interface for concrete implementations of a ThemeFactory.
  * Responsible for creating themes.
- *
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
+ * 
  */
 public interface ThemeFactory {
 	

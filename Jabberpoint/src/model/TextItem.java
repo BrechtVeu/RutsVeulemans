@@ -9,7 +9,7 @@ import view.theme.SlideItemStyle;
 
 /**
  * <p>
- * A TextItem is responsible for knowing its text.
+ * A TextItem is responsible for knowing its text and the textItemDrawer that will be used to draw the text.
  * </p>
  *
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
@@ -25,8 +25,6 @@ import view.theme.SlideItemStyle;
 public class TextItem extends SlideItem {
 	private String text;
 	private TextItemDrawer textItemDrawer;
-
-	private static final String EMPTYTEXT = "No Text Given";
 
 	/**
 	 * Constructor for objects of class TextItem

@@ -2,10 +2,7 @@ package model;
 
 /**
  * <p>
- * Presentation houdt de slides in de presentatie bij.
- * </p>
- * <p>
- * Er is slechts één instantie van deze klasse aanwezig.
+ * Presentation is responsible to hold presentation specific information.
  * </p>
  *
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman

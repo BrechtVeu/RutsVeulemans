@@ -3,11 +3,11 @@ package factory;
 import model.Displayable;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- * 
  * Gives interface for concrete implementations of a SlideDecoratorBuilder.
  * Responsible for building decorator around a Displayable object.
- *
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
+ * 
  */
 public interface SlideDecoratorBuilder {
 	

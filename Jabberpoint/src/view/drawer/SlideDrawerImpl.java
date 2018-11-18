@@ -8,7 +8,7 @@ import model.DisplayableIterator;
 import view.theme.SlideItemStyle;
 
 /**
- * Concrete implementation of SlideDrawer
+ * Concrete implementation of SlideDrawer.
  * 
  * @author Brecht Veulemans, Dominique Ruts
  *

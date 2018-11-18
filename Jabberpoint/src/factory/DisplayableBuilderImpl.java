@@ -4,9 +4,9 @@ import jabberpoint.Values;
 import model.Displayable;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- *
  * Concrete implementation of DisplayableBuilder.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
  *
  */
 public class DisplayableBuilderImpl implements DisplayableBuilder {

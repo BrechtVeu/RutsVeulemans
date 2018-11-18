@@ -3,10 +3,10 @@ package factory;
 import model.Displayable;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- *
  * Gives interface for concrete classes of DisplayableBuilder.
  * Responsible for building a presentation.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
  *
  */
 public interface DisplayableBuilder {

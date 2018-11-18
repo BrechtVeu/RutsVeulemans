@@ -9,10 +9,10 @@ import factory.DisplayableBuilder;
 import factory.DisplayableBuilderImpl;
 
 /**
+ * Concrete implementation of Format.
+ * 
  * @author Brecht Veulemans, Dominique Ruts
  * 
- * Concrete implementation of Format.
- *
  */
 public class DemoFormat implements Format {
 

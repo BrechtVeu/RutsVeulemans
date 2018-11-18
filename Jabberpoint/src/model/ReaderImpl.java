@@ -9,9 +9,9 @@ import factory.FormatFactory;
 import factory.FormatFactoryImpl;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- *
  * Concrete implementation of Reader.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
  *
  */
 public class ReaderImpl implements Reader {

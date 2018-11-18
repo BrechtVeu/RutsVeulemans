@@ -8,7 +8,7 @@ import view.theme.SlideItemStyle;
 
 /**
  * <p>
- * A Slide. This class holds a list of Text- and BitMapItems.
+ * Slide is responsible to hold slide specific information and holds a variable to keep track of the correct SlideDrawer.
  * </p>
  *
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman

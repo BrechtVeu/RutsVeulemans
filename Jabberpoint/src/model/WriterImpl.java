@@ -9,9 +9,9 @@ import factory.FormatFactory;
 import factory.FormatFactoryImpl;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- *
  * Concrete implementation of Writer.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
  *
  */
 public class WriterImpl implements Writer {

@@ -6,11 +6,11 @@ package model;
 import java.io.IOException;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- * 
  * Gives interface for concrete implementations of Writer.
  * Responsible for write files.
- *
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
+ * 
  */
 public interface Writer {
 	/**

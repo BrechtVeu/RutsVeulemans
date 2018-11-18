@@ -21,9 +21,10 @@ import factory.ThemeFactoryImpl;
 import event.GotoSlideEvent;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- * 
  * Abstract class to define shared responsibilities and to treat all displayables in a similar fashion.
+ * Holds a collection of displayable items.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
  *
  */
 public abstract class Displayable implements Observable, Iterable<Displayable>, CommandEventListener<SlideEvent> {

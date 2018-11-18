@@ -3,10 +3,10 @@ package factory;
 import controller.command.Command;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- * 
  * Gives interface for concrete implementations of a CommandFactory.
  * Responsible for creating commands.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
  *
  */
 public interface CommandFactory {

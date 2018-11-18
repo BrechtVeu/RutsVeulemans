@@ -1,11 +1,11 @@
 package model;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- * 
  * Gives interface for concrete implementations of Observer.
  * Responsible for updating listeners.
- *
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
+ * 
  */
 public interface Observer {
 	/**

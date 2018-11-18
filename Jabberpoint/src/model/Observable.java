@@ -1,11 +1,11 @@
 package model;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- * 
  * Gives interface for concrete implementations of a Observable.
  * Responsible for attaching, detaching and notifying Observers.
- *
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
+ * 
  */
 public interface Observable {
 	/**

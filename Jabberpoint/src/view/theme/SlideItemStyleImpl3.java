@@ -16,7 +16,7 @@ public class SlideItemStyleImpl3 extends SlideItemStyle {
 	public SlideItemStyleImpl3() {
 		styles = new Style[5];
 		// De styles zijn vast ingecodeerd.
-		styles[0] = new Style("Century", 40, Color.pink, 50, 20); // style voor item-level 0
+		styles[0] = new Style("Century", 40, Color.pink, 78, 20); // style voor item-level 0
 		styles[1] = new Style("Courier", 60, Color.white, 40, 10); // style voor item-level 1
 		styles[2] = new Style("Courier", 100, Color.black, 36, 10); // style voor item-level 2
 		styles[3] = new Style("Courier", 120, Color.green, 30, 10); // style voor item-level 3

@@ -3,11 +3,11 @@ package factory;
 import model.Displayable;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- * 
  * Gives interface for concrete implementations of a DisplayableFactory.
  * Responsible for creating Displayable objects.
- *
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
+ * 
  */
 public interface DisplayableFactory {
 	

@@ -19,7 +19,7 @@ import jabberpoint.Values;
 import view.theme.Style;
 
 /**
- * Concrete implementation of TextItemDrawer
+ * Concrete implementation of TextItemDrawer.
  * 
  * @author Brecht Veulemans, Dominique Ruts
  *

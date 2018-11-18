@@ -6,11 +6,11 @@ package model;
 import java.io.IOException;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- * 
  * Gives interface for concrete implementations of Reader.
  * Responsible for loading files.
- *
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
+ * 
  */
 public interface Reader {
 	/**

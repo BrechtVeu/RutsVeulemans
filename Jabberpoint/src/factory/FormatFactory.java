@@ -8,11 +8,11 @@ import java.io.IOException;
 import model.Format;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- * 
  * Gives interface for concrete implementations of a FormatFactory.
  * Responsible for creating Format.
- *
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
+ * 
  */
 public interface FormatFactory {
 	
@@ -23,5 +23,5 @@ public interface FormatFactory {
 	 * @return Format
 	 * @throws IOException
 	 */
-	Format makeFileFormat(String filename) throws IOException;
+	public Format makeFileFormat(String filename) throws IOException;
 }

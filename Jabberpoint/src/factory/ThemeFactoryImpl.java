@@ -13,9 +13,9 @@ import view.theme.Theme;
 import view.theme.ThemeImpl;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- *
  * Concrete implementation of ThemeFactory.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
  *
  */
 public class ThemeFactoryImpl implements ThemeFactory {

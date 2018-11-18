@@ -26,9 +26,6 @@ import model.Displayable;
 public class SlideViewerFrame extends JFrame {
 	private static final long serialVersionUID = 3227L;
 
-	public final static int WIDTH = 1200;
-	public final static int HEIGHT = 800;
-
 	/**
 	 * Constructor for objects of class SlideViewerFrame
 	 * 
@@ -42,7 +39,6 @@ public class SlideViewerFrame extends JFrame {
 		setupWindow(slideViewerComponent, presentation);
 	}
 
-	// De GUI opzetten
 	/**
 	 * Creates the GUI of the application.
 	 * 
@@ -59,9 +55,9 @@ public class SlideViewerFrame extends JFrame {
 		});
 
 		getContentPane().add(slideViewerComponent);
-		addKeyListener(new KeyController(this, presentation)); // een controller toevoegen
-		setMenuBar(new MenuController(this, presentation)); // nog een controller toevoegen
-		setSize(new Dimension(WIDTH, HEIGHT)); // Dezelfde maten als Slide hanteert.
+		addKeyListener(new KeyController(this, presentation));
+		setMenuBar(new MenuController(this, presentation));
+		setSize(new Dimension(Values.WIDTH, Values.HEIGHT));
 		setVisible(true);
 	}
 }

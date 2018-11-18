@@ -15,9 +15,6 @@ import view.theme.SlideItemStyle;
 
 /**
  * <p>
- * De klasse voor een Bitmap item
- * </p>
- * <p>
  * Bitmap items have the responsibility to hold information about the image.
  * </p>
  *

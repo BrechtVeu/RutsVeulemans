@@ -3,10 +3,10 @@ package model;
 import java.util.ListIterator;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- * 
  * Gives interface for concrete implementations of a DisplayableIterator<Displayable>.
  * Responsible for adding extra functionality to an iterator.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
  *
  */
 @SuppressWarnings("hiding")

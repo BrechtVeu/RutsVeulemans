@@ -10,9 +10,9 @@ import model.Format;
 import model.XMLFormat;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- * 
  * Concrete implementation of FormatFactory.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
  *
  */
 public class FormatFactoryImpl implements FormatFactory {

@@ -19,10 +19,10 @@ import controller.command.SavePresentationCommand;
 import model.Displayable;
 
 /**
+ * Concrete implementation of CommandFactory.
+ * 
  * @author Brecht Veulemans, Dominique Ruts
  * 
- * Concrete implementation of CommandFactory.
- *
  */
 public class CommandFactoryImpl implements CommandFactory {
 

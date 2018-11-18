@@ -3,9 +3,9 @@ package model;
 import java.util.ArrayList;
 
 /**
- * @author Brecht Veulemans, Dominique Ruts
- *
  * Concrete implementation of DisplayableIterator<Displayable>.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
  *
  */
 public class DisplayableIteratorImpl<Displayable> implements DisplayableIterator<Displayable> {

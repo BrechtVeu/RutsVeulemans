@@ -1,7 +1,7 @@
 package view.theme;
 
 /**
- * Concrete implementation of Theme
+ * Concrete implementation of Theme.
  * 
  * @author Brecht Veulemans, Dominique Ruts
  *
