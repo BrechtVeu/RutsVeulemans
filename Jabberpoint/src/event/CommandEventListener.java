@@ -20,5 +20,5 @@ public interface CommandEventListener<EventType extends EventObject> extends Eve
 	 * 
 	 * @param event
 	 */
-	void eventTriggered(EventType event);
+	public void eventTriggered(EventType event);
 }
