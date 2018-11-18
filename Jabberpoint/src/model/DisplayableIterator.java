@@ -21,19 +21,19 @@ public interface DisplayableIterator<Displayable> extends ListIterator<Displayab
 	/**
 	 * Clear the iterator
 	 */
-	void clear();
+	public void clear();
 
 	/**
 	 * Set the number of the current Displayable
 	 * 
 	 * @param displayableNumber
 	 */
-	void setCurrentDisplayableNumber(int displayableNumber);
+	public void setCurrentDisplayableNumber(int displayableNumber);
 
 	/**
 	 * Get the current Displayable
 	 * 
 	 * @return the current Displayable
 	 */
-	Displayable getCurrentDisplayable();
+	public Displayable getCurrentDisplayable();
 }
