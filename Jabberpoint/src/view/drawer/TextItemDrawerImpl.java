@@ -32,7 +32,7 @@ public class TextItemDrawerImpl implements TextItemDrawer {
 	 * @param style
 	 * @param scale
 	 * @param text
-	 * @return
+	 * @return the attributed string of a text item
 	 */
 	public AttributedString getAttributedString(Style style, float scale, String text) {
 		AttributedString attrStr = new AttributedString(text);
@@ -90,7 +90,7 @@ public class TextItemDrawerImpl implements TextItemDrawer {
 	 * @param style
 	 * @param scale
 	 * @param text
-	 * @return
+	 * @return the layout of a text item
 	 */
 	private List<TextLayout> getLayouts(Graphics g, Style style, float scale, String text) {
 		List<TextLayout> layouts = new ArrayList<TextLayout>();

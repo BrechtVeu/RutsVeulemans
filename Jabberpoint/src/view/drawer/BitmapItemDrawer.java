@@ -23,7 +23,7 @@ public interface BitmapItemDrawer {
 	 * @param scale
 	 * @param style
 	 * @param bufferedImage
-	 * @return
+	 * @return the bounding box of an image
 	 */
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style style,
 			BufferedImage bufferedImage);

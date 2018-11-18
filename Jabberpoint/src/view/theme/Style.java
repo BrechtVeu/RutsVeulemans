@@ -83,7 +83,7 @@ public class Style {
 	/**
 	 * Gets the indent of the style
 	 * 
-	 * @return the ident of the style
+	 * @return the indent of the style
 	 */
 	public int getIndent() {
 		return indent;

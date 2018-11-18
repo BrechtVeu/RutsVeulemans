@@ -73,7 +73,7 @@ public class MenuController extends MenuBar {
 	 *
 	 * @param name
 	 * @param command
-	 * @return
+	 * @return menu item with assigned action listener
 	 */
 	public MenuItem mkMenuItem(String name, final Command command) {
 		MenuItem item = new MenuItem(name, new MenuShortcut(name.charAt(0)));

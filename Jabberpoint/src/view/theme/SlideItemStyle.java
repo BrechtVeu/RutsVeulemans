@@ -14,7 +14,7 @@ public abstract class SlideItemStyle {
 	 * Returns the style for a Slide Item with a specified level
 	 * 
 	 * @param level
-	 * @return
+	 * @return the style for a slide item
 	 */
 	public abstract Style getStyle(int level);
 }

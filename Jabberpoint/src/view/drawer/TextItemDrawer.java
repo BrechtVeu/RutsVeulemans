@@ -23,7 +23,7 @@ public interface TextItemDrawer {
 	 * @param scale
 	 * @param style
 	 * @param text
-	 * @return
+	 * @return the bounding box of a text item
 	 */
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style style, String text);
 	
