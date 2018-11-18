@@ -16,63 +16,63 @@ public interface CommandFactory {
 	 * 
 	 * @return EmptyCommand
 	 */
-	Command makeEmptyCommand();
+	public Command makeEmptyCommand();
 	
 	/**
 	 * Create a new OpenPresentation Command
 	 *
 	 * @return OpenPresentationCommand
 	 */
-	Command makeOpenPresentationCommand();
+	public Command makeOpenPresentationCommand();
 	
 	/**
 	 * Create a new NewPresentation Command
 	 *
 	 * @return NewPresentationCommand
 	 */
-	Command makeNewPresentationCommand();
+	public Command makeNewPresentationCommand();
 
 	/**
 	 * Create a new SavePresentation Command
 	 * 
 	 * @return SavePresentationCommand
 	 */
-	Command makeSavePresentationCommand();
+	public Command makeSavePresentationCommand();
 
 	/**
 	 * Create a new Exit Command
 	 * 
 	 * @return ExitCommand
 	 */
-	Command makeExitCommand();
+	public Command makeExitCommand();
 
 	/**
 	 * Create a new NextSlide Command
 	 * 
 	 * @return NextSlideCommand
 	 */
-	Command makeNextSlideCommand();
+	public Command makeNextSlideCommand();
 
 	/**
 	 * Create a new PreviousSlide Command
 	 * 
 	 * @return PreviousSlideCommand
 	 */
-	Command makePreviousSlideCommand();
+	public Command makePreviousSlideCommand();
 
 	/**
 	 * Create a new GotoSlide Command
 	 * 
 	 * @return GotoSlideCommand
 	 */
-	Command makeGotoSlideCommand();
+	public Command makeGotoSlideCommand();
 
 	/**
 	 * Create a new About Command
 	 * 
 	 * @return AboutCommand
 	 */
-	Command makeAboutCommand();
+	public Command makeAboutCommand();
 	
 	/**
 	 * Create a new ChangeTheme Command
@@ -80,5 +80,5 @@ public interface CommandFactory {
 	 * @param theme
 	 * @return ChangeThemeCommand
 	 */
-	Command makeChangeThemeCommand(String theme);
+	public Command makeChangeThemeCommand(String theme);
 }
