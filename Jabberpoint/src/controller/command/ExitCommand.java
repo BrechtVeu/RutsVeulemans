@@ -6,7 +6,7 @@ package controller.command;
  * @author Brecht Veulemans, Dominique Ruts
  *
  */
-public class ExitCommand implements Command {
+public class ExitCommand extends Command {
 
 	/* (non-Javadoc)
 	 * @see controller.command.Command#execute()

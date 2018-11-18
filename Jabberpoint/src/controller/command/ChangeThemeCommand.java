@@ -3,7 +3,6 @@
  */
 package controller.command;
 
-import event.ChangeSlideThemeEvent;
 import event.CommandEventManager;
 import event.SlideEvent;
 import model.Displayable;
@@ -14,7 +13,7 @@ import model.Displayable;
  * @author Brecht Veulemans, Dominique Ruts
  *
  */
-public class ChangeThemeCommand implements Command {
+public class ChangeThemeCommand extends Command {
 	private CommandEventManager<SlideEvent> commandEventManager;
 	private SlideEvent eventObject;
 	private String theme;
@@ -29,7 +28,7 @@ public class ChangeThemeCommand implements Command {
 	public ChangeThemeCommand(Displayable presentation, String theme) {
 		this.commandEventManager = new CommandEventManager<SlideEvent>();
 		this.commandEventManager.addListener(presentation);
-		this.eventObject = new ChangeSlideThemeEvent(presentation);
+		this.eventObject = eventFactory.makeChangeSlideThemeEvent(presentation);
 		this.theme = theme;
 	}
 

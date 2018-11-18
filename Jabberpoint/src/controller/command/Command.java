@@ -1,5 +1,8 @@
 package controller.command;
 
+import factory.EventFactory;
+import factory.EventFactoryImpl;
+
 /**
  * Gives interface for concrete implementations of a Command.
  * Responsible for defining a trigger for menu commands.
@@ -7,9 +10,11 @@ package controller.command;
  * @author Brecht Veulemans, Dominique Ruts
  *
  */
-public interface Command {
+public abstract class Command {
+	
+	protected EventFactory eventFactory = new EventFactoryImpl();
 	/**
 	 * Execute the command
 	 */
-	public void execute();
+	public abstract void execute();
 }

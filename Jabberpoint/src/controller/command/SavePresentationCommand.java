@@ -19,7 +19,7 @@ import model.WriterImpl;
  * @author Brecht Veulemans, Dominique Ruts
  *
  */
-public class SavePresentationCommand implements Command {
+public class SavePresentationCommand extends Command {
 	private Frame slideViewerFrame;
 	private Displayable presentation;
 

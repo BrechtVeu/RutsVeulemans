@@ -6,7 +6,6 @@ package controller.command;
 import javax.swing.JOptionPane;
 
 import event.CommandEventManager;
-import event.GotoSlideEvent;
 import event.SlideEvent;
 import jabberpoint.Values;
 import model.Displayable;
@@ -17,7 +16,7 @@ import model.Displayable;
  * @author Brecht Veulemans, Dominique Ruts
  *
  */
-public class GotoSlideCommand implements Command {
+public class GotoSlideCommand extends Command {
 
 	private CommandEventManager<SlideEvent> commandEventManager;
 	private SlideEvent eventObject;
@@ -30,7 +29,7 @@ public class GotoSlideCommand implements Command {
 	public GotoSlideCommand(Displayable presentation) {
 		this.commandEventManager = new CommandEventManager<SlideEvent>();
 		this.commandEventManager.addListener(presentation);
-		this.eventObject = new GotoSlideEvent(presentation);
+		this.eventObject = eventFactory.makeGotoSlideEvent(presentation);
 	}
 
 	/* (non-Javadoc)

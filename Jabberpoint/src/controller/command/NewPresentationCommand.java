@@ -4,7 +4,6 @@
 package controller.command;
 
 import event.CommandEventManager;
-import event.RepaintEvent;
 import event.SlideEvent;
 import model.Displayable;
 
@@ -14,7 +13,7 @@ import model.Displayable;
  * @author Brecht Veulemans, Dominique Ruts
  *
  */
-public class NewPresentationCommand implements Command {
+public class NewPresentationCommand extends Command {
 
 	private CommandEventManager<SlideEvent> frameCommandEventManager;
 	private SlideEvent eventObject;
@@ -27,7 +26,7 @@ public class NewPresentationCommand implements Command {
 	public NewPresentationCommand(Displayable presentation) {
 		this.frameCommandEventManager = new CommandEventManager<SlideEvent>();
 		this.frameCommandEventManager.addListener(presentation);
-		this.eventObject = new RepaintEvent(presentation);
+		this.eventObject = eventFactory.makeRepaintEvent(presentation);
 	}
 
 	/* (non-Javadoc)

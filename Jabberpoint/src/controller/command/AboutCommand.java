@@ -13,7 +13,7 @@ import view.AboutBox;
  * @author Brecht Veulemans, Dominique Ruts
  *
  */
-public class AboutCommand implements Command {
+public class AboutCommand extends Command {
 
 	private Frame slideViewerFrame;
 

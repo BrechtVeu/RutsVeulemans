@@ -4,7 +4,6 @@
 package controller.command;
 
 import event.CommandEventManager;
-import event.NextSlideEvent;
 import event.SlideEvent;
 import model.Displayable;
 
@@ -14,7 +13,7 @@ import model.Displayable;
  * @author Brecht Veulemans, Dominique Ruts
  *
  */
-public class NextSlideCommand implements Command {
+public class NextSlideCommand extends Command {
 	private CommandEventManager<SlideEvent> commandEventManager;
 	private SlideEvent eventObject;
 
@@ -26,7 +25,7 @@ public class NextSlideCommand implements Command {
 	public NextSlideCommand(Displayable presentation) {
 		this.commandEventManager = new CommandEventManager<SlideEvent>();
 		this.commandEventManager.addListener(presentation);
-		this.eventObject = new NextSlideEvent(presentation);
+		this.eventObject = eventFactory.makeNextSlideEvent(presentation);
 	}
 
 	/* (non-Javadoc)

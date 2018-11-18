@@ -9,7 +9,7 @@ package controller.command;
  * @author Brecht Veulemans, Dominique Ruts
  *
  */
-public class EmptyCommand implements Command {
+public class EmptyCommand extends Command {
 
 	/*
 	 * (non-Javadoc)

@@ -6,7 +6,6 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 import event.CommandEventManager;
-import event.OpenPresentationEvent;
 import event.SlideEvent;
 import jabberpoint.Values;
 import model.Displayable;
@@ -19,7 +18,7 @@ import model.ReaderImpl;
  * @author Brecht Veulemans, Dominique Ruts
  *
  */
-public class OpenPresentationCommand implements Command {
+public class OpenPresentationCommand extends Command {
 	private Frame slideViewerFrame;
 	private Displayable presentation;
 
@@ -35,7 +34,7 @@ public class OpenPresentationCommand implements Command {
 	public OpenPresentationCommand(Frame slideViewerFrame, Displayable presentation) {
 		this.frameCommandEventManager = new CommandEventManager<SlideEvent>();
 		this.frameCommandEventManager.addListener(presentation);
-		this.eventObject = new OpenPresentationEvent(presentation);
+		this.eventObject = eventFactory.makeOpenPresentationEvent(presentation);
 		this.slideViewerFrame = slideViewerFrame;
 		this.presentation = presentation;
 	}
