@@ -9,9 +9,6 @@ import view.theme.SlideItemStyle;
 
 /**
  * <p>
- * A TextItem
- * </p>
- * <p>
  * A TextItem is responsible for knowing its text.
  * </p>
  *

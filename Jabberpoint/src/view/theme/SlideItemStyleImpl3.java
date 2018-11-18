@@ -2,8 +2,17 @@ package view.theme;
 
 import java.awt.Color;
 
+/**
+ * Extends SlideItemStyle to implement a concrete Slide Item Style - SlideItemStyleImpl3.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
+ *
+ */
 public class SlideItemStyleImpl3 extends SlideItemStyle {
 
+	/**
+	 * Constructor for objects of class SlideItemStyleImpl3
+	 */
 	public SlideItemStyleImpl3() {
 		styles = new Style[5];
 		// De styles zijn vast ingecodeerd.
@@ -14,6 +23,9 @@ public class SlideItemStyleImpl3 extends SlideItemStyle {
 		styles[4] = new Style("Helvetica", 130, Color.black, 24, 10); // style voor item-level 4
 	}
 
+	/* (non-Javadoc)
+	 * @see view.theme.SlideItemStyle#getStyle(int)
+	 */
 	@Override
 	public Style getStyle(int level) {
 		if (level >= styles.length) {

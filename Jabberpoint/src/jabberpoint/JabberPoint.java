@@ -12,7 +12,7 @@ import model.ReaderImpl;
 import view.SlideViewerFrame;
 
 /**
- * JabberPoint Main Programma
+ * JabberPoint Main Program
  * <p>
  * This program is distributed under the terms of the accompanying COPYRIGHT.txt
  * file (which is NOT the GNU General Public License). Please read it. Your use
@@ -48,7 +48,7 @@ public class JabberPoint {
 		Reader reader = new ReaderImpl();
 
 		try {
-			if (argv.length == 0) { // een demo presentatie
+			if (argv.length == 0) {
 				reader.loadFile(presentation, "");
 			} else {
 				reader.loadFile(presentation, argv[0]);

@@ -7,8 +7,16 @@ import java.awt.image.ImageObserver;
 
 import view.theme.Style;
 
+/**
+ * Concrete implementation of BitmapItemDrawer.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
+ *
+ */
 public class BitmapItemDrawerImpl implements BitmapItemDrawer {
-	// geef de bounding box van de afbeelding
+	/* (non-Javadoc)
+	 * @see view.drawer.BitmapItemDrawer#getBoundingBox(java.awt.Graphics, java.awt.image.ImageObserver, float, view.theme.Style, java.awt.image.BufferedImage)
+	 */
 	@Override
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style style,
 			BufferedImage bufferedImage) {
@@ -16,7 +24,9 @@ public class BitmapItemDrawerImpl implements BitmapItemDrawer {
 				((int) (style.getLeading() * scale)) + (int) (bufferedImage.getHeight(observer) * scale));
 	}
 
-	// teken de afbeelding
+	/* (non-Javadoc)
+	 * @see view.drawer.BitmapItemDrawer#draw(int, int, float, java.awt.Graphics, view.theme.Style, java.awt.image.ImageObserver, java.awt.image.BufferedImage)
+	 */
 	@Override
 	public void draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer,
 			BufferedImage bufferedImage) {

@@ -3,6 +3,12 @@ package jabberpoint;
 import java.awt.Color;
 import java.awt.Font;
 
+/**
+ * Values class to define static values used throughout the project.
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
+ *
+ */
 public class Values {
 
 	private static final long serialVersionUID = 227L;
@@ -27,7 +33,7 @@ public class Values {
 	/** Default API to use. */
 	protected static final String DEFAULT_API_TO_USE = "dom";
 
-	/** namen van xml tags of attributen */
+	/** Names of XML tags and attributes */
 	public static final String SHOWTITLE = "showtitle";
 	public static final String SLIDETITLE = "title";
 	public static final String SLIDE = "slide";
@@ -37,7 +43,7 @@ public class Values {
 	public static final String TEXT = "text";
 	public static final String IMAGE = "image";
 
-	/** tekst van messages */
+	/** Texts for messages */
 	public static final String PCE = "Parser Configuration Exception";
 	public static final String UNKNOWNTYPE = "Unknown Element type";
 	public static final String NFE = "Number Format Exception";

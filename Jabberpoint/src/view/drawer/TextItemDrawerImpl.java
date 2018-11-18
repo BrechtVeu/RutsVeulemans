@@ -18,9 +18,22 @@ import java.util.List;
 import jabberpoint.Values;
 import view.theme.Style;
 
+/**
+ * Concrete implementation of TextItemDrawer
+ * 
+ * @author Brecht Veulemans, Dominique Ruts
+ *
+ */
 public class TextItemDrawerImpl implements TextItemDrawer {
 
-	// geef de AttributedString voor het item
+	/**
+	 * Returns the AttributedString for the item.
+	 *
+	 * @param style
+	 * @param scale
+	 * @param text
+	 * @return
+	 */
 	public AttributedString getAttributedString(Style style, float scale, String text) {
 		AttributedString attrStr = new AttributedString(text);
 		attrStr.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, text.length());
@@ -28,6 +41,9 @@ public class TextItemDrawerImpl implements TextItemDrawer {
 	}
 
 	// geef de bounding box van het item
+	/* (non-Javadoc)
+	 * @see view.drawer.TextItemDrawer#getBoundingBox(java.awt.Graphics, java.awt.image.ImageObserver, float, view.theme.Style, java.lang.String)
+	 */
 	@Override
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style style, String text) {
 		List<TextLayout> layouts = getLayouts(g, style, scale, text);
@@ -48,6 +64,9 @@ public class TextItemDrawerImpl implements TextItemDrawer {
 	}
 
 	// teken het item
+	/* (non-Javadoc)
+	 * @see view.drawer.TextItemDrawer#draw(int, int, float, java.awt.Graphics, view.theme.Style, java.awt.image.ImageObserver, java.lang.String)
+	 */
 	@Override
 	public void draw(int x, int y, float scale, Graphics g, Style style, ImageObserver o, String text) {
 
@@ -64,6 +83,15 @@ public class TextItemDrawerImpl implements TextItemDrawer {
 		}
 	}
 
+	/**
+	 * Returns the layout of the text item.
+	 *  
+	 * @param g
+	 * @param style
+	 * @param scale
+	 * @param text
+	 * @return
+	 */
 	private List<TextLayout> getLayouts(Graphics g, Style style, float scale, String text) {
 		List<TextLayout> layouts = new ArrayList<TextLayout>();
 		AttributedString attrStr = getAttributedString(style, scale, text);

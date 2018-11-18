@@ -11,7 +11,7 @@ import model.Displayable;
 
 /**
  * <p>
- * Het applicatiewindow voor een slideviewcomponent
+ * The application window for a SlideViewerComponent.
  * </p>
  *
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
@@ -21,14 +21,20 @@ import model.Displayable;
  * @version 1.4 2007/07/16 Sylvia Stuurman
  * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
+ * @version 1.7 2018/11/17 Brecht Veulemans, Dominique Ruts
  */
-
 public class SlideViewerFrame extends JFrame {
 	private static final long serialVersionUID = 3227L;
 
 	public final static int WIDTH = 1200;
 	public final static int HEIGHT = 800;
 
+	/**
+	 * Constructor for objects of class SlideViewerFrame
+	 * 
+	 * @param title
+	 * @param presentation
+	 */
 	public SlideViewerFrame(String title, Displayable presentation) {
 		super(title);
 		SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentation, this);
@@ -37,6 +43,12 @@ public class SlideViewerFrame extends JFrame {
 	}
 
 	// De GUI opzetten
+	/**
+	 * Creates the GUI of the application.
+	 * 
+	 * @param slideViewerComponent
+	 * @param presentation
+	 */
 	public void setupWindow(SlideViewerComponent slideViewerComponent, Displayable presentation) {
 		setTitle(Values.JABTITLE);
 		addWindowListener(new WindowAdapter() {
